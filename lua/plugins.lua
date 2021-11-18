@@ -131,7 +131,7 @@ return require("packer").startup({function()
     }
 
     -- Vim Lua LSP
-    -- use { 'folke/lua-dev.nvim' }
+    use { 'folke/lua-dev.nvim' }
 
     -- LSP signature.
     use { "ray-x/lsp_signature.nvim" }
