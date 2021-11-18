@@ -29,8 +29,12 @@ vim.g.indent_blankline_context_patterns = {
     '^if',
     '^case',
     '^while',
+    '^use',
     '^for'
 }
+
+-- TODO: get this to show the context
 vim.g.indent_blankline_show_current_context = true
+vim.g.indent_blankline_show_current_context_start = true
 vim.g.indent_blankline_show_trailing_blankline_indent = false
 vim.g.indent_blankline_show_first_indent_level = false

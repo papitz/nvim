@@ -23,7 +23,7 @@ vim.g.nvim_tree_window_picker_exclude = {
 nvimtree.setup {
   auto_close = false,
   open_on_tab = false,
-  update_cwd = true,
+  update_cwd = false,
   update_to_buf_dir = {
     enable = false,
     auto_open = false,
