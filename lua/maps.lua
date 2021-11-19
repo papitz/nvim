@@ -78,9 +78,6 @@ nmap("p", "]p")
 -- fix indentaion
 nmap("<leader>i", "gg=G<C-o>")
 
--- make esc exit from the terminal in vim
-map("t", "<leader><Esc>", "<C-\\><C-n>")
-
 -- navigate quickfix
 nmap("<leader><leader>j", ":cn<CR>")
 nmap("<leader><leader>k", ":cp<CR>")
@@ -122,7 +119,8 @@ nmap("<leader>fc", "<cmd>Telescope command_history<cr>")
 nmap("<leader>fq", "<cmd>Telescope quickfix<cr>")
 nmap("<leader>fr", "<cmd>Telescope registers<cr>")
 nmap("<leader>fs", "<cmd>Telescope spell_suggest<cr>")
-nmap("<leader>fd", ":Telescope find_directories<CR>")
+nmap("<leader>fo", "<cmd>Telescope oldfiles<cr>")
+nmap("<leader>fm", "<cmd>Telescope marks<cr>")
 
 -- Comment mappings
 nmap("<leader>c<leader>", ":CommentToggle<CR>")
@@ -134,9 +132,9 @@ nmap("<C-b>", ":NvimTreeToggle<CR>")
 -- LSP Mappings
 nmap("gD", ":lua vim.lsp.buf.declaration()<CR>")
 nmap("gd", ":lua vim.lsp.buf.definition()<CR>")
-nmap("<leader>k", ":lua vim.lsp.buf.hover()<CR>")
+nmap("<c-q>", ":lua vim.lsp.buf.hover()<CR>")
 nmap("gi", ":lua vim.lsp.buf.implementation()<CR>")
-nmap("<C-k>", ":lua vim.lsp.buf.signature_help()<CR>")
+nmap("<C-a>", ":lua vim.lsp.buf.signature_help()<CR>")
 nmap("<leader>D", ":lua vim.lsp.buf.type_definition()<CR>")
 nmap("<leader>rn", ":lua vim.lsp.buf.rename()<CR>")
 nmap("<leader>ca", ":lua vim.lsp.buf.code_action()<CR>")
