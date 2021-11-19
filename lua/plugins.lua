@@ -166,7 +166,10 @@ return require("packer").startup({function()
     -- Code formatter.
     use {
         "sbdchd/neoformat",
-        cmd = "Neoformat"
+        cmd = "Neoformat",
+        setup = function ()
+            require("plugins/neoformat")
+        end
     }
 
     -- Icons.

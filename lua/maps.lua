@@ -1,21 +1,21 @@
 -- remap function
 local function map(mode, shortcut, command)
-  vim.api.nvim_set_keymap(mode, shortcut, command, { noremap = true, silent = true })
+	vim.api.nvim_set_keymap(mode, shortcut, command, { noremap = true, silent = true })
 end
 
 -- function for normal mode
 local function nmap(shortcut, command)
-  map('n', shortcut, command)
+	map("n", shortcut, command)
 end
 
 -- function for insert mode
 local function imap(shortcut, command)
-  map('i', shortcut, command)
+	map("i", shortcut, command)
 end
 
 -- function for visual mode
 local function vmap(shortcut, command)
-  map('v', shortcut, command)
+	map("v", shortcut, command)
 end
 
 -- map leader to space
@@ -66,11 +66,11 @@ vmap("<C-j>", ":m '>+1<CR>gv=gv")
 vmap("<C-k>", ":m '<-2<CR>gv=gv")
 
 -- Remap for yanking into clipboard
-nmap("<leader>y","\"+y")
-nmap("<leader>p","\"+p")
+nmap("<leader>y", '"+y')
+nmap("<leader>p", '"+p')
 -- in visual mode
-vmap("<leader>y", "\"+y")
-vmap("<leader>p", "\"+p")
+vmap("<leader>y", '"+y')
+vmap("<leader>p", '"+p')
 
 -- paste with correct indent
 nmap("p", "]p")
@@ -79,7 +79,7 @@ nmap("p", "]p")
 nmap("<leader>i", "gg=G<C-o>")
 
 -- make esc exit from the terminal in vim
-map("t","<leader><Esc>", "<C-\\><C-n>")
+map("t", "<leader><Esc>", "<C-\\><C-n>")
 
 -- navigate quickfix
 nmap("<leader><leader>j", ":cn<CR>")
@@ -111,7 +111,6 @@ nmap("<leader>tt", ":VimtexCompile<CR>")
 nmap("<leader>tv", ":VimtexView<CR>")
 nmap("<leader>tc", ":VimtexTocToggle<CR>")
 nmap("<leader>te", ":VimtexErrors<CR>")
-
 
 -- Telescope mappings
 nmap("<leader>ff", "<cmd>Telescope find_files<cr>")
@@ -150,19 +149,19 @@ nmap("<leader>q", ":lua vim.lsp.diagnostic.set_loclist()<CR>")
 -- ToggleTerm
 map("n", "<C-t>", ":ToggleTerm dir=%:p:h<CR>")
 map("t", "<C-t>", ":ToggleTerm dir=%:p:h<CR>")
-map("n", "v:count1 <C-t>", ":v:count1" .. "\"ToggleTerm\"<CR>")
-map("v", "v:count1 <C-t>", ":v:count1" .. "\"ToggleTerm\"<CR>")
+map("n", "v:count1 <C-t>", ":v:count1" .. '"ToggleTerm"<CR>')
+map("v", "v:count1 <C-t>", ":v:count1" .. '"ToggleTerm"<CR>')
 function _G.set_terminal_keymaps()
-  map("t", "<esc>", "<C-\\><C-n>")
-  map("t", "<A-h>", "<c-\\><c-n><c-w>h")
-  map("t", "<A-j>", "<c-\\><c-n><c-w>j")
-  map("t", "<A-k>", "<c-\\><c-n><c-w>k")
-  map("t", "<A-l>", "<c-\\><c-n><c-w>l")
+	map("t", "<esc>", "<C-\\><C-n>")
+	map("t", "<A-h>", "<c-\\><c-n><c-w>h")
+	map("t", "<A-j>", "<c-\\><c-n><c-w>j")
+	map("t", "<A-k>", "<c-\\><c-n><c-w>k")
+	map("t", "<A-l>", "<c-\\><c-n><c-w>l")
 
-  map("t", "<S-h>", "<c-\\><C-n>:call ResizeLeft(3)<CR>")
-  map("t", "<S-j>", "<c-\\><C-n>:call ResizeDown(1)<CR>")
-  map("t", "<S-k>", "<c-\\><C-n>:call ResizeUp(1)<CR>")
-  map("t", "<S-l>", "<c-\\><C-n>:call ResizeRight(3)<CR>")
+	map("t", "<S-h>", "<c-\\><C-n>:call ResizeLeft(3)<CR>")
+	map("t", "<S-j>", "<c-\\><C-n>:call ResizeDown(1)<CR>")
+	map("t", "<S-k>", "<c-\\><C-n>:call ResizeUp(1)<CR>")
+	map("t", "<S-l>", "<c-\\><C-n>:call ResizeRight(3)<CR>")
 end
 vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
 
@@ -170,17 +169,17 @@ vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
 nmap("<leader>fr", ":Neoformat<CR>")
 
 -- Dap debugger
-nmap("<leader>br", ":lua require(\"dap\").toggle_breakpoint()<CR>")
-nmap("<leader>co", ":lua require(\"dap\").continue()<CR>")
-nmap("<leader>so", ":lua require(\"dap\").step_over()<CR>")
-nmap("<leader>si", ":lua require(\"dap\").step_into()<CR>")
-nmap("<leader>re", ":lua require(\"dap\").repl.open()<CR>")
-nmap("<leader>re", ":lua require(\"dap\").repl.open()<CR>")
-nmap("<leader>dt", ":lua require(\"dapui\").toggle()<CR>")
+nmap("<leader>br", ':lua require("dap").toggle_breakpoint()<CR>')
+nmap("<leader>co", ':lua require("dap").continue()<CR>')
+nmap("<leader>so", ':lua require("dap").step_over()<CR>')
+nmap("<leader>si", ':lua require("dap").step_into()<CR>')
+nmap("<leader>re", ':lua require("dap").repl.open()<CR>')
+nmap("<leader>re", ':lua require("dap").repl.open()<CR>')
+nmap("<leader>dt", ':lua require("dapui").toggle()<CR>')
 
 -- Session saving and loading
 nmap("<Leader>ss", ":<C-u>SessionSave<CR>")
 nmap("<Leader>sl", ":<C-u>SessionLoad<CR>")
 
 --open Lazygit window
-nmap("<leader>g",":LazyGit<CR>")
+nmap("<leader>g", ":LazyGit<CR>")
