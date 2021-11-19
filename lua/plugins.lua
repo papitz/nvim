@@ -266,11 +266,6 @@ return require("packer").startup({
 		-- plugin to surround selections with things like brackets
 		use({ "tpope/vim-surround" })
 
-		-- color brackets in rainbow colors
-		-- use({
-		-- 	"luochen1990/rainbow",
-		-- })
-
 		-- git client
 		use({ "kdheepak/lazygit.nvim" })
 
@@ -293,7 +288,6 @@ return require("packer").startup({
 		})
 
 		-- Import settings of plugins or start plugins.
-		-- require("plugins.rainbow")
 		require("plugins.vimtex")
 	end,
 	config = {
