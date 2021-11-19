@@ -98,7 +98,7 @@ imap("<C-l>", "<c-g>u<Esc>[s1z=`]a<c-g>u")
 nmap("<silent>", "<leader>g :LazyGit<CR>")
 
 -- swap parameters around
-nmap("<leader>s", ":ISwap<CR>")
+nmap("<leader>sw", ":ISwap<CR>")
 
 -- switch between the last two files with bs
 nmap("<BS>", "<C-^>")
@@ -150,7 +150,7 @@ map("t", "<C-t>", ":ToggleTerm dir=%:p:h<CR>")
 map("n", "v:count1 <C-t>", ":v:count1" .. '"ToggleTerm"<CR>')
 map("v", "v:count1 <C-t>", ":v:count1" .. '"ToggleTerm"<CR>')
 function _G.set_terminal_keymaps()
-	map("t", "<esc>", "<C-\\><C-n>")
+	map("t", "<leader><esc>", "<C-\\><C-n>")
 	map("t", "<A-h>", "<c-\\><c-n><c-w>h")
 	map("t", "<A-j>", "<c-\\><c-n><c-w>j")
 	map("t", "<A-k>", "<c-\\><c-n><c-w>k")
