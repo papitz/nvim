@@ -39,6 +39,12 @@ return require("packer").startup({
 			end,
 		})
 
+		-- a rainbow bracket extension for treesitter
+		use({
+			"p00f/nvim-ts-rainbow",
+			after = "nvim-treesitter",
+		})
+
 		-- TreeSitter.
 		use({
 			"nvim-treesitter/nvim-treesitter",
@@ -261,9 +267,9 @@ return require("packer").startup({
 		use({ "tpope/vim-surround" })
 
 		-- color brackets in rainbow colors
-		use({
-			"luochen1990/rainbow",
-		})
+		-- use({
+		-- 	"luochen1990/rainbow",
+		-- })
 
 		-- git client
 		use({ "kdheepak/lazygit.nvim" })
@@ -287,7 +293,7 @@ return require("packer").startup({
 		})
 
 		-- Import settings of plugins or start plugins.
-		require("plugins.rainbow")
+		-- require("plugins.rainbow")
 		require("plugins.vimtex")
 	end,
 	config = {

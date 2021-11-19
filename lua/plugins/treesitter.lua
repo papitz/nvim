@@ -18,6 +18,10 @@ nvim_treesitter.setup({
 	autotag = {
 		enable = true,
 	},
+	rainbow = {
+		enable = true,
+		extended_mode = true, -- also highlight html tags
+	},
 })
 
 vim.cmd([[
