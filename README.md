@@ -22,16 +22,12 @@ This is an nvim config that we use for coding. It uses the neovim nightly and is
 
 ## Installation
 
-1. install packer 
+1. clone this repo and `cd` into it
+
+2. run 
 ```
-yay -S nvim-packer-git
+python install.py
 ```
-2. install neovim nightly 
-```
-yay -S neovim-git
-```
-3. make backup of old nvim folder
-4. clone this repo into `~/.config/`
 
 ### initial configuration
 After Installation run
