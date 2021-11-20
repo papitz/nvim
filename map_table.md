@@ -1,99 +1,27 @@
-<h1 align="center">WWCTVVim</h1>
-<div align="center">
-  <a href="https://github.com/papitz/nvim/blob/main/LICENSE">
-    <img src="https://img.shields.io/github/license/papitz/nvim?color=important&style=flat-square" alt="License">
-  </a>
 
-  <img src="https://img.shields.io/github/repo-size/papitz/nvim?style=flat-square" alt="Repo size">
+#### remap function
+| Key | Function |
+|-----|----------|
 
-  <a href="https://github.com/papitz/nvim/issues">
-    <img src="https://img.shields.io/github/issues/papitz/nvim?color=ff0000&style=flat-square" alt="Open issues">
-  </a>
+#### function for normal mode
+| Key | Function |
+|-----|----------|
 
-  <a href="https://github.com/papitz/nvim/pulse">
-    <img src="https://img.shields.io/github/last-commit/papitz/nvim?color=blueviolet&style=flat-square" alt="Last commit">
-  </a>
-</div>
-This is an nvim config that we use for coding. It uses the neovim nightly and is tested on arch. A lot of the configuration is based on [artart222/CodeArt](https://github.com/artart222/CodeArt)
+#### function for insert mode
+| Key | Function |
+|-----|----------|
 
-## Installation
+#### function for visual mode
+| Key | Function |
+|-----|----------|
 
-1. install packer 
-```
-yay -S nvim-packer-git
-```
-2. install neovim nightly 
-```
-yay -S neovim-git
-```
-3. make backup of old nvim folder
-4. clone this repo into `~/.config/`
+#### map leader to space
+| Key | Function |
+|-----|----------|
 
-### initial configuration
-After Installation run
-```
-:PackerSync
-```
-
-## Setup
-### Language Server
-
--to install a language server run `:LspInstall <LANGUAGE>`
-
-### Formatter
-Install the formatter you wish to use. For more info which formatters are supported check [sbdchd/neoformat](https://github.com/sbdchd/neoformat)
-
-## Plugins
-These are the used plugins:
- - DAPInstall.nvim
- - LuaSnip
- - cmp-buffer
- - cmp-nvim-lsp
- - cmp-nvim-lua
- - cmp-path
- - cmp_luasnip
- - dashboard-nvim
- - friendly-snippets
- - gitsigns.nvim
- - indent-blankline.nvim
- - iswap.nvim
- - lazygit.nvim
- - lsp_signature.nvim
- - lspkind-nvim
- - lua-dev.nvim
- - lualine.nvim
- - markdown-preview.nvim
- - neoformat
- - nvim-autopairs
- - nvim-bufferline.lua
- - nvim-cmp
- - nvim-colorizer.lua
- - nvim-comment
- - nvim-dap
- - nvim-dap-ui
- - nvim-lsp-installer
- - nvim-lspconfig
- - nvim-toggleterm.lua
- - nvim-tree.lua
- - nvim-treesitter
- - nvim-ts-autotag
- - nvim-ts-rainbow
- - nvim-web-devicons
- - onedark.nvim
- - packer.nvim
- - plenary.nvim
- - telescope.nvim
- - todo-comments.nvim
- - vim-doge
- - vim-fugitive
- - vim-matchup
- - vim-surround
- - vimtex
- - which-key.nvim
-
-## Keymaps
-Look [here](https://vim.rtorr.com/) for standard vim keymaps\
-Leader is mapped to \<space\>
+#### map semicolon to colon because we are lazy
+| Key | Function |
+|-----|----------|
 
 #### Panel switching
 | Key | Function |
@@ -186,7 +114,7 @@ Leader is mapped to \<space\>
 #### ctrl l to correct the last spelling mistake
 | Key | Function |
 |-----|----------|
-| \<C-l\> | \<c-g\>u\<Esc\>[s1z=\`]a\<c-g\>u | 
+| \<C-l\> | \<c-g\>u\<Esc\>[s1z=`]a\<c-g\>u | 
 
 #### open Lazygit window
 | Key | Function |
@@ -261,7 +189,6 @@ Leader is mapped to \<space\>
 #### ToggleTerm
 | Key | Function |
 |-----|----------|
-| \<C-t\> | :ToggleTerm\<CR\> | 
 
 #### Code formatter.
 | Key | Function |
@@ -283,3 +210,8 @@ Leader is mapped to \<space\>
 |-----|----------|
 | \<Leader\>ss | :\<C-u\>SessionSave\<CR\> | 
 | \<Leader\>sl | :\<C-u\>SessionLoad\<CR\> | 
+
+#### open Lazygit window
+| Key | Function |
+|-----|----------|
+| \<leader\>g | :LazyGit\<CR\> | 

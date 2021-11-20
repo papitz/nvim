@@ -22,8 +22,8 @@ end
 vim.g.mapleader = " "
 
 -- map semicolon to colon because we are lazy
-nmap(";", ":")
-vmap(";", ":")
+vim.api.nvim_set_keymap("n", ";", ":", { noremap = true })
+vim.api.nvim_set_keymap("v", ";", ":", { noremap = true })
 
 -- Panel switching
 nmap("<leader>h", ":wincmd h<CR>")
@@ -85,7 +85,7 @@ nmap("<leader><leader>q", ":copen<CR>")
 nmap("<leader><leader>l", ":.cc<CR>")
 
 -- Markdown Preview control
-nmap("<leader>m", "<Plug>MarkdownPreview")
+nmap("<leader>m", ":MarkdownPreview<CR>")
 
 -- map spelling
 nmap("<F8>", ":setlocal spell spelllang=de,en <return>")
@@ -153,15 +153,6 @@ map("n", "v:count1 <C-t>", ":v:count1" .. '"ToggleTerm"<CR>')
 map("v", "v:count1 <C-t>", ":v:count1" .. '"ToggleTerm"<CR>')
 function _G.set_terminal_keymaps()
 	map("t", "<leader><esc>", "<C-\\><C-n>")
-	map("t", "<A-h>", "<c-\\><c-n><c-w>h")
-	map("t", "<A-j>", "<c-\\><c-n><c-w>j")
-	map("t", "<A-k>", "<c-\\><c-n><c-w>k")
-	map("t", "<A-l>", "<c-\\><c-n><c-w>l")
-
-	map("t", "<S-h>", "<c-\\><C-n>:call ResizeLeft(3)<CR>")
-	map("t", "<S-j>", "<c-\\><C-n>:call ResizeDown(1)<CR>")
-	map("t", "<S-k>", "<c-\\><C-n>:call ResizeUp(1)<CR>")
-	map("t", "<S-l>", "<c-\\><C-n>:call ResizeRight(3)<CR>")
 end
 vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
 
@@ -169,17 +160,14 @@ vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
 nmap("<leader>fr", ":Neoformat<CR>")
 
 -- Dap debugger
-nmap("<leader>br", ':lua require("dap").toggle_breakpoint()<CR>')
-nmap("<leader>co", ':lua require("dap").continue()<CR>')
-nmap("<leader>so", ':lua require("dap").step_over()<CR>')
-nmap("<leader>si", ':lua require("dap").step_into()<CR>')
-nmap("<leader>re", ':lua require("dap").repl.open()<CR>')
-nmap("<leader>re", ':lua require("dap").repl.open()<CR>')
-nmap("<leader>dt", ':lua require("dapui").toggle()<CR>')
+nmap("<leader>br", ":lua require('dap').toggle_breakpoint()<CR>")
+nmap("<leader>co", ":lua require('dap').continue()<CR>")
+nmap("<leader>so", ":lua require('dap').step_over()<CR>")
+nmap("<leader>si", ":lua require('dap').step_into()<CR>")
+nmap("<leader>re", ":lua require('dap').repl.open()<CR>")
+nmap("<leader>re", ":lua require('dap').repl.open()<CR>")
+nmap("<c-x>", ':lua require("dapui").toggle()<CR>')
 
 -- Session saving and loading
 nmap("<Leader>ss", ":<C-u>SessionSave<CR>")
 nmap("<Leader>sl", ":<C-u>SessionLoad<CR>")
-
---open Lazygit window
-nmap("<leader>g", ":LazyGit<CR>")

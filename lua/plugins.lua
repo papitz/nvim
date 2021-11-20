@@ -279,7 +279,14 @@ return require("packer").startup({
 		use({
 			"iamcco/markdown-preview.nvim",
 			run = "cd app && yarn install",
-			cmd = "MarkdownPreview",
+		})
+
+		-- auto generate doc strings
+		use({
+			"kkoomen/vim-doge",
+			run = function()
+				vim.fn["doge#install"]()
+			end,
 		})
 
 		-- latex plugin
