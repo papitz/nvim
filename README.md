@@ -16,7 +16,7 @@
 </div>
 <h1 align="center">WWCTVim</h1>
 
-![image](https://user-images.githubusercontent.com/45036971/142732283-a9522629-ecf3-40ba-8f2a-b32398d568f4.png)
+![image](https://user-images.githubusercontent.com/45036971/142732331-5f8d67f6-c7f5-4556-af4f-22c6ad55f6be.png)
 
 ## General
 
