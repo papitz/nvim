@@ -4,4 +4,4 @@ os.system("yay -R --noconfirm neovim")
 os.system("yay -S --noconfirm neovim-git nvim-packer-git")
 if os.path.isdir("~/.config/nvim"):
     os.system("mv ~/.config/nvim ~/.config/nvimBACKUP")
-os.system("mv ../nvim/ ~/.config/")
+os.system("mv ../nvim ~/.config")
