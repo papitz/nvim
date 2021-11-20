@@ -2,8 +2,8 @@
 local opt = vim.opt
 HOME = os.getenv("HOME")
 
-opt.undodir= HOME .. "/.config/nvim/undodir" -- set undotree file directory
-opt.undofile = true-- set undotree to save to file
+opt.undodir = HOME .. "/.config/nvim/undodir" -- set undotree file directory
+opt.undofile = true -- set undotree to save to file
 opt.number = true
 opt.numberwidth = 2
 opt.relativenumber = true -- set line number
@@ -18,14 +18,15 @@ opt.mouse = "a" -- enable clicking with the mouse
 opt.writebackup = false -- set to never save backup
 opt.swapfile = false -- set no swap file
 opt.backup = false -- set no backup file
-opt.breakindent = true-- set every wrapped line will continue visually indented
+opt.breakindent = true -- set every wrapped line will continue visually indented
 opt.smartindent = true -- set smart indentation
 opt.ignorecase = true --set search to case insensitive
 opt.smartcase = true -- set to be case sensitive when there is capital letter, this needs set incsearch to work
 opt.incsearch = true -- for smartcase
 opt.hidden = true -- so multiple buffers can be open
-opt.updatetime=250 -- update faster for autocompletion
+opt.updatetime = 250 -- update faster for autocompletion
 opt.showmode = false -- set that vim mode is hidden, to incorporate for lightline plugin
+opt.signcolumn = "yes" -- set the line numbers on a even width
 
 -- splits open below an to the right
 opt.splitbelow = true
@@ -46,15 +47,14 @@ opt.completeopt = "menuone,noselect"
 
 -- Auto open nvim-tree when writing (nvim .) in command line
 -- and auto open Dashboard when nothing given as argument.
-vim.cmd
-[[
+vim.cmd([[
 if index(argv(), ".") >= 0
   autocmd VimEnter * NvimTreeToggle
   bd1
 elseif len(argv()) == 0
   autocmd VimEnter * Dashboard
 endif
-]]
+]])
 
 -- open vim on cwd of file
 vim.cmd("autocmd BufEnter * silent! lcd %:p:h")
