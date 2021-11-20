@@ -15,6 +15,9 @@
   </a>
 </div>
 <h1 align="center">WWCTVim</h1>
+
+## General
+
 This is an nvim config that we use for coding. It uses the neovim nightly and is tested on arch. A lot of the configuration is based on [artart222/CodeArt](https://github.com/artart222/CodeArt)
 
 ## Installation
