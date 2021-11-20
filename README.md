@@ -1,4 +1,4 @@
-<h1 align="center">WWCTVVim</h1>
+
 <div align="center">
   <a href="https://github.com/papitz/nvim/blob/main/LICENSE">
     <img src="https://img.shields.io/github/license/papitz/nvim?color=important&style=flat-square" alt="License">
@@ -14,6 +14,7 @@
     <img src="https://img.shields.io/github/last-commit/papitz/nvim?color=blueviolet&style=flat-square" alt="Last commit">
   </a>
 </div>
+<h1 align="center">WWCTVim</h1>
 This is an nvim config that we use for coding. It uses the neovim nightly and is tested on arch. A lot of the configuration is based on [artart222/CodeArt](https://github.com/artart222/CodeArt)
 
 ## Installation
