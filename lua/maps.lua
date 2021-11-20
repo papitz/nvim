@@ -113,14 +113,16 @@ nmap("<leader>te", ":VimtexErrors<CR>")
 nmap("<leader>ff", "<cmd>Telescope find_files<cr>")
 nmap("<leader>fg", "<cmd>Telescope live_grep<cr>")
 nmap("<leader>fb", "<cmd>Telescope buffers<cr>")
-nmap("<leader>fh", "<cmd>Telescope help_tags<cr>")
-nmap("<leader>fn", "<cmd>Telescope search_history<cr>")
+nmap("<leader>fh", "<cmd>Telescope search_history<cr>")
 nmap("<leader>fc", "<cmd>Telescope command_history<cr>")
 nmap("<leader>fq", "<cmd>Telescope quickfix<cr>")
 nmap("<leader>fr", "<cmd>Telescope registers<cr>")
 nmap("<leader>fs", "<cmd>Telescope spell_suggest<cr>")
 nmap("<leader>fo", "<cmd>Telescope oldfiles<cr>")
 nmap("<leader>fm", "<cmd>Telescope marks<cr>")
+
+-- Dashboard mappings
+nmap("<leader>fn", "<cmd>DashboardNewFile<cr>")
 
 -- Comment mappings
 nmap("<leader>c<leader>", ":CommentToggle<CR>")
