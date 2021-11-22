@@ -18,7 +18,8 @@ g.dashboard_custom_section = {
 	d = { description = { "  Find Word                 SPC f g" }, command = "Telescope live_grep" },
 	e = { description = { "洛 New File                  SPC f n" }, command = "DashboardNewFile" },
 	f = { description = { "  Bookmarks                 SPC f m" }, command = "Telescope marks" },
-	g = { description = { "  Load Last Session         SPC s l" }, command = "SessionLoad" },
+	g = { description = { "⌨  Keymaps                   SPC f k" }, command = "Telescope Keymaps" },
+	h = { description = { "  Load Last Session         SPC s l" }, command = "SessionLoad" },
 }
 
 -- Disable statusline and cursorline in dashboard.

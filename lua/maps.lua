@@ -95,7 +95,7 @@ nmap("<F9>", ":set nospell <return>")
 imap("<C-l>", "<c-g>u<Esc>[s1z=`]a<c-g>u")
 
 -- open Lazygit window
-nmap("<silent>", "<leader>g :LazyGit<CR>")
+nmap("<leader>g", ":LazyGit<CR>")
 
 -- swap parameters around
 nmap("<leader>sw", ":ISwap<CR>")
@@ -120,6 +120,7 @@ nmap("<leader>fr", "<cmd>Telescope registers<cr>")
 nmap("<leader>fs", "<cmd>Telescope spell_suggest<cr>")
 nmap("<leader>fo", "<cmd>Telescope oldfiles<cr>")
 nmap("<leader>fm", "<cmd>Telescope marks<cr>")
+nmap("<leader>fk", "<cmd>Telescope keymaps<cr>")
 
 -- Dashboard mappings
 nmap("<leader>fn", "<cmd>DashboardNewFile<cr>")
