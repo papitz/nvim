@@ -172,3 +172,6 @@ nmap("<c-x>", ':lua require("dapui").toggle()<CR>')
 -- Session saving and loading
 nmap("<Leader>ss", ":<C-u>SessionSave<CR>")
 nmap("<Leader>sl", ":<C-u>SessionLoad<CR>")
+
+-- Edit the snippet files
+nmap("<Leader>se", ":SnippetsEdit<CR>")
