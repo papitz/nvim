@@ -37,6 +37,7 @@ nmap("<leader>L", ":wincmd L<CR>")
 
 -- buffer switching
 nmap("gb", ":BufferLinePick<CR>")
+nmap("<leader>bx", ":BufferLinePickClosse<CR>")
 
 -- Split resizing
 nmap("<C-Right>", "<C-w>>")
