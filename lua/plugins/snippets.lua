@@ -21,15 +21,25 @@ local choice = ls.choice_node
 local dynamicn = ls.dynamic_node
 
 ls.config.setup({ store_selection_keys = "<Tab>" }) -- TODO: check if this works
--- get the commentstring of the current buffer
 ls.snippets = {
+	--[[
+         snippets go here like this:
+            <LANGUAGE> = {
+                snip({
+                    trig = "TRIGGER",
+                    namr = "NAME",
+                    dscr = "DESCRIPTION",
+                    }, {
+                    text("TEXT HERE")
+                    })
+            }
+    ]]
+
 	all = {
-		-- snippets go here
-		-- TODO: add a todo snippet for all languages
 		snip({
 			trig = "todo",
-			namr = "TODO_comment",
-			dscr = "Create a TODO comment",
+			name = "TODO_comment",
+			dscr = "Add a TODO comment",
 		}, {
 			-- get the comment string of the buffer you are in and add a space to it
 			func(function()
@@ -43,8 +53,7 @@ ls.snippets = {
 		-- snippet to wrap selection in link. Press <TAB> on selection first
 		snip({
 			trig = "link",
-			namr = "markdown_link",
-			dscr = "Create markdown link [txt](url)",
+			name = "markdown link",
 		}, {
 			text("["),
 			insert(1),
@@ -54,6 +63,39 @@ ls.snippets = {
 			end, {}),
 			text(")"),
 			insert(0),
+		}),
+	},
+	lua = {
+		snip({
+			trig = "snip",
+			name = "snippet",
+			dscr = "Snippet to create snippets",
+		}, {
+			text({
+				"snip({",
+				'   trig = "',
+			}),
+			insert(1, "TRIGGER"),
+			text({
+				'",',
+				'   name = "',
+			}),
+			insert(2, "NAME"),
+			text({
+				'",',
+				'   dscr = "',
+			}),
+			insert(3, "DESCRIPTION"),
+			text({
+				'",',
+				"}, {",
+				"",
+			}),
+			insert(0, "SNIPPET LOGIC HERE"),
+			text({
+				"",
+				"}),",
+			}),
 		}),
 	},
 }
