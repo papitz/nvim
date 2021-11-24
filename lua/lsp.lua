@@ -33,3 +33,6 @@ lsp_installer.on_server_ready(function(server)
 	end
 	vim.cmd([[ do User LspAttachBuffers ]])
 end)
+
+-- show the diagnostic description when the cursor is placed on the error
+vim.cmd([[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil,{focusable=false,scope="cursor"})]])
