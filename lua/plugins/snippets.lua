@@ -34,7 +34,6 @@ ls.snippets = {
                     })
             }
     ]]
-
 	all = {
 		snip({
 			trig = "todo",
@@ -47,6 +46,10 @@ ls.snippets = {
 			end, {}),
 			text("TODO: "),
 			insert(0, "YOU REALLY NEED TO DO THIS"),
+			func(function()
+				local _, rightComment = vim.api.nvim_buf_get_option(0, "commentstring"):match("^(.*)%%s(.*)")
+				return rightComment
+			end, {}),
 		}),
 	},
 	markdown = {
