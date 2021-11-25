@@ -176,3 +176,6 @@ nmap("<Leader>sl", ":<C-u>SessionLoad<CR>")
 
 -- Edit the snippet files
 nmap("<Leader>se", ":SnippetsEdit<CR>")
+
+-- shortcut to write and close all buffers
+nmap("ZA", ":wqa<CR>")

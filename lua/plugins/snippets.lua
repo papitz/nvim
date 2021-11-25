@@ -44,7 +44,7 @@ ls.snippets = {
 			func(function()
 				return vim.api.nvim_buf_get_option(0, "commentstring"):match("^(.*)%%s") .. " "
 			end, {}),
-			text("TODO: "),
+			text(" TODO: "),
 			insert(0, "YOU REALLY NEED TO DO THIS"),
 			func(function()
 				local _, rightComment = vim.api.nvim_buf_get_option(0, "commentstring"):match("^(.*)%%s(.*)")
