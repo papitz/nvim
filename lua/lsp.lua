@@ -35,4 +35,4 @@ lsp_installer.on_server_ready(function(server)
 end)
 
 -- show the diagnostic description when the cursor is placed on the error
-vim.cmd([[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil,{focusable=false,scope="cursor"})]])
+vim.cmd([[autocmd CursorHold * lua vim.diagnostic.open_float(nil,{focusable=false,scope="cursor"})]])
