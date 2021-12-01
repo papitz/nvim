@@ -36,7 +36,7 @@ nvimtree.setup({
 	},
 	filters = {
 		dotfiles = true,
-		custom = { ".git", "node_modules", ".cache", "__pycache__" },
+		custom = { "node_modules", ".git", ".cache", "__pycache__" },
 	},
 	view = {
 		width = "15%",
@@ -55,5 +55,10 @@ nvimtree.setup({
 				{ key = "<BS>", cb = tree_cb("dir_up") },
 			},
 		},
+	},
+	git = {
+		enable = true,
+		ignore = true, -- set to false if you want to see gitignored files in tree. Ignored can be toggled with I
+		timeout = 500,
 	},
 })
