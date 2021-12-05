@@ -4,12 +4,12 @@ vim.cmd([[
     function SnippetsEdit()
         let tmp_ft = &filetype
         :e ~/.config/nvim/lua/plugins/snippets.lua
-        call search(tmp_ft)
+        call search(tmp_ft . " = {")
         execute "normal! z\<cr>"
     endfunction
     command! SnippetsEdit call SnippetsEdit()
 ]])
--- vim.cmd("command SnippetsEdit let tmp_ft = &filetype | :e ~/.config/nvim/lua/plugins/snippets.lua | ")
+vim.cmd("autocmd BufWritePost */snippets.lua :source $MYVIMRC")
 local ls = require("luasnip")
 -- some shorthands...
 local snip = ls.snippet
@@ -99,6 +99,15 @@ ls.snippets = {
 				"",
 				"}),",
 			}),
+		}),
+	},
+	tex = {
+		snip({
+			trig = "rarrow",
+			name = "Right arrow",
+			dscr = "add a right arrow thats wrapped in $",
+		}, {
+			text({ "$\\rightarrow$" }),
 		}),
 	},
 }

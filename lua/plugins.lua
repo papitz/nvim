@@ -30,10 +30,20 @@ return require("packer").startup({
 			end,
 		})
 
+		-- show in which scope you are in the statusline
+		use({
+			"SmiteshP/nvim-gps",
+			after = "nvim-bufferline.lua",
+			requires = "nvim-treesitter/nvim-treesitter",
+			config = function()
+				require("nvim-gps").setup()
+			end,
+		})
+
 		-- Statusline.
 		use({
 			"nvim-lualine/lualine.nvim",
-			after = "nvim-bufferline.lua",
+			after = "nvim-gps",
 			config = function()
 				require("plugins/lualine")
 			end,
@@ -148,6 +158,11 @@ return require("packer").startup({
 		-- VsCode like pictograms for lsp.
 		use({ "onsails/lspkind-nvim" })
 
+		-- pretty code action menu
+		require("packer").use({
+			"weilbith/nvim-code-action-menu",
+			cmd = "CodeActionMenu",
+		})
 		-- Debugger
 		use({ "mfussenegger/nvim-dap" })
 		use({

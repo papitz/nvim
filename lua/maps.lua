@@ -141,12 +141,14 @@ nmap("gi", ":lua vim.lsp.buf.implementation()<CR>")
 nmap("<C-a>", ":lua vim.lsp.buf.signature_help()<CR>")
 nmap("<leader>D", ":lua vim.lsp.buf.type_definition()<CR>")
 nmap("<leader>rn", ":lua vim.lsp.buf.rename()<CR>")
-nmap("<leader>ca", ":lua vim.lsp.buf.code_action()<CR>")
 nmap("gr", ":lua vim.lsp.buf.references()<CR>")
 nmap("<leader>e", ":lua vim.lsp.diagnostic.show_line_diagnostics()<CR>")
 nmap("[d", ":lua vim.lsp.diagnostic.goto_prev()<CR>")
 nmap("]d", ":lua vim.lsp.diagnostic.goto_next()<CR>")
 nmap("<leader>q", ":lua vim.lsp.diagnostic.set_loclist()<CR>")
+nmap("<A-CR>", ":lua vim.lsp.buf.code_action()<CR>")
+--  TODO: remap to code action menu once it is fixed
+-- nmap("<A-CR>", ":CodeActionMenu <CR>")
 
 -- ToggleTerm
 map("n", "<C-t>", ":ToggleTerm dir=%:p:h<CR>")
