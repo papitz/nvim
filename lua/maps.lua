@@ -112,6 +112,7 @@ nmap("<leader>te", ":VimtexErrors<CR>")
 
 -- Telescope mappings
 nmap("<leader>ff", "<cmd>Telescope find_files<cr>")
+nmap("<leader>fp", "<cmd>Telescope git_files<cr>")
 nmap("<leader>fg", "<cmd>Telescope live_grep<cr>")
 nmap("<leader>fb", "<cmd>Telescope buffers<cr>")
 nmap("<leader>fh", "<cmd>Telescope search_history<cr>")
