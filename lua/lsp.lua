@@ -38,6 +38,12 @@ lsp_installer.on_server_ready(function(server)
 		opts.settings = {
 			format = { enable = true }, -- this will enable formatting
 		}
+	elseif server.name == "ltex" then
+		opts.settings = {
+			ltex = {
+				language = "de-DE",
+			},
+		}
 	end
 	server:setup(opts)
 	vim.cmd([[ do User LspAttachBuffers ]])

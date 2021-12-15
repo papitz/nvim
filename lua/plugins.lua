@@ -304,6 +304,14 @@ return require("packer").startup({
 			end,
 		})
 
+		use("RishabhRD/popfix")
+		use({
+			"hood/popui.nvim",
+			after = "popfix",
+			config = function()
+				vim.ui.select = require("popui.ui-overrider")
+			end,
+		})
 		-- latex plugin
 		use({
 			"lervag/vimtex",
