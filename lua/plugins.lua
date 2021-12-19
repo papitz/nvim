@@ -159,14 +159,18 @@ return require("packer").startup({
 		use({ "onsails/lspkind-nvim" })
 
 		-- pretty code action menu
-		use("RishabhRD/popfix")
-		use({
-			"hood/popui.nvim",
-			after = "popfix",
-			config = function()
-				vim.ui.select = require("popui.ui-overrider")
-			end,
+		require("packer").use({
+			"weilbith/nvim-code-action-menu",
+			cmd = "CodeActionMenu",
 		})
+		-- use("RishabhRD/popfix")
+		-- use({
+		-- 	"hood/popui.nvim",
+		-- 	after = "popfix",
+		-- 	config = function()
+		-- 		vim.ui.select = require("popui.ui-overrider")
+		-- 	end,
+		-- })
 
 		-- Debugger
 		use({ "mfussenegger/nvim-dap" })
