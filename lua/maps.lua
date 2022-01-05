@@ -181,3 +181,13 @@ nmap("<Leader>se", ":SnippetsEdit<CR>")
 
 -- shortcut to write and close all buffers
 nmap("ZA", ":wqa<CR>")
+
+-- toggle virtual text
+vim.g.diagnostic_virtual_text = false
+function Virtual_text_toggle()
+	vim.g.diagnostic_virtual_text = not vim.g.diagnostic_virtual_text
+	vim.diagnostic.config({ virtual_text = vim.g.diagnostic_virtual_text })
+	print("Virtual Text " .. (vim.g.diagnostic_virtual_text and "enabled" or "disabled"))
+end
+vim.cmd([[ command! VirtualTextToggle lua Virtual_text_toggle()]])
+nmap("<Leader>u", ":VirtualTextToggle<CR>")

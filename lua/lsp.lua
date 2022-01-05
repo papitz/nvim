@@ -49,5 +49,9 @@ lsp_installer.on_server_ready(function(server)
 	vim.cmd([[ do User LspAttachBuffers ]])
 end)
 
+-- disable virtual text in Latex documents FIX for overfull hbox madness
+vim.cmd(
+	[[autocmd Filetype tex lua vim.g.diagnostic_virtual_text = false; vim.diagnostic.config({ virtual_text = vim.g.diagnostic_virtual_text })]]
+)
 -- show the diagnostic description when the cursor is placed on the error
 vim.cmd([[autocmd CursorHold * lua vim.diagnostic.open_float(nil,{focusable=false,scope="cursor"})]])
