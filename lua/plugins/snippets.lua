@@ -155,5 +155,14 @@ text("TEXT HERE")
 			insert(0, "Text here"),
 			text("\\grqq{}"),
 		}),
+		snip({
+			trig = "fn",
+			name = "footnote",
+			dscr = "\\footnote{}",
+		}, {
+			text("\\footnote{"),
+			insert(0),
+			text("}"),
+		}),
 	},
 }
