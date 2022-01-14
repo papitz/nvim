@@ -147,9 +147,8 @@ nmap("<leader>e", ":lua vim.lsp.diagnostic.show_line_diagnostics()<CR>")
 nmap("[d", ":lua vim.lsp.diagnostic.goto_prev()<CR>")
 nmap("]d", ":lua vim.lsp.diagnostic.goto_next()<CR>")
 nmap("<leader>q", ":lua vim.lsp.diagnostic.set_loclist()<CR>")
-nmap("<A-CR>", ":lua vim.lsp.buf.code_action()<CR>")
---  TODO: remap to code action menu once it is fixed
--- nmap("<A-CR>", ":CodeActionMenu <CR>")
+-- nmap("<A-CR>", ":lua vim.lsp.buf.code_action()<CR>")
+nmap("<A-CR>", ":CodeActionMenu <CR>")
 
 -- ToggleTerm
 map("n", "<C-t>", ":ToggleTerm dir=%:p:h<CR>")
@@ -182,3 +181,13 @@ nmap("<Leader>se", ":SnippetsEdit<CR>")
 
 -- shortcut to write and close all buffers
 nmap("ZA", ":wqa<CR>")
+
+-- toggle virtual text
+vim.g.diagnostic_virtual_text = false
+function Virtual_text_toggle()
+	vim.g.diagnostic_virtual_text = not vim.g.diagnostic_virtual_text
+	vim.diagnostic.config({ virtual_text = vim.g.diagnostic_virtual_text })
+	print("Virtual Text " .. (vim.g.diagnostic_virtual_text and "enabled" or "disabled"))
+end
+vim.cmd([[ command! VirtualTextToggle lua Virtual_text_toggle()]])
+nmap("<Leader>u", ":VirtualTextToggle<CR>")

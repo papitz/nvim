@@ -3,6 +3,12 @@ if not present then
 	return
 end
 local lspkind = require("lspkind")
+
+local has_words_before = function()
+	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+	return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+end
+
 cmp.setup({
 	snippet = {
 		expand = function(args)
@@ -17,10 +23,12 @@ cmp.setup({
 		["<C-f>"] = cmp.mapping.scroll_docs(4),
 		["<C-Space>"] = cmp.mapping.complete(),
 		["<C-e>"] = cmp.mapping.close(),
-		-- select true/false changes if you need to explicitly select the first item or not
-		["<CR>"] = cmp.mapping.confirm({ select = false }),
+		["<CR>"] = cmp.mapping.confirm({
+			behavior = cmp.ConfirmBehavior.Insert,
+			select = false,
+		}),
 		["<Tab>"] = function(fallback)
-			if cmp.visible() then
+			if cmp.visible() and has_words_before() then
 				cmp.select_next_item()
 				-- elseif require("luasnip").expand_or_jumpable() then
 				-- 	vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true), "")

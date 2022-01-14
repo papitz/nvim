@@ -163,6 +163,15 @@ return require("packer").startup({
 			"weilbith/nvim-code-action-menu",
 			cmd = "CodeActionMenu",
 		})
+		-- use("RishabhRD/popfix")
+		-- use({
+		-- 	"hood/popui.nvim",
+		-- 	after = "popfix",
+		-- 	config = function()
+		-- 		vim.ui.select = require("popui.ui-overrider")
+		-- 	end,
+		-- })
+
 		-- Debugger
 		use({ "mfussenegger/nvim-dap" })
 		use({
