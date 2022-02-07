@@ -31,19 +31,20 @@ return require("packer").startup({
 		})
 
 		-- show in which scope you are in the statusline
-		use({
-			"SmiteshP/nvim-gps",
-			after = "nvim-bufferline.lua",
-			requires = "nvim-treesitter/nvim-treesitter",
-			config = function()
-				require("nvim-gps").setup()
-			end,
-		})
+		-- use({
+		-- 	"SmiteshP/nvim-gps",
+		-- 	after = "nvim-bufferline.lua",
+		-- 	requires = "nvim-treesitter/nvim-treesitter",
+		-- 	config = function()
+		-- 		require("nvim-gps").setup()
+		-- 	end,
+		-- })
 
 		-- Statusline.
 		use({
 			"nvim-lualine/lualine.nvim",
-			after = "nvim-gps",
+			-- after = "nvim-gps",
+			after = "nvim-bufferline.lua",
 			config = function()
 				require("plugins/lualine")
 			end,

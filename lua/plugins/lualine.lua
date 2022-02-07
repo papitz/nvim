@@ -28,7 +28,7 @@ local lualine_styles = {
 	},
 }
 
-local gps = require("nvim-gps")
+-- local gps = require("nvim-gps")
 
 lualine.setup({
 	options = {
@@ -47,8 +47,8 @@ lualine.setup({
 	},
 	extensions = { "fugitive" },
 	sections = {
-		lualine_c = {
-			{ gps.get_location, cond = gps.is_available },
-		},
+		-- lualine_c = {
+		-- 	{ gps.get_location, cond = gps.is_available },
+		-- },
 	},
 })
