@@ -159,19 +159,19 @@ return require("packer").startup({
 		-- VsCode like pictograms for lsp.
 		use({ "onsails/lspkind-nvim" })
 
-		-- pretty code action menu
-		require("packer").use({
-			"weilbith/nvim-code-action-menu",
-			cmd = "CodeActionMenu",
-		})
-		-- use("RishabhRD/popfix")
-		-- use({
-		-- 	"hood/popui.nvim",
-		-- 	after = "popfix",
-		-- 	config = function()
-		-- 		vim.ui.select = require("popui.ui-overrider")
-		-- 	end,
+		-- -- pretty code action menu
+		-- require("packer").use({
+		-- 	"weilbith/nvim-code-action-menu",
+		-- 	cmd = "CodeActionMenu",
 		-- })
+		use("RishabhRD/popfix")
+		use({
+			"hood/popui.nvim",
+			after = "popfix",
+			config = function()
+				vim.ui.select = require("popui.ui-overrider")
+			end,
+		})
 
 		-- Debugger
 		use({ "mfussenegger/nvim-dap" })
