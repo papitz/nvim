@@ -20,8 +20,8 @@ lsp_installer.on_server_ready(function(server)
 	if server.name == "sumneko_lua" then
 		-- lua language server config
 		local sumneko_binary_path = HOME
-			.. "/.local/share/nvim/lsp_servers/sumneko_lua/extension/server/bin/Linux/lua-language-server"
-		local sumneko_root_path = HOME .. "/.local/share/nvim/lsp_servers/sumneko_lua/extension/server/bin/Linux"
+			.. "/.local/share/nvim/lsp_servers/sumneko_lua/extension/server/bin/lua-language-server"
+		local sumneko_root_path = HOME .. "/.local/share/nvim/lsp_servers/sumneko_lua/extension/server/bin/"
 		local luadev = require("lua-dev").setup({
 			lspconfig = {
 				cmd = { sumneko_binary_path, "-E", sumneko_root_path .. "/main.lua" },
