@@ -164,5 +164,16 @@ text("TEXT HERE")
 			insert(0),
 			text("}"),
 		}),
+		snip({
+			trig = "ina",
+			name = "include named image",
+			dscr = "include a named image",
+		}, {
+			text("\\includenamedimage[1]{../images/"),
+			insert(1, "image_name.png"),
+			text("}{"),
+			insert(0, "Image Name"),
+			text("}"),
+		}),
 	},
 }
