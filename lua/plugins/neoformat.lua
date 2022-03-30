@@ -6,7 +6,7 @@ augroup END
 ]])
 
 -- Enable alignment
-vim.g.neoformat_basic_format_align = 1
+vim.g.neoformat_basic_format_align = 0
 
 -- Enable tab to spaces conversion
 vim.g.neoformat_basic_format_retab = 1

@@ -1,0 +1,51 @@
+snippet pc open parencite
+	(\cite{$0})
+
+snippet ina insert named image
+	\includenamedimage[1]{../images/$1}{$0}
+
+snippet sabb
+	(siehe Abb.~\ref{$0})
+
+snippet foc \footnote{\cite{}}
+	\footnote{Vgl.~\cite{$0}}
+
+snippet ref ~\ref{}
+	~\ref{$0}
+
+snippet per insert Percentage
+	\,\%
+
+snippet glq Anführungszeichen unten einfach
+	\glq{}
+
+snippet glqq Anführungszeichen unten doppelt
+	\glqq{}
+
+snippet grq Anführungszeichen oben einfach
+	\grq{}
+
+snippet grqq Anführungszeichen oben doppelt
+	\grqq{}
+
+snippet gq Einfache Anführungszeichen
+	\glq{}$0\grq{}
+
+snippet gqq Doppelte Anführungszeichen
+	\glqq{}$0\grqq{}
+
+snippet ver verbatim block
+	\begin{verbatim}
+	$0
+	\end{verbatim}
+
+snippet lstt lstlisting with title and label
+	\begin{lstlisting}[language=${1:language}, caption=${2:title}, label=lst:${3:label}]
+	$0
+	\end{lstlisting}
+
+snippet fn footnote
+	\footnote{$0}
+
+snippet rar rightarrow
+	$\rightarrow$
