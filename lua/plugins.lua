@@ -294,6 +294,14 @@ return require("packer").startup({
 		-- git client
 		use({ "kdheepak/lazygit.nvim" })
 
+		-- fast movement
+		use({
+			"ggandor/leap.nvim",
+			config = function()
+				require("leap").set_default_keymaps()
+			end,
+		})
+
 		-- swap parameters around
 		use({
 			"mizlan/iswap.nvim",
