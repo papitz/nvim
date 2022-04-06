@@ -182,6 +182,10 @@ nmap("<Leader>se", ":SnippetsEdit<CR>")
 -- shortcut to write and close all buffers
 nmap("ZA", ":wqa<CR>")
 
+-- searching with leap
+nmap("<Leader>a", "<Plug>(leap-forward)")
+nmap("<Leader>A", "<Plug>(leap-backward)")
+
 -- toggle virtual text
 vim.g.diagnostic_virtual_text = false
 function Virtual_text_toggle()
