@@ -31,7 +31,7 @@ ls.add_snippets("all", {
 	}, {
 		-- get the comment string of the buffer you are in and add a space to it
 		func(function()
-			return vim.api.nvim_buf_get_option(0, "commentstring"):match("^(.*)%%s") .. " "
+			return vim.api.nvim_buf_get_option(0, "commentstring"):match("^(.*)%%s")
 		end, {}),
 		text(" TODO: "),
 		insert(0, "YOU REALLY NEED TO DO THIS"),

@@ -4,8 +4,8 @@ HOME = os.getenv("HOME")
 
 opt.undodir = HOME .. "/.config/nvim/undodir" -- set undotree file directory
 opt.undofile = true -- set undotree to save to file
-opt.number = true
-opt.numberwidth = 2
+opt.number = true -- enable line numbers
+opt.numberwidth = 2 -- set the width of the numbers
 opt.relativenumber = true -- set line number
 opt.wrap = true -- set no soft wrap
 opt.linebreak = true -- only break at words
