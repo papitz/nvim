@@ -30,6 +30,7 @@ return require("packer").startup({
 			end,
 		})
 
+		-- TODO: Broken. Write an issue
 		-- show in which scope you are in the statusline
 		-- use({
 		-- 	"SmiteshP/nvim-gps",
@@ -106,16 +107,14 @@ return require("packer").startup({
 			end,
 		})
 
-		-- Fuzzy finder and it requirments.
+		-- Fuzzy finder and its requirments.
 		use({ "nvim-lua/plenary.nvim" })
 		use({ "nvim-telescope/telescope.nvim" })
 
 		-- LSP, LSPInstaller and snippets
 		use({ "neovim/nvim-lspconfig" })
 		use({ "williamboman/nvim-lsp-installer" })
-		use({
-			"rafamadriz/friendly-snippets",
-		})
+		use({ "rafamadriz/friendly-snippets" })
 		use({
 			"hrsh7th/nvim-cmp",
 			after = "friendly-snippets",
@@ -159,11 +158,7 @@ return require("packer").startup({
 		-- VsCode like pictograms for lsp.
 		use({ "onsails/lspkind-nvim" })
 
-		-- -- pretty code action menu
-		-- require("packer").use({
-		-- 	"weilbith/nvim-code-action-menu",
-		-- 	cmd = "CodeActionMenu",
-		-- })
+		-- popup menu
 		use("RishabhRD/popfix")
 		use({
 			"hood/popui.nvim",
@@ -173,20 +168,20 @@ return require("packer").startup({
 			end,
 		})
 
-		-- Debugger
-		use({ "mfussenegger/nvim-dap" })
-		use({
-			"Pocco81/DAPInstall.nvim",
-			config = function()
-				require("plugins/dap")
-			end,
-		})
-		use({
-			"rcarriga/nvim-dap-ui",
-			config = function()
-				require("plugins/dap")
-			end,
-		})
+		-- Debugger -- TODO: take care of this when we need it for the first time
+		-- use({ "mfussenegger/nvim-dap" })
+		-- use({
+		-- 	"Pocco81/DAPInstall.nvim",
+		-- 	config = function()
+		-- 		require("plugins/dap")
+		-- 	end,
+		-- })
+		-- use({
+		-- 	"rcarriga/nvim-dap-ui",
+		-- 	config = function()
+		-- 		require("plugins/dap")
+		-- 	end,
+		-- })
 
 		-- This plugin adds indentation guides to all lines (including empty lines).
 		use({
