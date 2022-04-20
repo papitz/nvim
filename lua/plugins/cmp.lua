@@ -67,4 +67,7 @@ cmp.setup({
 		{ name = "nvim_lsp" },
 		{ name = "nvim_lua" },
 	},
+	completion = {
+		keyword_pattern = [[\k\+]],
+	},
 })
