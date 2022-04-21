@@ -186,6 +186,9 @@ nmap("ZA", ":wqa<CR>")
 nmap("<Leader>a", "<Plug>(leap-forward)")
 nmap("<Leader>A", "<Plug>(leap-backward)")
 
+-- spell suggest
+nmap("\\s", "a<C-X><C-S>")
+
 -- toggle virtual text
 vim.g.diagnostic_virtual_text = false
 function Virtual_text_toggle()
