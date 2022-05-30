@@ -12,18 +12,12 @@ g.nvim_tree_highlight_opened_files = 1 -- Will enable folder and file icon highl
 g.nvim_tree_add_trailing = 0 -- Append a trailing slash to folder names. ]]
 
 nvimtree.setup({
-	auto_close = false,
-	quit_on_open = false,
 	open_on_tab = false,
 	update_cwd = false,
 	renderer = {
 		indent_markers = {
 			enable = true,
 		},
-	},
-	window_picker_exclude = {
-		filetype = { "packer", "vista_kind" },
-		buftype = { "terminal" },
 	},
 	update_to_buf_dir = {
 		enable = false,
