@@ -28,8 +28,6 @@ local lualine_styles = {
 	},
 }
 
--- local gps = require("nvim-gps")
-
 lualine.setup({
 	options = {
 		theme = "auto",
@@ -47,8 +45,11 @@ lualine.setup({
 	},
 	extensions = { "fugitive" },
 	sections = {
-		-- lualine_c = {
-		-- 	{ gps.get_location, cond = gps.is_available },
-		-- },
+		lualine_a = { "mode" },
+		lualine_b = { "branch", "diff", "diagnostics" },
+		lualine_c = { "filename" },
+		lualine_x = { "encoding", "fileformat", "filetype" },
+		lualine_y = { "progress" },
+		lualine_z = { "location" },
 	},
 })
