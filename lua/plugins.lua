@@ -91,18 +91,7 @@ return require("packer").startup({
 		-- Startup screen.
 		use({
 			"glepnir/dashboard-nvim",
-			cmd = {
-				"Dashboard",
-				"DashboardChangeColorscheme",
-				"DashboardFindFile",
-				"DashboardFindHistory",
-				"DashboardFindWord",
-				"DashboardNewFile",
-				"DashboardJumpMarks",
-				"SessionLoad",
-				"SessionSave",
-			},
-			setup = function()
+			config = function()
 				require("plugins/dashboard")
 			end,
 		})

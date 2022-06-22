@@ -1,25 +1,24 @@
-local g = vim.g
-local fn = vim.fn
+local db = require("dashboard")
 
-g.dashboard_disable_statusline = 1
-g.dashboard_default_executive = "telescope"
+db.hide_statusline = true
 
-g.dashboard_custom_header = {
+db.custom_header = {
 	"██╗    ██╗██╗    ██╗ ██████╗████████╗██╗   ██╗██╗███╗   ███╗",
 	"██║    ██║██║    ██║██╔════╝╚══██╔══╝██║   ██║██║████╗ ████║",
 	"██║ █╗ ██║██║ █╗ ██║██║        ██║   ██║   ██║██║██╔████╔██║",
 	"██║███╗██║██║███╗██║██║        ██║   ╚██╗ ██╔╝██║██║╚██╔╝██║",
 	"╚███╔███╔╝╚███╔███╔╝╚██████╗   ██║    ╚████╔╝ ██║██║ ╚═╝ ██║",
 	" ╚══╝╚══╝  ╚══╝╚══╝  ╚═════╝   ╚═╝     ╚═══╝  ╚═╝╚═╝     ╚═╝",
+	"                                                            ",
 }
-g.dashboard_custom_section = {
-	a = { description = { "  Find File                 SPC f f" }, command = "Telescope find_files" },
-	c = { description = { "  Recents                   SPC f o" }, command = "Telescope oldfiles" },
-	d = { description = { "  Find Word                 SPC f g" }, command = "Telescope live_grep" },
-	e = { description = { "洛 New File                  SPC f n" }, command = "DashboardNewFile" },
-	f = { description = { "  Bookmarks                 SPC f m" }, command = "Telescope marks" },
-	g = { description = { "⌨  Keymaps                   SPC f k" }, command = "Telescope Keymaps" },
-	h = { description = { "  Load Last Session         SPC s l" }, command = "SessionLoad" },
+db.custom_center = {
+	{ icon = "  ", desc = "Find File                 ", shortcut = "SPC f f", action = "Telescope find_files" },
+	{ icon = "  ", desc = "Recents                   ", shortcut = "SPC f o", action = "Telescope oldfiles" },
+	{ icon = "  ", desc = "Find Word                 ", shortcut = "SPC f g", action = "Telescope live_grep" },
+	{ icon = "洛 ", desc = "New File                  ", shortcut = "SPC f n", action = "DashboardNewFile" },
+	{ icon = "  ", desc = "Bookmarks                 ", shortcut = "SPC f m", action = "Telescope marks" },
+	{ icon = "⌨  ", desc = "Keymaps                   ", shortcut = "SPC f k", action = "Telescope Keymaps" },
+	{ icon = "  ", desc = "Load Last Session         ", shortcut = "SPC s l", action = "SessionLoad" },
 }
 
 -- Disable statusline and cursorline in dashboard.
