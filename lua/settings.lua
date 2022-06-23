@@ -27,6 +27,7 @@ opt.hidden = true -- so multiple buffers can be open
 opt.updatetime = 250 -- update faster for autocompletion
 opt.showmode = false -- set that vim mode is hidden, to incorporate for lightline plugin
 opt.signcolumn = "yes" -- set the line numbers on a even width
+opt.textwidth = 150 -- sets the number of words in one line
 
 -- splits open below an to the right
 opt.splitbelow = true
