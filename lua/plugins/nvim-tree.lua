@@ -15,7 +15,7 @@ nvimtree.setup({
 		highlight_opened_files = "name", --Value can be `"none"`, `"icon"`, `"name"` or `"all"
 		add_trailing = false,
 	},
-	update_to_buf_dir = {
+	hijack_directories = {
 		enable = false,
 		auto_open = false,
 	},
