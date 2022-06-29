@@ -65,6 +65,7 @@ cmp.setup({
 		{ name = "buffer" },
 		{ name = "path" },
 		{ name = "nvim_lsp" },
+		{ name = "calc" },
 		{ name = "nvim_lua" },
 	},
 	completion = {

@@ -106,9 +106,13 @@ return require("packer").startup({
 		use({ "rafamadriz/friendly-snippets" })
 		use({
 			"hrsh7th/nvim-cmp",
-			after = "friendly-snippets",
 			requires = {
+				"hrsh7th/cmp-buffer",
 				"hrsh7th/cmp-nvim-lsp",
+				"saadparwaiz1/cmp_luasnip",
+				"hrsh7th/cmp-nvim-lua",
+				"hrsh7th/cmp-path",
+				"hrsh7th/cmp-calc",
 			},
 			config = function()
 				require("plugins/cmp")
@@ -124,18 +128,6 @@ return require("packer").startup({
 		use({
 			"saadparwaiz1/cmp_luasnip",
 			after = "LuaSnip",
-		})
-		use({
-			"hrsh7th/cmp-buffer",
-			after = "cmp_luasnip",
-		})
-		use({
-			"hrsh7th/cmp-path",
-			after = "cmp-buffer",
-		})
-		use({
-			"hrsh7th/cmp-nvim-lua",
-			after = "cmp-nvim-lsp",
 		})
 
 		-- Vim Lua LSP
