@@ -101,8 +101,11 @@ return require("packer").startup({
 		use({ "nvim-telescope/telescope.nvim" })
 
 		-- LSP, LSPInstaller and snippets
-		use({ "neovim/nvim-lspconfig" })
-		use({ "williamboman/nvim-lsp-installer" })
+		use({
+			"williamboman/mason.nvim",
+			"williamboman/mason-lspconfig.nvim",
+			"neovim/nvim-lspconfig",
+		})
 		use({ "rafamadriz/friendly-snippets" })
 		use({
 			"hrsh7th/nvim-cmp",

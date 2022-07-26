@@ -1,54 +1,95 @@
-local lsp_installer = require("nvim-lsp-installer")
-lsp_installer.settings({
+local ok, mason = pcall(require, "mason")
+if not ok then
+	return
+end
+
+mason.setup({
+	max_concurrent_installers = 10,
+	-- log_level = vim.log.levels.TRACE,
 	ui = {
 		icons = {
-			server_installed = "✓ ",
-			server_pending = "➜ ",
-			server_uninstalled = "✗ ",
+			package_installed = "✓",
+			package_pending = "➜ ",
+			package_uninstalled = "✗",
 		},
 	},
 })
 
--- The nvim-cmp almost supports LSP's capabilities so You should advertise it to LSP servers..
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
+local ok, lspconfig = pcall(require, "lspconfig")
+if not ok then
+	return
+end
 
--- configure language servers here
--- TODO: Deprecated should be setup directly
-lsp_installer.on_server_ready(function(server)
-	local opts = {}
-	opts.capabilities = capabilities
-	if server.name == "sumneko_lua" then
-		-- lua language server config
-		local sumneko_binary_path = HOME
-			.. "/.local/share/nvim/lsp_servers/sumneko_lua/extension/server/bin/lua-language-server"
-		local sumneko_root_path = HOME .. "/.local/share/nvim/lsp_servers/sumneko_lua/extension/server/bin/"
-		local luadev = require("lua-dev").setup({
-			lspconfig = {
-				cmd = { sumneko_binary_path, "-E", sumneko_root_path .. "/main.lua" },
-				capabilities = capabilities,
-			},
-		})
-		opts = luadev
-	elseif server.name == "eslint" then
-		opts.on_attach = function(client, _)
-			-- neovim's LSP client does not currently support dynamic capabilities registration, so we need to set
-			-- the resolved capabilities of the eslint server ourselves!
-			client.server_capabilities.document_formatting = true
-		end
-		opts.settings = {
-			format = { enable = true }, -- this will enable formatting
-		}
-	elseif server.name == "ltex" then
-		opts.settings = {
-			ltex = {
-				language = "de-DE",
+local util = require("lspconfig.util")
+local cmp_lsp = require("cmp_nvim_lsp")
+
+---@param opts table|nil
+local function create_capabilities(opts)
+	local default_opts = {
+		with_snippet_support = true,
+	}
+	opts = opts or default_opts
+	local capabilities = vim.lsp.protocol.make_client_capabilities()
+	capabilities.textDocument.completion.completionItem.snippetSupport = opts.with_snippet_support
+	if opts.with_snippet_support then
+		capabilities.textDocument.completion.completionItem.resolveSupport = {
+			properties = {
+				"documentation",
+				"detail",
+				"additionalTextEdits",
 			},
 		}
 	end
-	server:setup(opts)
-	vim.cmd([[ do User LspAttachBuffers ]])
+	return cmp_lsp.update_capabilities(capabilities)
+end
+
+util.on_setup = util.add_hook_after(util.on_setup, function(config)
+	if config.on_attach then
+		config.on_attach = util.add_hook_after(config.on_attach, require("wb.lsp.on-attach"))
+	else
+		config.on_attach = require("wb.lsp.on-attach")
+	end
+	config.capabilities = create_capabilities()
 end)
+
+require("mason-lspconfig").setup({
+	ensure_installed = { "sumneko_lua" },
+})
+
+require("mason-lspconfig").setup_handlers({
+	function(server_name)
+		lspconfig[server_name].setup({})
+	end,
+	["sumneko_lua"] = function()
+		lspconfig.sumneko_lua.setup(require("lua-dev").setup({
+			settings = {
+				Lua = {
+					diagnostics = {
+						globals = { "P" },
+					},
+				},
+			},
+		}))
+	end,
+	["ltex"] = function()
+		lspconfig.ltex.setup({
+			settings = {
+				ltex = {
+					language = "de-DE",
+				},
+			},
+		})
+	end,
+	["eslint"] = function()
+		lspconfig.eslin.setup({
+			settings = {
+				format = {
+					enable = true,
+				},
+			},
+		})
+	end,
+})
 
 -- disable virtual text in Latex documents FIX for overfull hbox madness
 vim.cmd(

@@ -32,7 +32,7 @@ require("indent_blankline").setup({
 		"terminal",
 		"dashboard",
 		"packer",
-		"lsp-installer",
+		"mason",
 		"lspinfo",
 	},
 })
