@@ -106,6 +106,12 @@ return require("packer").startup({
 			"williamboman/mason-lspconfig.nvim",
 			"neovim/nvim-lspconfig",
 		})
+		use({
+			"glepnir/lspsaga.nvim",
+			config = function()
+				require("plugins/lspsaga")
+			end,
+		})
 		use({ "rafamadriz/friendly-snippets" })
 		use({
 			"hrsh7th/nvim-cmp",

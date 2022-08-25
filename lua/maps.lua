@@ -147,9 +147,40 @@ nmap("<leader>e", ":lua vim.lsp.diagnostic.show_line_diagnostics()<CR>")
 nmap("[d", ":lua vim.lsp.diagnostic.goto_prev()<CR>")
 nmap("]d", ":lua vim.lsp.diagnostic.goto_next()<CR>")
 nmap("<leader>q", ":lua vim.lsp.diagnostic.set_loclist()<CR>")
-nmap("<A-CR>", ":lua vim.lsp.buf.code_action()<CR>")
+-- nmap("<A-CR>", ":lua vim.lsp.buf.code_action()<CR>")
 -- nmap("<A-CR>", ":CodeActionMenu <CR>")
 
+-- Lspsaga Mappings
+-- Lsp finder find the symbol definition implement reference
+-- when you use action in finder like open vsplit then you can
+-- use <C-t> to jump back
+map("n", "gh", "<cmd>Lspsaga lsp_finder<CR>")
+
+-- Code action
+map("n", "<A-CR", "<cmd>Lspsaga code_action<CR>")
+map("v", "<A-CR>", "<cmd><C-U>Lspsaga range_code_action<CR>")
+
+-- Rename
+map("n", "gr", "<cmd>Lspsaga rename<CR>")
+
+-- Definition preview
+map("n", "gd", "<cmd>Lspsaga preview_definition<CR>")
+
+-- Show line diagnostics
+map("n", "<leader>cd", "<cmd>Lspsaga show_line_diagnostics<CR>")
+
+-- Show cursor diagnostic
+map("n", "<leader>cd", "<cmd>Lspsaga show_cursor_diagnostics<CR>")
+
+-- Diagnsotic jump can use `<c-o>` to jump back
+map("n", "[e", "<cmd>Lspsaga diagnostic_jump_next<CR>")
+map("n", "]e", "<cmd>Lspsaga diagnostic_jump_prev<CR>")
+
+-- Outline
+map("n", "<leader>o", "<cmd>LSoutlineToggle<CR>")
+
+-- Hover Doc
+map("n", "K", "<cmd>Lspsaga hover_doc<CR>")
 -- ToggleTerm
 map("n", "<C-t>", ":ToggleTerm dir=%:p:h<CR>")
 map("t", "<C-t>", ":ToggleTerm dir=%:p:h<CR>")
