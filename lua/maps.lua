@@ -185,8 +185,8 @@ map("n", "K", "<cmd>Lspsaga hover_doc<CR>")
 -- Flutter Developement
 nmap("<leader>Fa", "<cmd>FlutterRun<CR>")
 nmap("<leader>Fq", "<cmd>FlutterQuit<CR>")
-nmap("<leader>Fr", "<cmd>FlutterHotReload<CR>")
-nmap("<leader>FR", "<cmd>FlutterHotRestart<CR>")
+nmap("<leader>Fr", "<cmd>FlutterReload<CR>")
+nmap("<leader>FR", "<cmd>FlutterRestart<CR>")
 nmap("<leader>FD", "<cmd>FlutterVisualDebug<CR>")
 -- ToggleTerm
 map("n", "<C-t>", ":ToggleTerm dir=%:p:h<CR>")
