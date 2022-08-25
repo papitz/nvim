@@ -188,6 +188,7 @@ nmap("<leader>Fq", "<cmd>FlutterQuit<CR>")
 nmap("<leader>Fr", "<cmd>FlutterReload<CR>")
 nmap("<leader>FR", "<cmd>FlutterRestart<CR>")
 nmap("<leader>FD", "<cmd>FlutterVisualDebug<CR>")
+nmap("<leader>FF", "<cmd>FlutterCopyProfilerUrl<CR>")
 -- ToggleTerm
 map("n", "<C-t>", ":ToggleTerm dir=%:p:h<CR>")
 map("t", "<C-t>", ":ToggleTerm dir=%:p:h<CR>")

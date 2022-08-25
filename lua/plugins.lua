@@ -113,6 +113,7 @@ return require("packer").startup({
 			end,
 		})
 		use({ "rafamadriz/friendly-snippets" })
+		use({ "Neevash/awesome-flutter-snippets" })
 		use({
 			"hrsh7th/nvim-cmp",
 			requires = {
@@ -307,6 +308,17 @@ return require("packer").startup({
 				vim.fn["doge#install"]()
 			end,
 		})
+
+		-- notifications
+		use({
+			"rcarriga/nvim-notify",
+			config = function()
+				require("plugins/notify")
+			end,
+		})
+
+		-- faster filetype recognition
+		use({ "nathom/filetype.nvim" })
 
 		-- flutter developement
 		use({

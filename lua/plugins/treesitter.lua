@@ -15,6 +15,7 @@ require("nvim-treesitter.configs").setup({
 	},
 	indent = {
 		enable = true,
+		disable = { "dart" },
 	},
 	autotag = {
 		enable = true,
