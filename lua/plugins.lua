@@ -308,6 +308,15 @@ return require("packer").startup({
 			end,
 		})
 
+		-- flutter developement
+		use({
+			"akinsho/flutter-tools.nvim",
+			requires = "nvim-lua/plenary.nvim",
+			config = function()
+				require("plugins/flutter-tools")
+			end,
+		})
+
 		-- latex plugin
 		use({
 			"lervag/vimtex",

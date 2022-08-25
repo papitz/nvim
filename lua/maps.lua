@@ -141,7 +141,7 @@ nmap("<c-q>", ":lua vim.lsp.buf.hover()<CR>")
 nmap("gi", ":lua vim.lsp.buf.implementation()<CR>")
 nmap("<C-a>", ":lua vim.lsp.buf.signature_help()<CR>")
 nmap("<leader>D", ":lua vim.lsp.buf.type_definition()<CR>")
-nmap("<leader>rn", ":lua vim.lsp.buf.rename()<CR>")
+-- nmap("<leader>rn", ":lua vim.lsp.buf.rename()<CR>")
 nmap("gr", ":lua vim.lsp.buf.references()<CR>")
 nmap("<leader>e", ":lua vim.lsp.diagnostic.show_line_diagnostics()<CR>")
 nmap("[d", ":lua vim.lsp.diagnostic.goto_prev()<CR>")
@@ -157,11 +157,11 @@ nmap("<leader>q", ":lua vim.lsp.diagnostic.set_loclist()<CR>")
 map("n", "gh", "<cmd>Lspsaga lsp_finder<CR>")
 
 -- Code action
-map("n", "<A-CR", "<cmd>Lspsaga code_action<CR>")
+map("n", "<A-CR>", "<cmd>Lspsaga code_action<CR>")
 map("v", "<A-CR>", "<cmd><C-U>Lspsaga range_code_action<CR>")
 
 -- Rename
-map("n", "gr", "<cmd>Lspsaga rename<CR>")
+map("n", "<leader>rn", "<cmd>Lspsaga rename<CR>")
 
 -- Definition preview
 map("n", "gd", "<cmd>Lspsaga preview_definition<CR>")
@@ -181,6 +181,13 @@ map("n", "<leader>o", "<cmd>LSoutlineToggle<CR>")
 
 -- Hover Doc
 map("n", "K", "<cmd>Lspsaga hover_doc<CR>")
+
+-- Flutter Developement
+nmap("<leader>Fa", "<cmd>FlutterRun<CR>")
+nmap("<leader>Fq", "<cmd>FlutterQuit<CR>")
+nmap("<leader>Fr", "<cmd>FlutterHotReload<CR>")
+nmap("<leader>FR", "<cmd>FlutterHotRestart<CR>")
+nmap("<leader>FD", "<cmd>FlutterVisualDebug<CR>")
 -- ToggleTerm
 map("n", "<C-t>", ":ToggleTerm dir=%:p:h<CR>")
 map("t", "<C-t>", ":ToggleTerm dir=%:p:h<CR>")
