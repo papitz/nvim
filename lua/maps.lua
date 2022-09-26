@@ -132,20 +132,21 @@ nmap("<leader>c<leader>", ":CommentToggle<CR>")
 vmap("<leader>c<leader>", ":CommentToggle<CR>")
 
 -- NvimTree Toggle
-nmap("<C-b>", ":NvimTreeToggle<CR>")
+-- nmap("<C-b>", ":NvimTreeToggle<CR>")
+nmap("<C-b>", ":Neotree toggle<CR>")
 
 -- LSP Mappings
 nmap("gD", ":lua vim.lsp.buf.declaration()<CR>")
-nmap("gd", ":lua vim.lsp.buf.definition()<CR>")
+-- nmap("gd", ":lua vim.lsp.buf.definition()<CR>")
 nmap("<c-q>", ":lua vim.lsp.buf.hover()<CR>")
 nmap("gi", ":lua vim.lsp.buf.implementation()<CR>")
-nmap("<C-a>", ":lua vim.lsp.buf.signature_help()<CR>")
+-- nmap("<C-a>", ":lua vim.lsp.buf.signature_help()<CR>")
 nmap("<leader>D", ":lua vim.lsp.buf.type_definition()<CR>")
 -- nmap("<leader>rn", ":lua vim.lsp.buf.rename()<CR>")
 nmap("gr", ":lua vim.lsp.buf.references()<CR>")
 nmap("<leader>e", ":lua vim.lsp.diagnostic.show_line_diagnostics()<CR>")
-nmap("[d", ":lua vim.lsp.diagnostic.goto_prev()<CR>")
-nmap("]d", ":lua vim.lsp.diagnostic.goto_next()<CR>")
+nmap("[d", ":lua vim.diagnostic.goto_prev()<CR>")
+nmap("]d", ":lua vim.diagnostic.goto_next()<CR>")
 nmap("<leader>q", ":lua vim.lsp.diagnostic.set_loclist()<CR>")
 -- nmap("<A-CR>", ":lua vim.lsp.buf.code_action()<CR>")
 -- nmap("<A-CR>", ":CodeActionMenu <CR>")
@@ -164,7 +165,7 @@ map("v", "<A-CR>", "<cmd><C-U>Lspsaga range_code_action<CR>")
 map("n", "<leader>rn", "<cmd>Lspsaga rename<CR>")
 
 -- Definition preview
-map("n", "gd", "<cmd>Lspsaga preview_definition<CR>")
+map("n", "gd", "<cmd>Lspsaga peek_definition<CR>")
 
 -- Show line diagnostics
 map("n", "<leader>cd", "<cmd>Lspsaga show_line_diagnostics<CR>")
@@ -173,8 +174,8 @@ map("n", "<leader>cd", "<cmd>Lspsaga show_line_diagnostics<CR>")
 map("n", "<leader>cd", "<cmd>Lspsaga show_cursor_diagnostics<CR>")
 
 -- Diagnsotic jump can use `<c-o>` to jump back
-map("n", "[e", "<cmd>Lspsaga diagnostic_jump_next<CR>")
-map("n", "]e", "<cmd>Lspsaga diagnostic_jump_prev<CR>")
+map("n", "]e", "<cmd>Lspsaga diagnostic_jump_next<CR>")
+map("n", "[e", "<cmd>Lspsaga diagnostic_jump_prev<CR>")
 
 -- Outline
 map("n", "<leader>o", "<cmd>LSoutlineToggle<CR>")

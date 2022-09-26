@@ -25,7 +25,7 @@ require("flutter-tools").setup({
 	flutter_lookup_cmd = nil, -- example "dirname $(which flutter)" or "asdf where flutter"
 	fvm = false, -- takes priority over path, uses <workspace>/.fvm/flutter_sdk if enabled
 	widget_guides = {
-		enabled = false,
+		enabled = true,
 	},
 	closing_tags = {
 		highlight = "NonText", -- highlight for the closing tag
@@ -34,7 +34,7 @@ require("flutter-tools").setup({
 	},
 	dev_log = {
 		enabled = true,
-		open_cmd = "badd", -- command to use to open the log buffer
+		open_cmd = "10new", -- command to use to open the log buffer
 	},
 	dev_tools = {
 		autostart = false, -- autostart devtools server if not detected
