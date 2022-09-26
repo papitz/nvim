@@ -19,6 +19,13 @@ bufferline.setup({
 				padding = 1,
 				text_align = "left",
 			},
+			{
+				filetype = "neo-tree",
+				text = "File Explorer",
+				highlight = "Directory",
+				padding = 1,
+				text_align = "left",
+			},
 		},
 		sort_by = "directory", -- 'id' | 'extension' | 'relative_directory'
 	},

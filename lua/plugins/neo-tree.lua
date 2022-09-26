@@ -61,7 +61,7 @@ require("neo-tree").setup({
 	},
 	window = {
 		position = "left",
-		width = 15,
+		width = "15%",
 		mapping_options = {
 			noremap = true,
 			nowait = true,
@@ -114,6 +114,10 @@ require("neo-tree").setup({
 	},
 	nesting_rules = {},
 	filesystem = {
+		bind_to_cwd = true,
+		cwd_target = {
+			sidebar = "global",
+		},
 		filtered_items = {
 			visible = false, -- when true, they will just be displayed differently than normal items
 			hide_dotfiles = false,
@@ -132,7 +136,7 @@ require("neo-tree").setup({
 		-- "open_current",  -- netrw disabled, opening a directory opens within the
 		-- window like netrw would, regardless of window.position
 		-- "disabled",    -- netrw left alone, neo-tree does not handle opening dirs
-		use_libuv_file_watcher = false, -- This will use the OS level file watchers to detect changes
+		use_libuv_file_watcher = true, -- This will use the OS level file watchers to detect changes
 		-- instead of relying on nvim autocmd events.
 		window = {
 			mappings = {

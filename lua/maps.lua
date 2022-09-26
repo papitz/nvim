@@ -133,7 +133,7 @@ vmap("<leader>c<leader>", ":CommentToggle<CR>")
 
 -- NvimTree Toggle
 -- nmap("<C-b>", ":NvimTreeToggle<CR>")
-nmap("<C-b>", ":Neotree toggle<CR>")
+nmap("<C-b>", ":Neotree dir=./ toggle<CR>")
 
 -- LSP Mappings
 nmap("gD", ":lua vim.lsp.buf.declaration()<CR>")
