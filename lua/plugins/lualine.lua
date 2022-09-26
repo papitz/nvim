@@ -34,6 +34,7 @@ lualine.setup({
 		disabled_filetypes = {
 			"toggleterm",
 			"NvimTree",
+			"neo-tree",
 			"dapui_scopes",
 			"dapui_breakpoints",
 			"dapui_stacks",

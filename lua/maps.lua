@@ -133,7 +133,8 @@ vmap("<leader>c<leader>", ":CommentToggle<CR>")
 
 -- NvimTree Toggle
 -- nmap("<C-b>", ":NvimTreeToggle<CR>")
-nmap("<C-b>", ":Neotree dir=./ toggle<CR>")
+nmap("<C-b>", ":Neotree dir=./ toggle position=left <CR>")
+vim.cmd("autocmd! FileType dashboard nnoremap <buffer> <silent> <C-b> :Neotree dir=./ toggle position=float <CR>")
 
 -- LSP Mappings
 nmap("gD", ":lua vim.lsp.buf.declaration()<CR>")
