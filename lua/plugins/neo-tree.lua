@@ -53,8 +53,8 @@ require("neo-tree").setup({
 				-- Status type
 				untracked = "",
 				ignored = "",
-				unstaged = "",
-				staged = "",
+				unstaged = "",
+				staged = "",
 				conflict = "",
 			},
 		},
@@ -120,8 +120,9 @@ require("neo-tree").setup({
 		},
 		filtered_items = {
 			visible = false, -- when true, they will just be displayed differently than normal items
-			hide_dotfiles = false,
+			hide_dotfiles = true,
 			hide_gitignored = true,
+			show_hidden_count = false,
 			hide_by_name = {
 				"node_modules",
 				".git",
