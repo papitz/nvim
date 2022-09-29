@@ -34,14 +34,14 @@ return require("packer").startup({
 			end,
 		})
 
-        -- Window Picker
-        use {
-    's1n7ax/nvim-window-picker',
-    tag = 'v1.*',
-    config = function()
-        require'window-picker'.setup()
-    end,
-}   
+		-- Window Picker
+		use({
+			"s1n7ax/nvim-window-picker",
+			tag = "v1.*",
+			config = function()
+				require("window-picker").setup()
+			end,
+		})
 
 		-- Bufferline.
 		use({
