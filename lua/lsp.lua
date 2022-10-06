@@ -72,10 +72,12 @@ require("mason-lspconfig").setup_handlers({
 		}))
 	end,
 	["ltex"] = function()
+		local filetype = vim.bo.filetype
+		local language = (filetype == "tex") and "de-DE" or "en-US"
 		lspconfig.ltex.setup({
 			settings = {
 				ltex = {
-					language = "de-DE",
+					language = language,
 				},
 			},
 		})
