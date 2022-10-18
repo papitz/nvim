@@ -198,6 +198,7 @@ map("n", "v:count1 <C-t>", ":v:count1" .. '"ToggleTerm"<CR>')
 map("v", "v:count1 <C-t>", ":v:count1" .. '"ToggleTerm"<CR>')
 function _G.set_terminal_keymaps()
 	map("t", "<leader><esc>", "<C-\\><C-n>")
+	map("t", "<C-t>", "<C-\\><C-n>:ToggleTerm dir=%:p:h<CR>")
 end
 vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
 
@@ -239,3 +240,7 @@ function Virtual_text_toggle()
 end
 vim.cmd([[ command! VirtualTextToggle lua Virtual_text_toggle()]])
 nmap("<Leader>u", ":VirtualTextToggle<CR>")
+
+-- Compile and run code
+map("n", "<F7>", ":CompileAndRun<CR>")
+map("i", "<F7>", "<ESC>:CompileAndRun<CR>")

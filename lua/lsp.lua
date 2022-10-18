@@ -61,7 +61,7 @@ require("mason-lspconfig").setup_handlers({
 		lspconfig[server_name].setup({})
 	end,
 	["sumneko_lua"] = function()
-		lspconfig.sumneko_lua.setup(require("lua-dev").setup({
+		lspconfig.sumneko_lua.setup(require("neodev").setup({
 			settings = {
 				Lua = {
 					diagnostics = {
