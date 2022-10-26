@@ -166,7 +166,10 @@ return require("packer").startup({
 		use({ "folke/neodev.nvim" })
 
 		-- LSP signature.
-		use({ "ray-x/lsp_signature.nvim" })
+		use({
+			"ray-x/lsp_signature.nvim",
+			config = require("plugins/lsp_signature"),
+		})
 
 		-- VsCode like pictograms for lsp.
 		use({ "onsails/lspkind-nvim" })
