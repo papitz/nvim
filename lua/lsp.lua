@@ -15,6 +15,9 @@ mason.setup({
 	},
 })
 
+-- Nvim specific stuff
+require("neodev").setup({})
+
 local ok, lspconfig = pcall(require, "lspconfig")
 if not ok then
 	return
@@ -61,7 +64,8 @@ require("mason-lspconfig").setup_handlers({
 		lspconfig[server_name].setup({})
 	end,
 	["sumneko_lua"] = function()
-		lspconfig.sumneko_lua.setup(require("neodev").setup({
+		lspconfig.sumneko_lua.setup({
+
 			settings = {
 				Lua = {
 					diagnostics = {
@@ -69,7 +73,7 @@ require("mason-lspconfig").setup_handlers({
 					},
 				},
 			},
-		}))
+		})
 	end,
 	["ltex"] = function()
 		local filetype = vim.bo.filetype
