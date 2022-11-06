@@ -52,17 +52,6 @@ return require("packer").startup({
 			end,
 		})
 
-		-- TODO: Broken. Write an issue
-		-- show in which scope you are in the statusline
-		-- use({
-		-- 	"SmiteshP/nvim-gps",
-		-- 	after = "nvim-bufferline.lua",
-		-- 	requires = "nvim-treesitter/nvim-treesitter",
-		-- 	config = function()
-		-- 		require("nvim-gps").setup()
-		-- 	end,
-		-- })
-
 		-- Statusline.
 		use({
 			"nvim-lualine/lualine.nvim",
@@ -133,6 +122,16 @@ return require("packer").startup({
 			"williamboman/mason-lspconfig.nvim",
 			"neovim/nvim-lspconfig",
 		})
+
+		-- LSP GPS (show context in statusline) comment in to enable
+		-- use({
+		-- 	"SmiteshP/nvim-navic",
+		-- 	requires = "neovim/nvim-lspconfig",
+		-- 	config = function()
+		-- 		require("plugins/navic")
+		-- 	end,
+		-- })
+
 		use({
 			"glepnir/lspsaga.nvim",
 			config = function()

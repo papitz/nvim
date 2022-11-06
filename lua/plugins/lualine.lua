@@ -1,4 +1,6 @@
-local present, lualine = pcall(require, "lualine")
+local present, lualine, navic = pcall(function()
+	return require("lualine"), require("nvim-navic")
+end)
 if not present then
 	return
 end
@@ -28,6 +30,14 @@ local lualine_styles = {
 	},
 }
 
+local function navic_location()
+	if navic.is_available() then
+		return navic.get_location()
+	else
+		return navic.is_available()
+	end
+end
+
 lualine.setup({
 	options = {
 		theme = "auto",
@@ -47,9 +57,9 @@ lualine.setup({
 	extensions = { "fugitive" },
 	sections = {
 		lualine_a = { "mode" },
-		lualine_b = { "branch", "diff", "diagnostics" },
-		lualine_c = { "filename" },
-		lualine_x = { "encoding", "fileformat", "filetype" },
+		lualine_b = { "branch", "diff", "filename" },
+		lualine_c = { navic_location },
+		lualine_x = { "encoding", "filetype" },
 		lualine_y = { "progress" },
 		lualine_z = { "location" },
 	},

@@ -18,42 +18,43 @@ mason.setup({
 -- Nvim specific stuff
 require("neodev").setup({})
 
-local ok, lspconfig = pcall(require, "lspconfig")
-if not ok then
+local deps_ok, lspconfig, util, cmp_lsp = pcall(function()
+	return require("lspconfig"), require("lspconfig.util"), require("cmp_nvim_lsp")
+end)
+if not deps_ok then
 	return
 end
 
-local util = require("lspconfig.util")
-local cmp_lsp = require("cmp_nvim_lsp")
-
----@param opts table|nil
-local function create_capabilities(opts)
-	local default_opts = {
-		with_snippet_support = true,
-	}
-	opts = opts or default_opts
-	local capabilities = vim.lsp.protocol.make_client_capabilities()
-	capabilities.textDocument.completion.completionItem.snippetSupport = opts.with_snippet_support
-	if opts.with_snippet_support then
-		capabilities.textDocument.completion.completionItem.resolveSupport = {
-			properties = {
-				"documentation",
-				"detail",
-				"additionalTextEdits",
+local capabilities
+do
+	local default_capabilities = vim.lsp.protocol.make_client_capabilities()
+	capabilities = {
+		textDocument = {
+			completion = {
+				completionItem = {
+					snippetSupport = true,
+				},
 			},
-		}
-	end
-	return cmp_lsp.update_capabilities(capabilities)
+			codeAction = {
+				resolveSupport = {
+					properties = vim.list_extend(default_capabilities.textDocument.codeAction.resolveSupport.properties, {
+						"documentation",
+						"detail",
+						"additionalTextEdits",
+					}),
+				},
+			},
+		},
+	}
 end
 
-util.on_setup = util.add_hook_after(util.on_setup, function(config)
-	if config.on_attach then
-		config.on_attach = util.add_hook_after(config.on_attach, require("wb.lsp.on-attach"))
-	else
-		config.on_attach = require("wb.lsp.on-attach")
-	end
-	config.capabilities = create_capabilities()
-end)
+util.default_config = vim.tbl_deep_extend("force", util.default_config, {
+	capabilities = vim.tbl_deep_extend(
+		"force",
+		vim.lsp.protocol.make_client_capabilities(),
+		cmp_lsp.default_capabilities(capabilities)
+	),
+})
 
 require("mason-lspconfig").setup({
 	ensure_installed = { "sumneko_lua" },
