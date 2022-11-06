@@ -79,6 +79,11 @@ return require("packer").startup({
 			after = "nvim-treesitter",
 		})
 
+		use({
+			"nvim-treesitter/nvim-treesitter-context",
+			after = "nvim-treesitter",
+		})
+
 		-- TreeSitter.
 		use({
 			"nvim-treesitter/nvim-treesitter",
@@ -168,14 +173,16 @@ return require("packer").startup({
 		-- LSP signature.
 		use({
 			"ray-x/lsp_signature.nvim",
-			config = require("plugins/lsp_signature"),
+			config = function()
+				require("plugins/lsp_signature")
+			end,
 		})
 
 		-- VsCode like pictograms for lsp.
 		use({ "onsails/lspkind-nvim" })
 
 		-- popup menu
-		use("RishabhRD/popfix")
+		use({ "RishabhRD/popfix" })
 		use({
 			"hood/popui.nvim",
 			after = "popfix",
