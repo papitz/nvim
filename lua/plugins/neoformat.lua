@@ -16,3 +16,5 @@ vim.g.neoformat_basic_format_trim = 1
 
 -- run all formatters
 vim.g.neoformat_run_all_formatters = 1
+
+vim.g.neoformat_enabled_cs = { "csharpier" }
