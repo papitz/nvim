@@ -52,6 +52,7 @@ return require("packer").startup({
 			end,
 		})
 
+		use({ "WhoIsSethDaniel/lualine-lsp-progress.nvim" })
 		-- Statusline.
 		use({
 			"nvim-lualine/lualine.nvim",

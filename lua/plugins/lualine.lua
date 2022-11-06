@@ -61,7 +61,7 @@ lualine.setup({
 		lualine_c = { "filename" },
 		-- lualine_b = { "branch", "diff", "filename" },
 		-- lualine_c = { navic_location },
-		lualine_x = { "encoding", "filetype" },
+		lualine_x = { "lsp_progress", "encoding", "filetype" },
 		lualine_y = { "progress" },
 		lualine_z = { "location" },
 	},
