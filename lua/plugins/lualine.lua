@@ -1,5 +1,5 @@
-local present, lualine, navic = pcall(function()
-	return require("lualine"), require("nvim-navic")
+local present, lualine = pcall(function()
+	return require("lualine")
 end)
 if not present then
 	return
@@ -30,13 +30,13 @@ local lualine_styles = {
 	},
 }
 
-local function navic_location()
-	if navic.is_available() then
-		return navic.get_location()
-	else
-		return navic.is_available()
-	end
-end
+-- local function navic_location()
+-- 	if navic.is_available() then
+-- 		return navic.get_location()
+-- 	else
+-- 		return navic.is_available()
+-- 	end
+-- end
 
 lualine.setup({
 	options = {
