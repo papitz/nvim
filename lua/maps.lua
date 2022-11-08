@@ -206,13 +206,13 @@ vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
 nmap("<leader>fr", ":Neoformat<CR>")
 
 -- Dap debugger
-nmap("<leader>br", ":lua require('dap').toggle_breakpoint()<CR>")
-nmap("<leader>co", ":lua require('dap').continue()<CR>")
-nmap("<leader>so", ":lua require('dap').step_over()<CR>")
-nmap("<leader>si", ":lua require('dap').step_into()<CR>")
-nmap("<leader>re", ":lua require('dap').repl.open()<CR>")
-nmap("<leader>re", ":lua require('dap').repl.open()<CR>")
-nmap("<c-x>", ':lua require("dapui").toggle()<CR>')
+-- nmap("<leader>br", ":lua require('dap').toggle_breakpoint()<CR>")
+-- nmap("<leader>co", ":lua require('dap').continue()<CR>")
+-- nmap("<leader>so", ":lua require('dap').step_over()<CR>")
+-- nmap("<leader>si", ":lua require('dap').step_into()<CR>")
+-- nmap("<leader>re", ":lua require('dap').repl.open()<CR>")
+-- nmap("<leader>re", ":lua require('dap').repl.open()<CR>")
+-- nmap("<c-x>", ':lua require("dapui").toggle()<CR>')
 
 -- Session saving and loading
 nmap("<Leader>ss", ":<C-u>SessionSave<CR>")
