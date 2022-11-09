@@ -14,7 +14,7 @@ print(
 exist = subprocess.call("command -v yay>> /dev/null", shell=True)
 if exist == 0:
     os.system("yay -R --noconfirm neovim")
-    os.system("yay -S --noconfirm neovim-git nvim-packer-git")
+    os.system("yay -S --noconfirm neovim nvim-packer-git")
 elif exist != 0:
     exist = subprocess.call("command -v brew>> /dev/null", shell=True)
     if exist == 0:
@@ -27,9 +27,13 @@ elif exist != 0:
                 os.system("dnf install neovim")
             else:
                 exist = 1
-                print("To use the installer with dnf you need to run this script with superuser privileges e.g. 'sudo python install.py'")
+                print(
+                    "To use the installer with dnf you need to run this script with superuser privileges e.g. 'sudo python install.py'"
+                )
     if exist == 0:
-        os.system("git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim")
+        os.system(
+            "git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim"
+        )
 else:
     print("Your Packet Manager is not supported")
 
