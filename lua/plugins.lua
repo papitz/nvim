@@ -5,6 +5,9 @@ return require("packer").startup({
 		-- packer itself
 		use({ "wbthomason/packer.nvim" })
 
+		-- quicker lua loading
+		use({ "lewis6991/impatient.nvim" })
+
 		-- color scheme
 		use({ "navarasu/onedark.nvim" })
 

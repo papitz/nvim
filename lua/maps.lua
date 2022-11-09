@@ -229,7 +229,10 @@ nmap("<Leader>a", "<Plug>(leap-forward)")
 nmap("<Leader>A", "<Plug>(leap-backward)")
 
 -- spell suggest
-nmap("\\s", "a<C-X><C-S>")
+-- nmap("\\s", "a<C-X><C-S>")
+
+-- clear all notifications
+nmap("<Leader><Leader>x", ":lua require('notify').dismiss()<cr>")
 
 -- toggle virtual text
 function Virtual_text_toggle()

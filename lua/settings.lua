@@ -1,5 +1,7 @@
 -- Defining alias for vim.opt.
 local opt = vim.opt
+local ag = vim.api.nvim_create_augroup
+local au = vim.api.nvim_create_autocmd
 HOME = os.getenv("HOME")
 
 opt.undodir = HOME .. "/.config/nvim/undodir" -- set undotree file directory
@@ -59,3 +61,13 @@ endif
 
 -- open vim on cwd of file
 vim.cmd("autocmd BufEnter * silent! lcd %:p:h")
+
+---Highlight yanked text
+
+au("TextYankPost", {
+	group = ag("yank_highlight", {}),
+	pattern = "*",
+	callback = function()
+		vim.highlight.on_yank({ higroup = "IncSearch", timeout = 300 })
+	end,
+})

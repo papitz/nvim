@@ -2,6 +2,6 @@ local notify = require("notify")
 vim.notify = notify
 
 notify.setup({
-	stages = "slide",
+	stages = "fade",
 	timeout = 2000,
 })
