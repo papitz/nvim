@@ -17,7 +17,7 @@ db.custom_center = {
 	{ icon = "  ", desc = "Find Word                 ", shortcut = "SPC f g", action = "Telescope live_grep" },
 	{ icon = "洛 ", desc = "New File                  ", shortcut = "SPC f n", action = "DashboardNewFile" },
 	{ icon = "  ", desc = "Bookmarks                 ", shortcut = "SPC f m", action = "Telescope marks" },
-	{ icon = "⌨  ", desc = "Keymaps                   ", shortcut = "SPC f k", action = "Telescope Keymaps" },
+	{ icon = "⌨  ", desc = "Keymaps                   ", shortcut = "SPC f k", action = "Telescope keymaps" },
 	{ icon = "  ", desc = "Load Last Session         ", shortcut = "SPC s l", action = "SessionLoad" },
 }
 
