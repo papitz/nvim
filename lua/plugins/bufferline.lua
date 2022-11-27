@@ -10,7 +10,7 @@ bufferline.setup({
 		end,
 		diagnostics = "nvim_lsp",
 		show_close_icon = false,
-		separator_style = "slant", -- "thick" "thin"
+		separator_style = "thin", -- "thick" "thin"
 		offsets = {
 			{
 				filetype = "NvimTree",

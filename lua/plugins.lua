@@ -72,6 +72,18 @@ return require("packer").startup({
 			after = "nvim-treesitter",
 		})
 
+		-- neorg
+		use({
+			"nvim-neorg/neorg",
+			ft = "norg",
+			after = "nvim-treesitter",
+			requires = "nvim-lua/plenary.nvim",
+			run = ":Neorg sync-parsers",
+			config = function()
+				require("plugins/neorg")
+			end,
+		})
+
 		use({
 			"nvim-treesitter/nvim-treesitter-context",
 			after = "nvim-treesitter",
@@ -81,18 +93,6 @@ return require("packer").startup({
 		use({
 			"nvim-treesitter/nvim-treesitter",
 			run = ":TSUpdate",
-			event = "BufEnter",
-			cmd = {
-				"TSInstall",
-				"TSInstallSync",
-				"TSBufEnable",
-				"TSBufToggle",
-				"TSEnableAll",
-				"TSInstallFromGrammer",
-				"TSToggleAll",
-				"TSUpdate",
-				"TSUpdateSync",
-			},
 			config = function()
 				require("plugins/treesitter")
 			end,
@@ -359,6 +359,7 @@ return require("packer").startup({
 		use({
 			"akinsho/flutter-tools.nvim",
 			requires = "nvim-lua/plenary.nvim",
+			ft = "dart",
 			config = function()
 				require("plugins/flutter-tools")
 			end,
