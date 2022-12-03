@@ -333,6 +333,7 @@ return require("packer").startup({
 		-- markdown preview in browser
 		use({
 			"iamcco/markdown-preview.nvim",
+            ft = "markdown",
 			run = "cd app && yarn install",
 		})
 
@@ -368,6 +369,7 @@ return require("packer").startup({
 		-- latex plugin
 		use({
 			"lervag/vimtex",
+            ft = "tex"
 		})
 
 		-- Import settings of plugins or start plugins.
