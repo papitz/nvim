@@ -301,6 +301,9 @@ return require("packer").startup({
             config = function() require("plugins/flutter-tools") end
         })
 
+        -- jumping between files on a project basis
+        use {"cbochs/grapple.nvim", requires = {"nvim-lua/plenary.nvim"}}
+
         -- latex plugin
         use({"lervag/vimtex", ft = "tex"})
 
