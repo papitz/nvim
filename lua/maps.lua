@@ -245,3 +245,6 @@ nmap("<Leader>u", ":VirtualTextToggle<CR>")
 -- Compile and run code
 map("n", "<F7>", ":CompileAndRun<CR>")
 map("i", "<F7>", "<ESC>:CompileAndRun<CR>")
+
+-- Neorg maps
+map("n", "<Leader>Ni", ":Neorg inject-metadata<CR>")

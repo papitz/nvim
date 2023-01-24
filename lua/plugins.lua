@@ -78,7 +78,7 @@ return require("packer").startup({
 			ft = "norg",
 			after = "nvim-treesitter",
 			requires = "nvim-lua/plenary.nvim",
-			run = ":Neorg sync-parsers",
+			-- run = ":Neorg sync-parsers",
 			config = function()
 				require("plugins/neorg")
 			end,

@@ -14,6 +14,7 @@ require("neorg").setup({
 				workspaces = {
 					work = "~/notes/work",
 					home = "~/notes/home",
+					uni = "~/notes/uni",
 				},
 			},
 		},

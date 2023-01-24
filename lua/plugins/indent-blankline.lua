@@ -34,5 +34,6 @@ require("indent_blankline").setup({
 		"packer",
 		"mason",
 		"lspinfo",
+		"norg",
 	},
 })
