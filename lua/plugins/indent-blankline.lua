@@ -1,14 +1,7 @@
 -- indent-blankline character.
 local indent_blankline_style = 1
 
-local indent_blankline_styles = {
-	"│",
-	"¦",
-	"┆",
-	"▏",
-	"⎸",
-	"|",
-}
+local indent_blankline_styles = { "│", "¦", "┆", "▏", "⎸", "|" }
 
 require("indent_blankline").setup({
 	blankline_char = indent_blankline_styles[indent_blankline_style],

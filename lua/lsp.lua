@@ -30,18 +30,13 @@ do
 	local default_capabilities = vim.lsp.protocol.make_client_capabilities()
 	capabilities = {
 		textDocument = {
-			completion = {
-				completionItem = {
-					snippetSupport = true,
-				},
-			},
+			completion = { completionItem = { snippetSupport = true } },
 			codeAction = {
 				resolveSupport = {
-					properties = vim.list_extend(default_capabilities.textDocument.codeAction.resolveSupport.properties, {
-						"documentation",
-						"detail",
-						"additionalTextEdits",
-					}),
+					properties = vim.list_extend(
+						default_capabilities.textDocument.codeAction.resolveSupport.properties,
+						{ "documentation", "detail", "additionalTextEdits" }
+					),
 				},
 			},
 		},
@@ -56,9 +51,7 @@ util.default_config = vim.tbl_deep_extend("force", util.default_config, {
 	),
 })
 
-require("mason-lspconfig").setup({
-	ensure_installed = { "sumneko_lua" },
-})
+require("mason-lspconfig").setup({ ensure_installed = { "sumneko_lua" } })
 
 require("mason-lspconfig").setup_handlers({
 	function(server_name)
@@ -66,36 +59,26 @@ require("mason-lspconfig").setup_handlers({
 	end,
 	["sumneko_lua"] = function()
 		lspconfig.sumneko_lua.setup({
-
-			settings = {
-				Lua = {
-					diagnostics = {
-						globals = { "P" },
-					},
-				},
-			},
+			settings = { Lua = { diagnostics = { globals = { "P" } } } },
 		})
 	end,
 	["ltex"] = function()
-		--  TODO: does not work currently because this is loaded before buffer enter
-		-- local filetype = vim.bo.filetype
-		-- local language = (filetype == "tex") and "de-DE" or "en-US"
+		local filetype = vim.bo.filetype
+		local language = (filetype == "tex") and "de-DE" or "en-US"
 		lspconfig.ltex.setup({
-			settings = {
-				ltex = {
-					language = "de-DE",
-				},
-			},
+			on_attach = function(client, bufnr)
+				require("ltex_extra").setup({
+					load_langs = { "de-DE", "en-US" }, -- table <string> : languages for witch dictionaries will be loaded
+					init_check = true, -- boolean : whether to load dictionaries on startup
+					path = nil, -- string : path to store dictionaries. Relative path uses current working directory
+					log_level = "none", -- string : "none", "trace", "debug", "info", "warn", "error", "fatal"
+				})
+			end,
+			settings = { ltex = { language = language } },
 		})
 	end,
 	["eslint"] = function()
-		lspconfig.eslin.setup({
-			settings = {
-				format = {
-					enable = true,
-				},
-			},
-		})
+		lspconfig.eslint.setup({ settings = { format = { enable = true } } })
 	end,
 })
 

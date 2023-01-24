@@ -14,11 +14,7 @@ return require("packer").startup({
 		-- File explorer tree.
 		use({
 			"kyazdani42/nvim-tree.lua",
-			cmd = {
-				"NvimTreeOpen",
-				"NvimTreeFocus",
-				"NvimTreeToggle",
-			},
+			cmd = { "NvimTreeOpen", "NvimTreeFocus", "NvimTreeToggle" },
 			config = function()
 				require("plugins/nvim-tree")
 			end,
@@ -67,10 +63,7 @@ return require("packer").startup({
 		})
 
 		-- a rainbow bracket extension for treesitter
-		use({
-			"p00f/nvim-ts-rainbow",
-			after = "nvim-treesitter",
-		})
+		use({ "p00f/nvim-ts-rainbow", after = "nvim-treesitter" })
 
 		-- neorg
 		use({
@@ -81,6 +74,16 @@ return require("packer").startup({
 			-- run = ":Neorg sync-parsers",
 			config = function()
 				require("plugins/neorg")
+			end,
+		})
+
+		-- Drawing Venn Diagramms in Neorg
+		use({ "jbyuki/venn.nvim", ft = "norg" })
+
+		use({
+			"anuvyklack/hydra.nvim",
+			config = function()
+				require("plugins/hydra")
 			end,
 		})
 
@@ -165,10 +168,7 @@ return require("packer").startup({
 				require("plugins/snippets")
 			end,
 		})
-		use({
-			"saadparwaiz1/cmp_luasnip",
-			after = "LuaSnip",
-		})
+		use({ "saadparwaiz1/cmp_luasnip", after = "LuaSnip" })
 
 		-- Vim Lua LSP
 		use({ "folke/neodev.nvim" })
@@ -229,10 +229,7 @@ return require("packer").startup({
 		})
 
 		-- Icons.
-		use({
-			"kyazdani42/nvim-web-devicons",
-			event = "BufEnter",
-		})
+		use({ "kyazdani42/nvim-web-devicons", event = "BufEnter" })
 
 		-- Terminal.
 		use({
@@ -244,9 +241,7 @@ return require("packer").startup({
 		})
 
 		-- Git support for nvim.
-		use({
-			"tpope/vim-fugitive",
-		})
+		use({ "tpope/vim-fugitive" })
 
 		-- Git signs.
 		use({
@@ -267,10 +262,7 @@ return require("packer").startup({
 		})
 
 		-- This is for html and it can autorename too!
-		use({
-			"windwp/nvim-ts-autotag",
-			after = "nvim-treesitter",
-		})
+		use({ "windwp/nvim-ts-autotag", after = "nvim-treesitter" })
 
 		-- todo-comments is a lua plugin for Neovim to highlight and search for
 		-- todo comments like TODO, HACK, BUG in code base.
@@ -325,14 +317,12 @@ return require("packer").startup({
 		})
 
 		-- swap parameters around
-		use({
-			"mizlan/iswap.nvim",
-			after = "nvim-treesitter",
-		})
+		use({ "mizlan/iswap.nvim", after = "nvim-treesitter" })
 
 		-- markdown preview in browser
 		use({
 			"iamcco/markdown-preview.nvim",
+			ft = "markdown",
 			run = "cd app && yarn install",
 		})
 
@@ -365,10 +355,12 @@ return require("packer").startup({
 			end,
 		})
 
+		-- jumping between files on a project basis
+		use({ "cbochs/grapple.nvim", requires = { "nvim-lua/plenary.nvim" } })
+
 		-- latex plugin
-		use({
-			"lervag/vimtex",
-		})
+		use({ "lervag/vimtex", ft = "tex" })
+		use({ "barreiroleo/ltex-extra.nvim" })
 
 		-- Import settings of plugins or start plugins.
 		require("plugins.vimtex")

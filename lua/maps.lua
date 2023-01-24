@@ -1,6 +1,6 @@
 -- remap function
 local function map(mode, shortcut, command)
-	vim.api.nvim_set_keymap(mode, shortcut, command, { noremap = true, silent = true })
+	vim.keymap.set(mode, shortcut, command, { noremap = true, silent = true })
 end
 
 -- function for normal mode
@@ -20,6 +20,9 @@ end
 
 -- map leader to space
 vim.g.mapleader = " "
+
+-- map esc in normal mode to write and delete highlighting
+nmap("<esc>", ":w<CR>:noh<CR>")
 
 -- map semicolon to colon because we are lazy
 vim.api.nvim_set_keymap("n", ";", ":", { noremap = true })
@@ -236,7 +239,9 @@ nmap("<Leader><Leader>x", ":lua require('notify').dismiss()<cr>")
 
 -- toggle virtual text
 function Virtual_text_toggle()
-	vim.diagnostic.config({ virtual_text = not vim.diagnostic.config().virtual_text })
+	vim.diagnostic.config({
+		virtual_text = not vim.diagnostic.config().virtual_text,
+	})
 	print("Virtual Text " .. (vim.diagnostic.config().virtual_text and "enabled" or "disabled"))
 end
 vim.cmd([[ command! VirtualTextToggle lua Virtual_text_toggle()]])
@@ -248,3 +253,16 @@ map("i", "<F7>", "<ESC>:CompileAndRun<CR>")
 
 -- Neorg maps
 map("n", "<Leader>Ni", ":Neorg inject-metadata<CR>")
+-- grapple.nvim
+nmap("<leader>!", require("grapple").toggle)
+nmap("<leader><Tab>", require("grapple").cycle_forward)
+nmap("<leader><S-Tab>", require("grapple").cycle_forward)
+nmap("<leader>G", function()
+	require("grapple").popup_tags()
+end)
+
+for i = 1, 9 do
+	nmap("<leader>" .. i, function()
+		require("grapple").select({ key = i })
+	end)
+end
