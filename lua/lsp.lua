@@ -88,4 +88,4 @@ vim.cmd(
 )
 -- show the diagnostic description when the cursor is placed on the error
 -- vim.cmd([[autocmd CursorHold * lua vim.diagnostic.open_float(nil,{focusable=false,scope="cursor"})]])
-vim.cmd([[autocmd CursorHold * Lspsaga show_cursor_diagnostics]])
+-- vim.cmd([[autocmd CursorHold * Lspsaga show_cursor_diagnostics]])

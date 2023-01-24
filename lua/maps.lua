@@ -148,7 +148,6 @@ nmap("gi", ":lua vim.lsp.buf.implementation()<CR>")
 nmap("<leader>D", ":lua vim.lsp.buf.type_definition()<CR>")
 -- nmap("<leader>rn", ":lua vim.lsp.buf.rename()<CR>")
 nmap("gr", ":lua vim.lsp.buf.references()<CR>")
-nmap("<leader>e", ":lua vim.lsp.diagnostic.show_line_diagnostics()<CR>")
 nmap("[d", ":lua vim.diagnostic.goto_prev()<CR>")
 nmap("]d", ":lua vim.diagnostic.goto_next()<CR>")
 nmap("<leader>q", ":lua vim.lsp.diagnostic.set_loclist()<CR>")
@@ -186,6 +185,9 @@ map("n", "<leader>o", "<cmd>LSoutlineToggle<CR>")
 
 -- Hover Doc
 map("n", "K", "<cmd>Lspsaga hover_doc<CR>")
+
+-- Show diagnostics
+map("n", "<leader>e", "<cmd>Lspsaga show_cursor_diagnostics<CR>")
 
 -- Flutter Developement
 nmap("<leader>Fa", "<cmd>FlutterRun<CR>")
