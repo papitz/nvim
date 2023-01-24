@@ -72,3 +72,17 @@ au("TextYankPost", {
         vim.highlight.on_yank({higroup = "IncSearch", timeout = 300})
     end
 })
+
+vim.cmd([[
+if exists("g:neovide")
+    inoremap <D-v> <esc>"+pA
+    inoremap <D-v> <esc>"+pA
+    nnoremap <c-CR> <cmd>Lspsaga code_action<CR>
+    set guifont=JetBrainsMono\ Nerd\ Font\ Mono:h14
+    let g:neovide_hide_mouse_when_typing = v:false
+    let g:neovide_input_use_logo = v:true
+    let g:neovide_cursor_trail_size = 0.1
+    let g:neovide_input_macos_alt_is_meta=v:false
+endif
+]])
+

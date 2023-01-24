@@ -306,6 +306,7 @@ return require("packer").startup({
 
         -- latex plugin
         use({"lervag/vimtex", ft = "tex"})
+        use({"barreiroleo/ltex-extra.nvim"})
 
         -- Import settings of plugins or start plugins.
         require("plugins.vimtex")

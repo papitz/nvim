@@ -15,6 +15,9 @@ local function vmap(shortcut, command) map("v", shortcut, command) end
 -- map leader to space
 vim.g.mapleader = " "
 
+-- map esc in normal mode to write and delete highlighting
+nmap("<esc>", ":w<CR>:noh<CR>")
+
 -- map semicolon to colon because we are lazy
 vim.api.nvim_set_keymap("n", ";", ":", {noremap = true})
 vim.api.nvim_set_keymap("v", ";", ":", {noremap = true})
@@ -248,7 +251,9 @@ map("i", "<F7>", "<ESC>:CompileAndRun<CR>")
 nmap("<leader>!", require("grapple").toggle)
 nmap("<leader><Tab>", require("grapple").cycle_forward)
 nmap("<leader><S-Tab>", require("grapple").cycle_forward)
+nmap("<leader>G", function() require("grapple").popup_tags() end)
 
 for i = 1, 9 do
     nmap("<leader>" .. i, function() require("grapple").select({key = i}) end)
 end
+

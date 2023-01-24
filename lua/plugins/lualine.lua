@@ -20,7 +20,7 @@ local lualine_styles = {
 -- end
 function grapple()
     local key = require("grapple").key()
-    return "[" .. key .. "]"
+    return " " .. key .. ""
 end
 
 lualine.setup({
@@ -37,7 +37,7 @@ lualine.setup({
     sections = {
         lualine_a = {"mode"},
         lualine_b = {"branch", "diff"},
-        lualine_c = {"filename", "grapple()"},
+        lualine_c = {"grapple()", "filename"},
         -- lualine_b = { "branch", "diff", "filename" },
         -- lualine_c = { navic_location },
         lualine_x = {"lsp_progress", "encoding", "filetype"},
