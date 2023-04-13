@@ -117,6 +117,7 @@ return require("packer").startup({
 			config = function()
 				require("plugins/dashboard")
 			end,
+			requires = { "nvim-tree/nvim-web-devicons" },
 		})
 
 		-- Fuzzy finder and its requirments.
