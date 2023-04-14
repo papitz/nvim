@@ -1,6 +1,8 @@
 -- sourcing config files.
 require("settings")
-require("plugins")
+require("lazyinit")
+require("lazyplugins")
+-- require("plugins")
 require("utils")
 require("maps")
 require("lsp")
