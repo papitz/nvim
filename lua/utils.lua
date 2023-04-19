@@ -22,6 +22,7 @@ local term_wrapper = function(command, file)
 end
 
 local commands = {
+    c = "make && %s",
 	cpp = "g++ %s && ./a.out",
 	javascript = "node %s",
 	lua = "lua %s",

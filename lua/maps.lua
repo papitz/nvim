@@ -255,6 +255,9 @@ map("i", "<F7>", "<ESC>:CompileAndRun<CR>")
 
 -- Neorg maps
 map("n", "<Leader>Ni", ":Neorg inject-metadata<CR>")
+
+-- Doge
+nmap("<leader>d", ":DogeGenerate<CR>")
 -- grapple.nvim
 nmap("<leader>!", require("grapple").toggle)
 nmap("<leader><Tab>", require("grapple").cycle_forward)

@@ -30,7 +30,7 @@ local plugins = {
 	-- Window Picker
 	{
 		"s1n7ax/nvim-window-picker",
-		tag = "v1.*",
+		-- tag = "v1.*",
 		config = function()
 			require("window-picker").setup()
 		end,
@@ -209,7 +209,7 @@ local plugins = {
 	{
 		"sbdchd/neoformat",
 		cmd = "Neoformat",
-		setup = function()
+		config = function()
 			require("plugins/neoformat")
 		end,
 	},
@@ -327,8 +327,6 @@ local plugins = {
 		end,
 	},
 
-	-- faster filetype recognition
-	{ "nathom/filetype.nvim" },
 
 	-- flutter developement
 	{

@@ -15,13 +15,16 @@ saga.setup({
 		virtual_text = false,
 	},
 	finder = {
-		open = "<CR>",
-		vsplit = "s",
-		split = "i",
-		tabe = "t",
-		quit = { "q", "ESC" },
-		scroll_down = "<C-f>",
-		scroll_up = "<C-b>", -- quit can be a table
+        keys = {
+          jump_to = 'L',
+          expand_or_jump = '<CR>',
+          vsplit = 's',
+          split = 'i',
+          tabe = 't',
+          tabnew = 'r',
+          quit = { 'q', '<ESC>' },
+          close_in_preview = '<ESC>',
+        },
 	},
 	ui = {
 		-- currently only round theme
