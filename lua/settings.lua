@@ -86,3 +86,10 @@ if exists("g:neovide")
 endif
 ]])
 
+-- Run Neoformat on save
+vim.cmd([[
+augroup fmt
+  autocmd!
+  autocmd BufWritePre * Neoformat
+augroup END
+]])

@@ -63,6 +63,7 @@ require("neo-tree").setup({
 		position = "left",
 		-- width = "15%",
 		width = math.floor(0.15 * vim.api.nvim_win_get_width(0)),
+        -- width = 45,
 		mapping_options = {
 			noremap = true,
 			nowait = true,
