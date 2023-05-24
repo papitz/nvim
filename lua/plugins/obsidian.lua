@@ -2,7 +2,7 @@ local present, obsidian = pcall(require, "obsidian")
 if not present then
 	return
 end
-opts = {
+local opts = {
 	dir = "~/notes", -- no need to call 'vim.fn.expand' here
 
 	-- Optional, completion.

@@ -1,6 +1,7 @@
 local plugins = {
 	-- quicker lua loading
-	{ "lewis6991/impatient.nvim" }, -- color scheme
+	{ "lewis6991/impatient.nvim" },
+	-- color scheme
 	{ "navarasu/onedark.nvim", lazy = false, priority = 1000 },
 	{
 		"epwalsh/obsidian.nvim",
@@ -16,23 +17,9 @@ local plugins = {
 
 			-- Optional, for search and quick-switch functionality.
 			"nvim-telescope/telescope.nvim",
-
-			-- Optional, alternative to nvim-treesitter for syntax highlighting.
-			"godlygeek/tabular",
-			"preservim/vim-markdown",
 		},
 		config = function()
 			require("plugins/obsidian")
-
-			-- Optional, override the 'gf' keymap to utilize Obsidian's search functionality.
-			-- see also: 'follow_url_func' config option above.
-			vim.keymap.set("n", "gf", function()
-				if require("obsidian").util.cursor_on_markdown_link() then
-					return "<cmd>ObsidianFollowLink<CR>"
-				else
-					return "gf"
-				end
-			end, { noremap = false, expr = true })
 		end,
 	},
 	-- { "github/copilot.vim" },
