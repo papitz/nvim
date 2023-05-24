@@ -175,7 +175,7 @@ map("n", "gd", "<cmd>Lspsaga peek_definition<CR>")
 map("n", "<leader>cd", "<cmd>Lspsaga show_line_diagnostics<CR>")
 
 -- Show cursor diagnostic
-map("n", "<leader>cd", "<cmd>Lspsaga show_cursor_diagnostics<CR>")
+map("n", "Q", "<cmd>Lspsaga show_cursor_diagnostics<CR>")
 
 -- Diagnsotic jump can use `<c-o>` to jump back
 map("n", "]e", "<cmd>Lspsaga diagnostic_jump_next<CR>")
