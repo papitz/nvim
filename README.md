@@ -34,9 +34,9 @@ python install.py
 ### initial configuration
 After Installation run
 ```
-:PackerSync
+:Lazy
 ```
-
+See there if any packages need updating.
 ## Setup
 ### Language Server
 
