@@ -1,4 +1,4 @@
-# install script for this nvim on arch linux (NOT on windows)
+# (Deprecated) install script for this nvim on arch linux (NOT on windows)
 import os, subprocess
 
 home = os.path.expanduser("~")
@@ -13,8 +13,7 @@ print(
 
 exist = subprocess.call("command -v yay>> /dev/null", shell=True)
 if exist == 0:
-    os.system("yay -R --noconfirm neovim")
-    os.system("yay -S --noconfirm neovim nvim-packer-git")
+    os.system("yay -S --noconfirm neovim")
 elif exist != 0:
     exist = subprocess.call("command -v brew>> /dev/null", shell=True)
     if exist == 0:
