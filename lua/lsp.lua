@@ -12,7 +12,6 @@ mason.setup({
         }
     }
 })
-
 -- Nvim specific stuff
 require("neodev").setup({})
 
@@ -82,3 +81,13 @@ vim.cmd(
 -- show the diagnostic description when the cursor is placed on the error
 -- vim.cmd([[autocmd CursorHold * lua vim.diagnostic.open_float(nil,{focusable=false,scope="cursor"})]])
 -- vim.cmd([[autocmd CursorHold * Lspsaga show_cursor_diagnostics]])
+local signs = {
+    Error = " ",
+    Warning = " ",
+    Hint = "󰌵 ",
+    Information = " "
+}
+for type, icon in pairs(signs) do
+    local hl = "LspDiagnosticsSign" .. type
+    vim.fn.sign_define(hl, {text = icon, texthl = hl, numhl = ""})
+end

@@ -29,13 +29,13 @@ saga.setup({
         -- border type can be single,double,rounded,solid,shadow.
         border = "rounded",
         winblend = 0,
-        expand = "",
-        collapse = "",
+        expand = " ",
+        collapse = " ",
         preview = " ",
         code_action = "💡",
         diagnostic = "🐞",
-        incoming = " ",
-        outgoing = " ",
+        incoming = " ",
+        outgoing = " ",
         colors = {
             -- float window normal background color
             normal_bg = "#282c34",
