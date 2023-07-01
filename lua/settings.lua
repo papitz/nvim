@@ -66,11 +66,11 @@ vim.cmd("autocmd BufEnter * silent! lcd %:p:h")
 ---Highlight yanked text
 
 au("TextYankPost", {
-    group = ag("yank_highlight", {}),
-    pattern = "*",
-    callback = function()
-        vim.highlight.on_yank({higroup = "IncSearch", timeout = 300})
-    end
+	group = ag("yank_highlight", {}),
+	pattern = "*",
+	callback = function()
+		vim.highlight.on_yank({ higroup = "IncSearch", timeout = 300 })
+	end,
 })
 
 vim.cmd([[
@@ -86,3 +86,10 @@ if exists("g:neovide")
 endif
 ]])
 
+-- Run Neoformat on save
+-- vim.cmd([[
+-- augroup fmt
+--   autocmd!
+--   autocmd BufWritePre * Neoformat
+-- augroup END
+-- ]])

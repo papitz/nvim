@@ -114,18 +114,19 @@ nmap("<leader>tc", ":VimtexTocToggle<CR>")
 nmap("<leader>te", ":VimtexErrors<CR>")
 
 -- Telescope mappings
-nmap("<leader>ff", "<cmd>Telescope find_files<cr>")
-nmap("<leader>fp", "<cmd>Telescope git_files<cr>")
-nmap("<leader>fg", "<cmd>Telescope live_grep<cr>")
-nmap("<leader>fb", "<cmd>Telescope buffers<cr>")
-nmap("<leader>fh", "<cmd>Telescope search_history<cr>")
-nmap("<leader>fc", "<cmd>Telescope command_history<cr>")
-nmap("<leader>fq", "<cmd>Telescope quickfix<cr>")
-nmap("<leader>fr", "<cmd>Telescope registers<cr>")
-nmap("<leader>fs", "<cmd>Telescope spell_suggest<cr>")
-nmap("<leader>fo", "<cmd>Telescope oldfiles<cr>")
-nmap("<leader>fm", "<cmd>Telescope marks<cr>")
-nmap("<leader>fk", "<cmd>Telescope keymaps<cr>")
+local telescope_prefix = "<leader>f"
+nmap(telescope_prefix .. "f", "<cmd>Telescope find_files<cr>")
+nmap(telescope_prefix .. "p", "<cmd>Telescope git_files<cr>")
+nmap(telescope_prefix .. "g", "<cmd>Telescope live_grep<cr>")
+nmap(telescope_prefix .. "b", "<cmd>Telescope buffers<cr>")
+nmap(telescope_prefix .. "h", "<cmd>Telescope search_history<cr>")
+nmap(telescope_prefix .. "c", "<cmd>Telescope command_history<cr>")
+nmap(telescope_prefix .. "q", "<cmd>Telescope quickfix<cr>")
+nmap(telescope_prefix .. "r", "<cmd>Telescope registers<cr>")
+nmap(telescope_prefix .. "s", "<cmd>Telescope spell_suggest<cr>")
+nmap(telescope_prefix .. "o", "<cmd>Telescope oldfiles<cr>")
+nmap(telescope_prefix .. "m", "<cmd>Telescope marks<cr>")
+nmap(telescope_prefix .. "k", "<cmd>Telescope keymaps<cr>")
 
 -- Dashboard mappings
 nmap("<leader>fn", "<cmd>DashboardNewFile<cr>")
@@ -174,14 +175,27 @@ map("n", "gd", "<cmd>Lspsaga peek_definition<CR>")
 map("n", "<leader>cd", "<cmd>Lspsaga show_line_diagnostics<CR>")
 
 -- Show cursor diagnostic
-map("n", "<leader>cd", "<cmd>Lspsaga show_cursor_diagnostics<CR>")
+map("n", "Q", "<cmd>Lspsaga show_cursor_diagnostics<CR>")
 
 -- Diagnsotic jump can use `<c-o>` to jump back
 map("n", "]e", "<cmd>Lspsaga diagnostic_jump_next<CR>")
 map("n", "[e", "<cmd>Lspsaga diagnostic_jump_prev<CR>")
 
--- Outline
-map("n", "<leader>o", "<cmd>LSoutlineToggle<CR>")
+-- Obsidian Mappings
+local obsidian_prefix = "<leader>o"
+nmap(obsidian_prefix .. "o", ":ObsidianOpen<CR>")
+nmap(obsidian_prefix .. "s", ":ObsidianSearch<CR>")
+nmap(obsidian_prefix .. "t", ":ObsidianTemplate<CR>")
+nmap(obsidian_prefix .. "b", ":ObsidianBacklinks<CR>")
+nmap(obsidian_prefix .. "n", ":ObsidianNew<CR>")
+-- override the 'gf' keymap to utilize Obsidian's search functionality.
+vim.keymap.set("n", "gf", function()
+	if require("obsidian").util.cursor_on_markdown_link() then
+		return "<cmd>ObsidianFollowLink<CR>"
+	else
+		return "gf"
+	end
+end, { noremap = false, expr = true })
 
 -- Hover Doc
 map("n", "K", "<cmd>Lspsaga hover_doc<CR>")
@@ -190,12 +204,13 @@ map("n", "K", "<cmd>Lspsaga hover_doc<CR>")
 map("n", "<leader>e", "<cmd>Lspsaga show_cursor_diagnostics<CR>")
 
 -- Flutter Developement
-nmap("<leader>Fa", "<cmd>FlutterRun<CR>")
-nmap("<leader>Fq", "<cmd>FlutterQuit<CR>")
-nmap("<leader>Fr", "<cmd>FlutterReload<CR>")
-nmap("<leader>FR", "<cmd>FlutterRestart<CR>")
-nmap("<leader>FD", "<cmd>FlutterVisualDebug<CR>")
-nmap("<leader>FF", "<cmd>FlutterCopyProfilerUrl<CR>")
+local flutter_prefix = "<leader>F"
+nmap(flutter_prefix .. "a", "<cmd>FlutterRun<CR>")
+nmap(flutter_prefix .. "<leader>Fq", "<cmd>FlutterQuit<CR>")
+nmap(flutter_prefix .. "<leader>Fr", "<cmd>FlutterReload<CR>")
+nmap(flutter_prefix .. "<leader>FR", "<cmd>FlutterRestart<CR>")
+nmap(flutter_prefix .. "<leader>FD", "<cmd>FlutterVisualDebug<CR>")
+nmap(flutter_prefix .. "<leader>FF", "<cmd>FlutterCopyProfilerUrl<CR>")
 -- ToggleTerm
 map("n", "<C-t>", ":ToggleTerm dir=%:p:h<CR>")
 map("t", "<C-t>", ":ToggleTerm dir=%:p:h<CR>")
@@ -255,6 +270,9 @@ map("i", "<F7>", "<ESC>:CompileAndRun<CR>")
 
 -- Neorg maps
 map("n", "<Leader>Ni", ":Neorg inject-metadata<CR>")
+
+-- Doge
+nmap("<leader>d", ":DogeGenerate<CR>")
 -- grapple.nvim
 nmap("<leader>!", require("grapple").toggle)
 nmap("<leader><Tab>", require("grapple").cycle_forward)
