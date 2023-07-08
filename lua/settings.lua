@@ -36,6 +36,15 @@ opt.virtualedit = "onemore" -- allow the cursor to move past the last char on th
 opt.splitbelow = true
 opt.splitright = true
 
+-- set foldmethod to treesitter
+
+opt.foldmethod = "expr"
+opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.cmd("autocmd BufWinEnter * silent! :%foldopen!")
+
+-- au({"BufReadPost", "FileReadPost"},
+--    {pattern = {"*"}, callback = function() vim.cmd(":normal zR") end})
+
 -- set the german dictionary
 vim.cmd("set dictionary+=/usr/share/dict/german")
 
@@ -66,11 +75,11 @@ vim.cmd("autocmd BufEnter * silent! lcd %:p:h")
 ---Highlight yanked text
 
 au("TextYankPost", {
-	group = ag("yank_highlight", {}),
-	pattern = "*",
-	callback = function()
-		vim.highlight.on_yank({ higroup = "IncSearch", timeout = 300 })
-	end,
+    group = ag("yank_highlight", {}),
+    pattern = "*",
+    callback = function()
+        vim.highlight.on_yank({higroup = "IncSearch", timeout = 300})
+    end
 })
 
 vim.cmd([[

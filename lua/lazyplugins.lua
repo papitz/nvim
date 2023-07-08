@@ -34,8 +34,7 @@ local plugins = {
     {
         "akinsho/nvim-bufferline.lua",
         config = function() require("plugins/bufferline") end
-    },
-    -- {"WhoIsSethDaniel/lualine-lsp-progress.nvim"}, -- Statusline.
+    }, -- {"WhoIsSethDaniel/lualine-lsp-progress.nvim"}, -- Statusline.
     {
         "nvim-lualine/lualine.nvim",
         dependencies = {
@@ -142,8 +141,7 @@ local plugins = {
         "sbdchd/neoformat",
         cmd = "Neoformat",
         config = function() require("plugins/neoformat") end
-    },
-    {
+    }, {
         "akinsho/nvim-toggleterm.lua",
         cmd = "ToggleTerm",
         config = function() require("plugins/toggleterm") end
@@ -217,8 +215,10 @@ local plugins = {
         config = function() require("plugins/flutter-tools") end
     }, -- jumping between files on a project basis
     {"cbochs/grapple.nvim", dependencies = {"nvim-lua/plenary.nvim"}},
-
-    -- latex plugin
+    {
+        'anuvyklack/pretty-fold.nvim',
+        config = function() require('pretty-fold').setup() end
+    }, -- latex plugin
     {"lervag/vimtex", ft = "tex"}, {"barreiroleo/ltex-extra.nvim"}
 
     -- Import settings of plugins or start plugins.
