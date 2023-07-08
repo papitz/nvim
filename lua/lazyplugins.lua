@@ -21,7 +21,7 @@ local plugins = {
         "nvim-neo-tree/neo-tree.nvim",
         branch = "v2.x",
         dependencies = {
-            "nvim-lua/plenary.nvim", "kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
+            "nvim-lua/plenary.nvim", "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
             "MunifTanjim/nui.nvim"
         },
         config = function() require("plugins/neo-tree") end
@@ -34,12 +34,19 @@ local plugins = {
     {
         "akinsho/nvim-bufferline.lua",
         config = function() require("plugins/bufferline") end
-    }, {"WhoIsSethDaniel/lualine-lsp-progress.nvim"}, -- Statusline.
+    },
+    -- {"WhoIsSethDaniel/lualine-lsp-progress.nvim"}, -- Statusline.
     {
         "nvim-lualine/lualine.nvim",
+        dependencies = {
+            'nvim-tree/nvim-web-devicons', 'linrongbin16/lsp-progress.nvim'
+        },
         config = function() require("plugins/lualine") end
-    }, -- a rainbow bracket extension for treesitter
-    {"p00f/nvim-ts-rainbow"}, -- neorg
+    }, {
+        'linrongbin16/lsp-progress.nvim',
+        dependencies = {'nvim-tree/nvim-web-devicons'},
+        config = function() require('lsp-progress').setup() end
+    }, -- neorg
     {
         "nvim-neorg/neorg",
         ft = "norg",
@@ -51,10 +58,12 @@ local plugins = {
 
     {"anuvyklack/hydra.nvim", config = function() require("plugins/hydra") end},
 
-    {"nvim-treesitter/nvim-treesitter-context"}, -- TreeSitter.
     {
         "nvim-treesitter/nvim-treesitter",
-        dependencies = {'JoosepAlviste/nvim-ts-context-commentstring'},
+        dependencies = {
+            'JoosepAlviste/nvim-ts-context-commentstring',
+            "p00f/nvim-ts-rainbow", "nvim-treesitter/nvim-treesitter-context"
+        },
         -- build = ":TSUpdate",
         config = function() require("plugins/treesitter") end
     }, -- Colorizer (for highlighting color codes).
@@ -133,8 +142,7 @@ local plugins = {
         "sbdchd/neoformat",
         cmd = "Neoformat",
         config = function() require("plugins/neoformat") end
-    }, -- Icons.
-    {"kyazdani42/nvim-web-devicons"}, -- Terminal.
+    },
     {
         "akinsho/nvim-toggleterm.lua",
         cmd = "ToggleTerm",
@@ -194,8 +202,7 @@ local plugins = {
         "iamcco/markdown-preview.nvim",
         ft = "markdown",
         build = "cd app && yarn install"
-    },
-    {"ellisonleao/glow.nvim", config = true, cmd = "Glow"},
+    }, {"ellisonleao/glow.nvim", config = true, cmd = "Glow"},
     -- auto generate doc strings
     {"kkoomen/vim-doge", build = function() vim.fn["doge#install"]() end},
 

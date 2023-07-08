@@ -18,9 +18,13 @@ local lualine_styles = {
 -- 		return navic.is_available()
 -- 	end
 -- end
-function grapple()
+local function grapple()
     local key = require("grapple").key()
     return " " .. key .. ""
+end
+
+local function lsp_progress()
+    return require('lsp-progress').progress()
 end
 
 lualine.setup({
@@ -37,12 +41,13 @@ lualine.setup({
     sections = {
         lualine_a = {"mode"},
         lualine_b = {"branch", "diff"},
-        lualine_c = {"grapple()", "filename"},
+        lualine_c = {grapple, "filename"},
         -- lualine_b = { "branch", "diff", "filename" },
         -- lualine_c = { navic_location },
         --  TODO: This is broken for now. Test in some time again
-        -- lualine_x = {"lsp_progress", "encoding", "filetype"},
-        lualine_x = {"encoding", "filetype"},
+        -- lualine_x = {"lsp_progress()"},
+        lualine_x = {lsp_progress, "encoding", {"filetype", icon = { align = 'left' }}},
+        -- lualine_x = {"encoding", "filetype"},
         lualine_y = {"progress"},
         lualine_z = {"location"}
     }
