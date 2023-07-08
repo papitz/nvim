@@ -44,10 +44,8 @@ opt.foldtext =
     [[substitute(getline(v:foldstart),'\\t',repeat('\ ',&tabstop),'g').'...'.trim(getline(v:foldend)) . ' (' . (v:foldend - v:foldstart + 1) . ' lines)']]
 opt.foldnestmax = 3
 opt.foldminlines = 1
-vim.cmd("autocmd BufWinEnter * silent! :%foldopen!")
-
--- au({"BufReadPost", "FileReadPost"},
---    {pattern = {"*"}, callback = function() vim.cmd(":normal zR") end})
+-- disable folding until the first fold command is used
+opt.foldenable = false
 
 -- set the german dictionary
 vim.cmd("set dictionary+=/usr/share/dict/german")
