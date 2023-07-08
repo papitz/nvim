@@ -215,10 +215,6 @@ local plugins = {
         config = function() require("plugins/flutter-tools") end
     }, -- jumping between files on a project basis
     {"cbochs/grapple.nvim", dependencies = {"nvim-lua/plenary.nvim"}},
-    {
-        'anuvyklack/pretty-fold.nvim',
-        config = function() require('pretty-fold').setup() end
-    }, -- latex plugin
     {"lervag/vimtex", ft = "tex"}, {"barreiroleo/ltex-extra.nvim"}
 
     -- Import settings of plugins or start plugins.

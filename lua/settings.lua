@@ -40,6 +40,10 @@ opt.splitright = true
 
 opt.foldmethod = "expr"
 opt.foldexpr = "nvim_treesitter#foldexpr()"
+opt.foldtext =
+    [[substitute(getline(v:foldstart),'\\t',repeat('\ ',&tabstop),'g').'...'.trim(getline(v:foldend)) . ' (' . (v:foldend - v:foldstart + 1) . ' lines)']]
+opt.foldnestmax = 3
+opt.foldminlines = 1
 vim.cmd("autocmd BufWinEnter * silent! :%foldopen!")
 
 -- au({"BufReadPost", "FileReadPost"},
