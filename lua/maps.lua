@@ -28,6 +28,10 @@ nmap("<esc>", ":w<CR>:noh<CR>")
 vim.api.nvim_set_keymap("n", ";", ":", { noremap = true })
 vim.api.nvim_set_keymap("v", ";", ":", { noremap = true })
 
+-- Better horizontal navigations
+nmap("H", "^")
+nmap("L", "$")
+
 -- Panel switching
 nmap("<leader>h", ":wincmd h<CR>")
 nmap("<leader>j", ":wincmd j<CR>")
@@ -127,6 +131,7 @@ nmap(telescope_prefix .. "s", "<cmd>Telescope spell_suggest<cr>")
 nmap(telescope_prefix .. "o", "<cmd>Telescope oldfiles<cr>")
 nmap(telescope_prefix .. "m", "<cmd>Telescope marks<cr>")
 nmap(telescope_prefix .. "k", "<cmd>Telescope keymaps<cr>")
+nmap(telescope_prefix .. "l", "<cmd>Telescope lsp_references <cr>")
 
 -- Dashboard mappings
 nmap("<leader>fn", "<cmd>DashboardNewFile<cr>")
