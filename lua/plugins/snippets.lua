@@ -1,8 +1,9 @@
+HOME = os.getenv("HOME")
 require("luasnip/loaders/from_vscode").lazy_load()
 
 -- load snippets from the ~/.config/nvim/snippets/ directory for the corresponding language
 require("luasnip/loaders/from_snipmate").lazy_load({
-    path = {"/home/paul/.config/nvim/snippets"}
+    path = {HOME .. "/.config/nvim/snippets"}
 })
 
 -- command to open the snippet file that belongs to the language you are editing
