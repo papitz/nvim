@@ -71,7 +71,7 @@ require("mason-lspconfig").setup_handlers({
         })
     end,
     ["eslint"] = function()
-        lspconfig.eslint.setup({settings = {format = {enable = true}}})
+        lspconfig.eslint.setup({settings = {format = true}})
     end
 })
 
