@@ -12,9 +12,5 @@ require("nvim-treesitter.configs").setup({
     matchup = {enable = true},
     indent = {enable = true, disable = {"dart"}},
     autotag = {enable = true},
-    rainbow = {
-        enable = true,
-        extended_mode = true -- also highlight html tags
-    },
     context_commentstring = {enable = true}
 })

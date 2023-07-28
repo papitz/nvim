@@ -19,7 +19,7 @@ local plugins = {
     -- File explorer tree.
     {
         "nvim-neo-tree/neo-tree.nvim",
-        branch = "v2.x",
+        branch = "v3.x",
         dependencies = {
             "nvim-lua/plenary.nvim", "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
             "MunifTanjim/nui.nvim"
@@ -61,7 +61,7 @@ local plugins = {
         "nvim-treesitter/nvim-treesitter",
         dependencies = {
             'JoosepAlviste/nvim-ts-context-commentstring',
-            "p00f/nvim-ts-rainbow", "nvim-treesitter/nvim-treesitter-context"
+            "nvim-treesitter/nvim-treesitter-context"
         },
         -- build = ":TSUpdate",
         config = function() require("plugins/treesitter") end
@@ -84,14 +84,12 @@ local plugins = {
     {
         "williamboman/mason.nvim", "williamboman/mason-lspconfig.nvim",
         "neovim/nvim-lspconfig"
-    }, -- LSP GPS (show context in statusline) comment in to enable
-    -- {
-    -- 	"SmiteshP/nvim-navic",
-    -- 	dependencies = "neovim/nvim-lspconfig",
-    -- 	config = function()
-    -- 		require("plugins/navic")
-    -- 	end,
-    -- },
+    },
+    {
+        "pmizio/typescript-tools.nvim",
+        dependencies = {"nvim-lua/plenary.nvim", "neovim/nvim-lspconfig"},
+        opts = {}
+    },
     {"glepnir/lspsaga.nvim", config = function() require("plugins/lspsaga") end},
     {"rafamadriz/friendly-snippets"}, {"Neevash/awesome-flutter-snippets"}, {
         "hrsh7th/nvim-cmp",
