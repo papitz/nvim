@@ -1,9 +1,5 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-<title>README.md</title>
-</head>
-
 <body>
 <div class="flex-container">
   <a href="https://github.com/papitz/nvim/blob/main/LICENSE">
