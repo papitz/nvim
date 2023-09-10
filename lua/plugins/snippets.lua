@@ -43,5 +43,18 @@ ls.add_snippets("all", {
                                         "^(.*)%%s(.*)")
             return rightComment
         end, {})
+    }),
+    snip({trig = "fix", name = "FIX_comment", dscr = "Add a FIX comment"}, {
+        -- get the comment string of the buffer you are in and add a space to it
+        func(function()
+            return vim.api.nvim_buf_get_option(0, "commentstring"):match(
+                       "^(.*)%%s")
+        end, {}), text(" FIX: "), insert(0, "THIS NEEDS TO BE FIXED"),
+        func(function()
+            local _, rightComment = vim.api.nvim_buf_get_option(0,
+                                                                "commentstring"):match(
+                                        "^(.*)%%s(.*)")
+            return rightComment
+        end, {})
     })
 })

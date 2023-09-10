@@ -115,7 +115,8 @@ nmap("<BS>", "<C-^>")
 nmap("<leader>tt", ":VimtexCompile<CR>")
 nmap("<leader>tv", ":VimtexView<CR>")
 nmap("<leader>tc", ":VimtexTocToggle<CR>")
-nmap("<leader>te", ":VimtexErrors<CR>")
+nmap("<leader>ts", ":VimtexStatus<CR>")
+nmap("<leader>te", ":VimtexErros<CR>") -- opens the quickfix window where the errors are hidden
 
 -- Telescope mappings
 local telescope_prefix = "<leader>f"
@@ -164,7 +165,7 @@ nmap("<leader>q", ":lua vim.lsp.diagnostic.set_loclist()<CR>")
 -- Lsp finder find the symbol definition implement reference
 -- when you use action in finder like open vsplit then you can
 -- use <C-t> to jump back
-map("n", "gh", "<cmd>Lspsaga lsp_finder<CR>")
+map("n", "gh", "<cmd>Lspsaga finder<CR>")
 
 -- Code action
 map("n", "<A-CR>", "<cmd>Lspsaga code_action<CR>")

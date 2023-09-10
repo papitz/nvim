@@ -11,15 +11,16 @@ saga.setup({
     },
     finder = {
         keys = {
-            jump_to = 'L',
-            expand_or_jump = '<CR>',
+            shuttle = 'L',
+            toggle_or_open = '<CR>',
             vsplit = 's',
             split = 'i',
             tabe = 't',
             tabnew = 'r',
             quit = {'q', '<ESC>'},
-            close_in_preview = '<ESC>'
-        }
+            close = '<ESC>'
+        },
+        default = 'def+ref+imp'
     },
     ui = {
         -- currently only round theme
