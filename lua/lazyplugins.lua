@@ -197,7 +197,8 @@ local plugins = {
     {
         "iamcco/markdown-preview.nvim",
         ft = "markdown",
-        build = "cd app && yarn install"
+        build = "cd app && yarn install",
+        config = function() require("plugins/mdpreview") end
     }, {"ellisonleao/glow.nvim", config = true, cmd = "Glow"},
     -- auto generate doc strings
     {"kkoomen/vim-doge", build = function() vim.fn["doge#install"]() end},
