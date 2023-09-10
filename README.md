@@ -1,17 +1,6 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-
-<style>
-.flex-container {
-  display: flex;
-  justify-content: center;
-}
-h1 {
-  text-align:center;
-}
-</style>
-
 <title>README.md</title>
 </head>
 
