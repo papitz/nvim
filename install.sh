@@ -18,13 +18,15 @@ elif command -v brew &> /dev/null; then
 elif command -v dnf &> /dev/null; then
   if [ "$(id -u)" == 0 ]; then
     dnf install neovim
+    exist=0
     else
       echo "To use the installer with dnf you need to run this script with superuser privileges e.g. 'sudo bash install.sh'"
       exit 1
   fi
 else
-  echo "Your Package Manager is not supported"
-  exit 1
+  echo "Download the appimage if you are using Linux from the Release page of neovim and put it somewhere in your path."
+  echo "Nvim will not work until you installed it"
+  exist=0
 fi
 
 if [ "$exist" == 0 ]; then
