@@ -1,32 +1,22 @@
 -- indent-blankline character.
 local indent_blankline_style = 1
 
-local indent_blankline_styles = { "│", "¦", "┆", "▏", "⎸", "|" }
+local indent_blankline_styles = {"│", "¦", "┆", "▏", "⎸", "|"}
 
-require("indent_blankline").setup({
-	blankline_char = indent_blankline_styles[indent_blankline_style],
-	context_patterns = {
-		"class",
-		"function",
-		"method",
-		"^if",
-		"^case",
-		"^while",
-		"^use",
-		"^for",
-	},
-	buftype_exclude = { "terminal" },
-	show_current_context = true,
-	show_current_context_start = false,
-	show_trailing_blankline_indent = false,
-	show_first_indent_level = false,
-	filetype_exclude = {
-		"help",
-		"terminal",
-		"dashboard",
-		"packer",
-		"mason",
-		"lspinfo",
-		"norg",
-	},
-})
+local ibl = require("ibl")
+ibl.setup {
+    indent = {char = indent_blankline_styles[indent_blankline_style]},
+    context_patterns = {
+        "class", "function", "method", "^if", "^case", "^while", "^use", "^for"
+    },
+    --  TODO: This needs some working but might be picked up by the colorscheme
+    scope = {enabled = true, show_start = false, show_end = false},
+    whitespace = {remove_blankline_trail = true},
+    -- show_first_indent_level = false,
+    exclude = {
+        buftypes = {
+            "help", "terminal", "dashboard", "packer", "mason", "lspinfo",
+            "norg"
+        }
+    }
+}

@@ -132,6 +132,7 @@ local plugins = {
     -- This plugin adds indentation guides to all lines (including empty lines).
     {
         "lukas-reineke/indent-blankline.nvim",
+        main = "ibl",
         -- event = "BufRead",
         config = function() require("plugins/indent-blankline") end
     }, -- Code formatter.
