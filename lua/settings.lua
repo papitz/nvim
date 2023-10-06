@@ -39,9 +39,46 @@ opt.splitright = true
 -- set foldmethod to treesitter
 
 opt.foldmethod = "expr"
-opt.foldexpr = "nvim_treesitter#foldexpr()"
-opt.foldtext =
-    [[substitute(getline(v:foldstart),'\\t',repeat('\ ',&tabstop),'g').'...'.trim(getline(v:foldend)) . ' (' . (v:foldend - v:foldstart + 1) . ' lines)']]
+-- opt.foldexpr = "nvim_treesitter#foldexpr()"
+-- opt.foldtext =
+--     [[substitute(getline(v:foldstart),'\\t',repeat('\ ',&tabstop),'g').'...'.trim(getline(v:foldend)) . ' (' . (v:foldend - v:foldstart + 1) . ' lines)']]
+local function get_custom_foldtxt_suffix(foldstart)
+    local fold_suffix_str = string.format(" [%s lines] %s",
+                                          vim.v.foldend - foldstart + 1,
+                                          vim.trim(
+                                              vim.api
+                                                  .nvim_buf_get_lines(0, vim.v
+                                                                          .foldend -
+                                                                          1,
+                                                                      vim.v
+                                                                          .foldend,
+                                                                      false)[1]))
+
+    return {fold_suffix_str, "Folded"}
+end
+
+local function get_custom_foldtext(foldtxt_suffix, foldstart)
+    local line =
+        vim.api.nvim_buf_get_lines(0, foldstart - 1, foldstart, false)[1]
+
+    return {{line, "Normal"}, foldtxt_suffix}
+end
+
+_G.get_foldtext = function()
+    local foldstart = vim.v.foldstart
+    local ts_foldtxt = vim.treesitter.foldtext()
+    local foldtxt_suffix = get_custom_foldtxt_suffix(foldstart)
+
+    if type(ts_foldtxt) == "string" then
+        return get_custom_foldtext(foldtxt_suffix, foldstart)
+    else
+        table.insert(ts_foldtxt, foldtxt_suffix)
+        return ts_foldtxt
+    end
+end
+opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+opt.foldtext = "v:lua.get_foldtext()"
+
 opt.foldnestmax = 3
 opt.foldminlines = 1
 -- disable folding until the first fold command is used

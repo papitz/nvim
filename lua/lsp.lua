@@ -56,21 +56,21 @@ require("mason-lspconfig").setup_handlers({
         })
     end,
     --  TODO: Check why this breaks ls help windows
-    -- ["ltex"] = function()
-    --     local filetype = vim.bo.filetype
+    ["ltex"] = function()
+        -- local filetype = vim.bo.filetype
     --     local language = (filetype == "tex") and "de-DE" or "en-US"
-    --     lspconfig.ltex.setup({
-    --         on_attach = function(client, bufnr)
-    --             require("ltex_extra").setup({
-    --                 load_langs = {"de-DE", "en-US"}, -- table <string> : languages for witch dictionaries will be loaded
-    --                 init_check = true, -- boolean : whether to load dictionaries on startup
-    --                 path = nil, -- string : path to store dictionaries. Relative path uses current working directory
-    --                 log_level = "none" -- string : "none", "trace", "debug", "info", "warn", "error", "fatal"
-    --             })
-    --         end,
-    --         settings = {ltex = {language = language}}
-    --     })
-    -- end,
+        lspconfig.ltex.setup({
+            on_attach = function(client, bufnr)
+                require("ltex_extra").setup({
+                    load_langs = {"de-DE", "en-US"}, -- table <string> : languages for which dictionaries will be loaded
+                    init_check = true, -- boolean : whether to load dictionaries on startup
+                    path = nil, -- string : path to store dictionaries. Relative path uses current working directory
+                    log_level = "none" -- string : "none", "trace", "debug", "info", "warn", "error", "fatal"
+                })
+            end,
+            settings = {ltex = {language = "de-DE"}}
+        })
+    end,
     ["eslint"] = function()
         lspconfig.eslint.setup({settings = {format = true}})
     end

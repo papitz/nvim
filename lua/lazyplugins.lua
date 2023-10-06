@@ -215,7 +215,9 @@ local plugins = {
         config = function() require("plugins/flutter-tools") end
     }, -- jumping between files on a project basis
     {"cbochs/grapple.nvim", dependencies = {"nvim-lua/plenary.nvim"}},
-    {"lervag/vimtex", ft = "tex"}, {"barreiroleo/ltex-extra.nvim"}
+    {"lervag/vimtex", ft = "tex"},
+    {"barreiroleo/ltex-extra.nvim"},
+    {"lewis6991/satellite.nvim"}
 
     -- Import settings of plugins or start plugins.
     --     require("plugins.vimtex")

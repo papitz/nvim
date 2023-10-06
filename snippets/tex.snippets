@@ -44,3 +44,166 @@ snippet ssub subsubsection
 	\subsubsection{$1}
 	\label{ssub:$1}
 	$0
+# \begin{}...\end{}
+snippet begin
+	\begin{${1:env}}
+		${2}
+	\end{$1}
+# Tabular
+snippet tab
+	\begin{table}[htb]
+	 \begin{center}
+	  \caption{${1:Legenda}}
+	  \label{tb:${2:nome}}
+	  \newcommand{\mc}[3]{\multicolumn{#1}{#2}{#3}}
+	  \newcommand{\mr}[3]{\multirow{#1}{#2}{#3}}
+	  \begin{tabular}{${2:ll}}
+	    \hline
+	     ${3} &amp;  \\ \cline{2-3}
+	          &amp;  \\ \hline
+	          &amp;  \\
+	          &amp;  \\ \hline
+	  \end{tabular}
+	 \end{center}
+	\end{table} 
+	${4}
+# Subfigure : uma sobre a outra
+snippet subfig
+	\begin{figure}[htp]
+	  \begin{center}
+	    \subfigure[]{\label{fig:${1:nomea}}
+	     \includegraphics[width=${2:12cm}]{${3:fig/arquivo}}} ${4:\\}
+	    \subfigure[]{\label{fig:${5:nomeb}}
+	     \includegraphics[width=${6:12cm}]{${7:fig/arquivo}}}
+	   \end{center}
+	    \caption{${8:Legenda}}
+	  \label{fig:${9:nome}}
+	\end{figure}
+	${10}
+# More one subfig
+snippet sfigadd
+	    \subfigure[]{\label{fig:${1:nomea}}
+	     \includegraphics[width=${2:12cm}]{${3:fig/arquivo}}} ${4:\\}
+# Figure
+snippet fig
+	\begin{figure}[htp]
+	  \centering
+	  \includegraphics[width=${1:12cm}]{${2:fig/arquivo}}}
+	  \caption{${3:Legenda}}
+	  \label{fig:${4:nome}}
+	\end{figure}
+	${5}
+# Equation
+snippet eqn
+	\begin{equation}
+	  ${1}
+	  \label{eq:}
+	\end{equation}
+snippet eqa
+	\begin{eqnarray}
+	  ${1} &amp;=&amp; ${2}
+	  \label{eq:}
+	\end{eqnarray}
+# Unnumbered Equation
+snippet eqd
+	$ ${1} $
+# Enumerate
+snippet enum
+	\begin{enumerate}
+		\item ${1}
+	\end{enumerate}
+# Itemize
+snippet itemize
+	\begin{itemize}
+		\item ${1}
+	\end{itemize}
+# Quote
+snippet quote
+	\begin{quote}
+	  ${1}
+	\end{quote}
+# Description
+snippet desc
+	\begin{description}
+		\item[${1}] ${2}
+	\end{description}
+# Chapter
+snippet cha
+	\chapter{${1:chapter name}}
+	\label{ch:${2}}
+	${3}
+# Section
+snippet sec
+	\section{${1:section name}}
+	\label{sec:${2}}
+	${3}
+# Sub Section
+snippet sub
+	\subsection{${1:subsection name}}
+	\label{sub:${2}}
+	${3}
+# Sub Sub Section
+snippet subs
+	\subsubsection{${1:subsubsection name}}
+	\label{subsub:${2}}
+	${3}
+# Paragraph
+snippet par
+	\paragraph{${1:paragraph name}}
+	\label{par:${2:$1}}
+	${3}
+# Sub Paragraph
+snippet subp
+	\subparagraph{${1:subparagraph name}}
+	\label{subpar:${2}}
+	${3}
+# Item
+snippet itd
+	\item${1:[description]} ${2}
+# For references, pt-br
+snippet refcha
+	capítulo~\ref{${1:fig:}} ${2}
+snippet reffig
+	figura~\ref{${1:fig:}} ${2}
+snippet reftab
+	tabela~\ref{${1:tab:}} ${2}
+snippet refsec
+	seção~\ref{${1:sec:}} ${2}
+snippet refpag
+	página~\pageref{${1}} ${2}
+# For references, en
+snippet refchaen
+	chapter~\ref{${1:fig:}} ${2}
+snippet reffigen
+	figure~\ref{${1:fig:}} ${2}
+snippet reftaben
+	table~\ref{${1:tab:}} ${2}
+snippet refsecen
+	section~\ref{${1:sec:}} ${2}
+snippet refpagen
+	page~\pageref{${1}} ${2}
+# For bib
+snippet citen
+	${1:nome}~\cite{${2}} ${3}
+snippet cite
+	~\cite{${1}} ${2}
+# Verbartim
+snippet verbatim
+	\begin{verbartim}
+	  ${1}
+	\end{verbartim}
+	${2}
+snippet verb
+	\verb|${1}| ${2}
+snippet lrp
+	\left(${1} \right) 
+snippet lrc
+	\left[${1} \right] 
+snippet lrb
+	\left\lbrace ${1}\right\rbrace 
+snippet lra
+	\left\langle ${1} \right\rangle 
+snippet ldot
+	\left. 
+snippet rdot
+	\right.
