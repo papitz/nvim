@@ -57,8 +57,6 @@ require("mason-lspconfig").setup_handlers({
     end,
     --  TODO: Check why this breaks ls help windows
     ["ltex"] = function()
-        -- local filetype = vim.bo.filetype
-    --     local language = (filetype == "tex") and "de-DE" or "en-US"
         lspconfig.ltex.setup({
             on_attach = function(client, bufnr)
                 require("ltex_extra").setup({
@@ -68,7 +66,8 @@ require("mason-lspconfig").setup_handlers({
                     log_level = "none" -- string : "none", "trace", "debug", "info", "warn", "error", "fatal"
                 })
             end,
-            settings = {ltex = {language = "de-DE"}}
+            -- settings = {ltex = {language = "de-DE"}}
+            settings = {ltex = {language = "en-US"}}
         })
     end,
     ["eslint"] = function()

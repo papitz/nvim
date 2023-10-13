@@ -1,7 +1,14 @@
 local plugins = {
     -- quicker lua loading
     {"lewis6991/impatient.nvim"}, -- color scheme
-    {"navarasu/onedark.nvim", lazy = false, priority = 1000}, {
+    {"navarasu/onedark.nvim", lazy = false, priority = 1000}, 
+{
+  "folke/tokyonight.nvim",
+  lazy = false,
+  priority = 1000,
+  opts = {},
+},
+    {
         "epwalsh/obsidian.nvim",
         lazy = true,
         -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand':
@@ -84,8 +91,7 @@ local plugins = {
     {
         "williamboman/mason.nvim", "williamboman/mason-lspconfig.nvim",
         "neovim/nvim-lspconfig"
-    },
-    {
+    }, {
         "pmizio/typescript-tools.nvim",
         dependencies = {"nvim-lua/plenary.nvim", "neovim/nvim-lspconfig"},
         opts = {}
@@ -216,8 +222,9 @@ local plugins = {
     }, -- jumping between files on a project basis
     {"cbochs/grapple.nvim", dependencies = {"nvim-lua/plenary.nvim"}},
     {"lervag/vimtex", ft = "tex"},
-    {"barreiroleo/ltex-extra.nvim"},
-    {"lewis6991/satellite.nvim"}
+    {
+        "barreiroleo/ltex-extra.nvim",
+    }, {"lewis6991/satellite.nvim"}
 
     -- Import settings of plugins or start plugins.
     --     require("plugins.vimtex")
