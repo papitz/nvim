@@ -104,10 +104,10 @@ local plugins = {
     {"L3MON4D3/LuaSnip", config = function() require("plugins/snippets") end},
     {"saadparwaiz1/cmp_luasnip"}, -- Vim Lua LSP
     {"folke/neodev.nvim"}, -- LSP signature.
-    {
-        "ray-x/lsp_signature.nvim",
-        config = function() require("plugins/lsp_signature") end
-    }, -- VsCode like pictograms for lsp.
+    -- {
+    --     "ray-x/lsp_signature.nvim",
+    --     config = function() require("plugins/lsp_signature") end
+    -- }, -- VsCode like pictograms for lsp.
     {"onsails/lspkind-nvim"}, -- popup menu
     {"RishabhRD/popfix"}, {
         "hood/popui.nvim",

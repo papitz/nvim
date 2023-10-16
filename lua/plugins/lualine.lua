@@ -46,8 +46,8 @@ lualine.setup({
         -- lualine_c = { navic_location },
         --  TODO: This is broken for now. Test in some time again
         -- lualine_x = {"lsp_progress()"},
-        -- lualine_x = {lsp_progress, "encoding", {"filetype", icon = { align = 'left' }}},
-        lualine_x = {"encoding", {"filetype", icon = { align = 'left' }}},
+        lualine_x = {lsp_progress, "encoding", {"filetype", icon = { align = 'left' }}},
+        -- lualine_x = {"encoding", {"filetype", icon = { align = 'left' }}},
         -- lualine_x = {"encoding", "filetype"},
         lualine_y = {"progress"},
         lualine_z = {"location"}
