@@ -1,7 +1,8 @@
 local plugins = {
     -- quicker lua loading
     {"lewis6991/impatient.nvim"}, -- color scheme
-    {"navarasu/onedark.nvim", lazy = false, priority = 1000}, {
+    {"navarasu/onedark.nvim", lazy = false, priority = 1000},
+    {"folke/tokyonight.nvim", lazy = false, priority = 1000, opts = {}}, {
         "epwalsh/obsidian.nvim",
         lazy = true,
         -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand':
@@ -84,8 +85,7 @@ local plugins = {
     {
         "williamboman/mason.nvim", "williamboman/mason-lspconfig.nvim",
         "neovim/nvim-lspconfig"
-    },
-    {
+    }, {
         "pmizio/typescript-tools.nvim",
         dependencies = {"nvim-lua/plenary.nvim", "neovim/nvim-lspconfig"},
         opts = {}
@@ -104,10 +104,10 @@ local plugins = {
     {"L3MON4D3/LuaSnip", config = function() require("plugins/snippets") end},
     {"saadparwaiz1/cmp_luasnip"}, -- Vim Lua LSP
     {"folke/neodev.nvim"}, -- LSP signature.
-    {
-        "ray-x/lsp_signature.nvim",
-        config = function() require("plugins/lsp_signature") end
-    }, -- VsCode like pictograms for lsp.
+    -- {
+    --     "ray-x/lsp_signature.nvim",
+    --     config = function() require("plugins/lsp_signature") end
+    -- }, -- VsCode like pictograms for lsp.
     {"onsails/lspkind-nvim"}, -- popup menu
     {"RishabhRD/popfix"}, {
         "hood/popui.nvim",
@@ -190,10 +190,10 @@ local plugins = {
     -- plugin to surround selections with things like brackets
     {"tpope/vim-surround"}, -- git client
     {"kdheepak/lazygit.nvim"}, -- fast movement
-    {
-        "ggandor/leap.nvim",
-        config = function() require("leap").set_default_keymaps() end
-    }, -- swap parameters around
+    -- {
+    --     "ggandor/leap.nvim",
+    --     config = function() require("leap").set_default_keymaps() end
+    -- }, -- swap parameters around
     {"mizlan/iswap.nvim"}, -- markdown preview in browser
     {
         "iamcco/markdown-preview.nvim",
@@ -215,9 +215,32 @@ local plugins = {
         config = function() require("plugins/flutter-tools") end
     }, -- jumping between files on a project basis
     {"cbochs/grapple.nvim", dependencies = {"nvim-lua/plenary.nvim"}},
-    {"lervag/vimtex", ft = "tex"},
-    {"barreiroleo/ltex-extra.nvim"},
-    {"lewis6991/satellite.nvim"}
+    {"lervag/vimtex", ft = "tex"}, {"barreiroleo/ltex-extra.nvim"}, {
+        "folke/noice.nvim",
+        event = "VeryLazy",
+        opts = {},
+        config = function() require("plugins/noice") end,
+        dependencies = {"MunifTanjim/nui.nvim", "rcarriga/nvim-notify"}
+    }, {
+        "folke/flash.nvim",
+        event = "VeryLazy",
+        opts = {},
+        -- stylua: ignore
+        keys = {
+            {
+                "<leader>a",
+                mode = {"n", "x", "o"},
+                function() require("flash").jump() end,
+                desc = "Flash"
+            }, {
+                "<leader>A",
+                mode = {"n", "x", "o"},
+                function() require("flash").treesitter() end,
+                desc = "Flash Treesitter"
+            }
+        }
+    }
+    -- {"lewis6991/satellite.nvim"}
 
     -- Import settings of plugins or start plugins.
     --     require("plugins.vimtex")

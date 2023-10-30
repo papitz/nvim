@@ -93,7 +93,7 @@ nmap("<leader><leader>q", ":copen<CR>")
 nmap("<leader><leader>l", ":.cc<CR>")
 
 -- Markdown Preview control
-nmap("<leader>m", ":MarkdownPreview<CR>")
+nmap("<leader>m", ":MarkdownPreviewToggle<CR>")
 
 -- map spelling
 nmap("<F8>", ":setlocal spell spelllang=de,en <return>")
