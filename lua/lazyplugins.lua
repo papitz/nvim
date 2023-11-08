@@ -208,6 +208,7 @@ local plugins = {
     {"rcarriga/nvim-notify", config = function() require("plugins/notify") end},
 
     -- flutter developement
+    {"reisub0/hot-reload.vim"},
     {
         "akinsho/flutter-tools.nvim",
         dependencies = "nvim-lua/plenary.nvim",
