@@ -147,7 +147,6 @@ nmap("<C-b>", ":Neotree dir=./ toggle position=left <CR>")
 vim.cmd("autocmd! FileType dashboard nnoremap <buffer> <silent> <C-b> :Neotree dir=./ toggle position=float <CR>")
 
 -- LSP Mappings
-nmap("gD", ":lua vim.lsp.buf.declaration()<CR>")
 -- nmap("gd", ":lua vim.lsp.buf.definition()<CR>")
 nmap("<c-q>", ":lua vim.lsp.buf.hover()<CR>")
 nmap("gi", ":lua vim.lsp.buf.implementation()<CR>")
@@ -165,27 +164,30 @@ nmap("<leader>q", ":lua vim.lsp.diagnostic.set_loclist()<CR>")
 -- Lsp finder find the symbol definition implement reference
 -- when you use action in finder like open vsplit then you can
 -- use <C-t> to jump back
-map("n", "gh", "<cmd>Lspsaga finder<CR>")
+nmap("gh", "<cmd>Lspsaga finder<CR>")
 
 -- Code action
-map("n", "<A-CR>", "<cmd>Lspsaga code_action<CR>")
-map("v", "<A-CR>", "<cmd><C-U>Lspsaga range_code_action<CR>")
+nmap("<A-CR>", "<cmd>Lspsaga code_action<CR>")
+nmap("<A-CR>", "<cmd><C-U>Lspsaga range_code_action<CR>")
 
 -- Rename
-map("n", "<leader>rn", "<cmd>Lspsaga rename<CR>")
+nmap("<leader>rn", "<cmd>Lspsaga rename<CR>")
 
 -- Definition preview
-map("n", "gd", "<cmd>Lspsaga peek_definition<CR>")
+nmap("gd", "<cmd>Lspsaga peek_definition<CR>")
+
+-- Jump to definition
+nmap("gD", "<cmd>Lspsaga goto_definition<CR>")
 
 -- Show line diagnostics
-map("n", "<leader>cd", "<cmd>Lspsaga show_line_diagnostics<CR>")
+nmap("<leader>cd", "<cmd>Lspsaga show_line_diagnostics<CR>")
 
 -- Show cursor diagnostic
-map("n", "Q", "<cmd>Lspsaga show_cursor_diagnostics<CR>")
+nmap("Q", "<cmd>Lspsaga show_cursor_diagnostics<CR>")
 
 -- Diagnsotic jump can use `<c-o>` to jump back
-map("n", "]e", "<cmd>Lspsaga diagnostic_jump_next<CR>")
-map("n", "[e", "<cmd>Lspsaga diagnostic_jump_prev<CR>")
+nmap("]e", "<cmd>Lspsaga diagnostic_jump_next<CR>")
+nmap("[e", "<cmd>Lspsaga diagnostic_jump_prev<CR>")
 
 -- Obsidian Mappings
 local obsidian_prefix = "<leader>o"

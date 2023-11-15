@@ -37,22 +37,6 @@ saga.setup({
         diagnostic = "🐞",
         incoming = " ",
         outgoing = " ",
-        colors = {
-            -- float window normal background color
-            normal_bg = "#282c34",
-            -- title background color
-            title_bg = "#98c379",
-            red = "#e06c75",
-            magenta = "#c678dd",
-            orange = "#d19a66",
-            yellow = "#e5c07b",
-            green = "#98c379",
-            cyan = "#56b6c2",
-            blue = "#61afef",
-            purple = "#c678dd",
-            white = "#abb2bf",
-            black = "#282c34"
-        },
         kind = {}
     },
     --  TODO: This is a cool feature but slows down vim massively. Try again after some time (now 20.04.23)

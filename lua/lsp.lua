@@ -55,7 +55,6 @@ require("mason-lspconfig").setup_handlers({
             settings = {Lua = {diagnostics = {globals = {"P"}}}}
         })
     end,
-    --  TODO: Check why this breaks ls help windows
     ["ltex"] = function()
         lspconfig.ltex.setup({
             on_attach = function(client, bufnr)
@@ -66,6 +65,9 @@ require("mason-lspconfig").setup_handlers({
                     log_level = "none" -- string : "none", "trace", "debug", "info", "warn", "error", "fatal"
                 })
             end,
+            -- Disable for markdown for now 15.11.23
+            -- filetype = { "bib", "gitcommit", "markdown", "org", "plaintex", "rst", "rnoweb", "tex", "pandoc", "quarto", "rmd" },
+            filetype = { "bib", "gitcommit", "org", "plaintex", "rst", "rnoweb", "tex", "pandoc", "quarto", "rmd" },
             -- settings = {ltex = {language = "de-DE"}}
             settings = {ltex = {language = "en-US"}}
         })
