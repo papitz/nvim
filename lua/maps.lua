@@ -174,10 +174,10 @@ vmap("<A-CR>", "<cmd><C-U>Lspsaga range_code_action<CR>")
 nmap("<leader>rn", "<cmd>Lspsaga rename<CR>")
 
 -- Definition preview
-nmap("gd", "<cmd>Lspsaga peek_definition<CR>")
+nmap("gD", "<cmd>Lspsaga peek_definition<CR>")
 
 -- Jump to definition
-nmap("gD", "<cmd>Lspsaga goto_definition<CR>")
+nmap("gd", "<cmd>Lspsaga goto_definition<CR>")
 
 -- Show line diagnostics
 nmap("<leader>cd", "<cmd>Lspsaga show_line_diagnostics<CR>")
