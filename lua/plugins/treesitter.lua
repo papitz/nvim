@@ -12,5 +12,8 @@ require("nvim-treesitter.configs").setup({
     matchup = {enable = true},
     indent = {enable = true, disable = {"dart"}},
     autotag = {enable = true},
-    context_commentstring = {enable = true}
 })
+
+require('ts_context_commentstring').setup {
+  enable_autocmd = false,
+}
