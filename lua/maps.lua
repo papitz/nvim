@@ -122,7 +122,8 @@ nmap("<leader>te", ":VimtexErros<CR>") -- opens the quickfix window where the er
 local telescope_prefix = "<leader>f"
 nmap(telescope_prefix .. "f", "<cmd>Telescope find_files<cr>")
 nmap(telescope_prefix .. "p", "<cmd>Telescope git_files<cr>")
-nmap(telescope_prefix .. "g", "<cmd>Telescope live_grep<cr>")
+-- nmap(telescope_prefix .. "g", "<cmd>Telescope live_grep<cr>")
+nmap(telescope_prefix .. "g", "<cmd>lua require('telescope.builtin').live_grep({search_dirs = {require('util').findGitDirectory(vim.uv.cwd())}})<cr>")
 nmap(telescope_prefix .. "b", "<cmd>Telescope buffers<cr>")
 nmap(telescope_prefix .. "h", "<cmd>Telescope search_history<cr>")
 nmap(telescope_prefix .. "c", "<cmd>Telescope command_history<cr>")
