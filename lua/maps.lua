@@ -1,22 +1,16 @@
 -- remap function
 local function map(mode, shortcut, command)
-	vim.keymap.set(mode, shortcut, command, { noremap = true, silent = true })
+    vim.keymap.set(mode, shortcut, command, {noremap = true, silent = true})
 end
 
 -- function for normal mode
-local function nmap(shortcut, command)
-	map("n", shortcut, command)
-end
+local function nmap(shortcut, command) map("n", shortcut, command) end
 
 -- function for insert mode
-local function imap(shortcut, command)
-	map("i", shortcut, command)
-end
+local function imap(shortcut, command) map("i", shortcut, command) end
 
 -- function for visual mode
-local function vmap(shortcut, command)
-	map("v", shortcut, command)
-end
+local function vmap(shortcut, command) map("v", shortcut, command) end
 
 -- map leader to space
 vim.g.mapleader = " "
@@ -25,8 +19,8 @@ vim.g.mapleader = " "
 nmap("<esc>", ":w<CR>:noh<CR>")
 
 -- map semicolon to colon because we are lazy
-vim.api.nvim_set_keymap("n", ";", ":", { noremap = true })
-vim.api.nvim_set_keymap("v", ";", ":", { noremap = true })
+vim.api.nvim_set_keymap("n", ";", ":", {noremap = true})
+vim.api.nvim_set_keymap("v", ";", ":", {noremap = true})
 
 -- Better horizontal navigations
 nmap("H", "^")
@@ -119,11 +113,19 @@ nmap("<leader>ts", ":VimtexStatus<CR>")
 nmap("<leader>te", ":VimtexErros<CR>") -- opens the quickfix window where the errors are hidden
 
 -- Telescope mappings
+-- Function to use live grep project wide
+local function project_live_grep()
+require('telescope.builtin').live_grep({
+    search_dirs = {require('util').findGitDirectory(vim.uv.cwd())}
+})
+end
 local telescope_prefix = "<leader>f"
 nmap(telescope_prefix .. "f", "<cmd>Telescope find_files<cr>")
 nmap(telescope_prefix .. "p", "<cmd>Telescope git_files<cr>")
--- nmap(telescope_prefix .. "g", "<cmd>Telescope live_grep<cr>")
-nmap(telescope_prefix .. "g", "<cmd>lua require('telescope.builtin').live_grep({search_dirs = {require('util').findGitDirectory(vim.uv.cwd())}})<cr>")
+-- Grep local to cwd
+nmap(telescope_prefix .. "i", "<cmd>Telescope live_grep<cr>")
+-- Grep in project
+nmap(telescope_prefix .. "g", project_live_grep)
 nmap(telescope_prefix .. "b", "<cmd>Telescope buffers<cr>")
 nmap(telescope_prefix .. "h", "<cmd>Telescope search_history<cr>")
 nmap(telescope_prefix .. "c", "<cmd>Telescope command_history<cr>")
@@ -145,7 +147,8 @@ vmap("<leader>c<leader>", ":CommentToggle<CR>")
 -- NvimTree Toggle
 -- nmap("<C-b>", ":NvimTreeToggle<CR>")
 nmap("<C-b>", ":Neotree dir=./ toggle position=left <CR>")
-vim.cmd("autocmd! FileType dashboard nnoremap <buffer> <silent> <C-b> :Neotree dir=./ toggle position=float <CR>")
+vim.cmd(
+    "autocmd! FileType dashboard nnoremap <buffer> <silent> <C-b> :Neotree dir=./ toggle position=float <CR>")
 
 -- LSP Mappings
 -- nmap("gd", ":lua vim.lsp.buf.definition()<CR>")
@@ -199,12 +202,12 @@ nmap(obsidian_prefix .. "b", ":ObsidianBacklinks<CR>")
 nmap(obsidian_prefix .. "n", ":ObsidianNew<CR>")
 -- override the 'gf' keymap to utilize Obsidian's search functionality.
 vim.keymap.set("n", "gf", function()
-	if require("obsidian").util.cursor_on_markdown_link() then
-		return "<cmd>ObsidianFollowLink<CR>"
-	else
-		return "gf"
-	end
-end, { noremap = false, expr = true })
+    if require("obsidian").util.cursor_on_markdown_link() then
+        return "<cmd>ObsidianFollowLink<CR>"
+    else
+        return "gf"
+    end
+end, {noremap = false, expr = true})
 
 -- Hover Doc
 map("n", "K", "<cmd>Lspsaga hover_doc<CR>")
@@ -226,8 +229,8 @@ map("t", "<C-t>", ":ToggleTerm dir=%:p:h<CR>")
 map("n", "v:count1 <C-t>", ":v:count1" .. '"ToggleTerm"<CR>')
 map("v", "v:count1 <C-t>", ":v:count1" .. '"ToggleTerm"<CR>')
 function _G.set_terminal_keymaps()
-	map("t", "<leader><esc>", "<C-\\><C-n>")
-	map("t", "<C-t>", "<C-\\><C-n>:ToggleTerm dir=%:p:h<CR>")
+    map("t", "<leader><esc>", "<C-\\><C-n>")
+    map("t", "<C-t>", "<C-\\><C-n>:ToggleTerm dir=%:p:h<CR>")
 end
 vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
 
@@ -265,10 +268,11 @@ nmap("<Leader><Leader>x", ":lua require('notify').dismiss()<cr>")
 
 -- toggle virtual text
 function Virtual_text_toggle()
-	vim.diagnostic.config({
-		virtual_text = not vim.diagnostic.config().virtual_text,
-	})
-	print("Virtual Text " .. (vim.diagnostic.config().virtual_text and "enabled" or "disabled"))
+    vim.diagnostic.config({
+        virtual_text = not vim.diagnostic.config().virtual_text
+    })
+    print("Virtual Text " ..
+              (vim.diagnostic.config().virtual_text and "enabled" or "disabled"))
 end
 vim.cmd([[ command! VirtualTextToggle lua Virtual_text_toggle()]])
 nmap("<Leader>u", ":VirtualTextToggle<CR>")
@@ -286,12 +290,8 @@ nmap("<leader>d", ":DogeGenerate<CR>")
 nmap("<leader>!", require("grapple").toggle)
 nmap("<leader><Tab>", require("grapple").cycle_forward)
 nmap("<leader><S-Tab>", require("grapple").cycle_forward)
-nmap("<leader>G", function()
-	require("grapple").popup_tags()
-end)
+nmap("<leader>G", function() require("grapple").popup_tags() end)
 
 for i = 1, 9 do
-	nmap("<leader>" .. i, function()
-		require("grapple").select({ key = i })
-	end)
+    nmap("<leader>" .. i, function() require("grapple").select({key = i}) end)
 end
