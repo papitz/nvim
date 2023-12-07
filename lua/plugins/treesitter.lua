@@ -10,7 +10,7 @@ require("nvim-treesitter.configs").setup({
         disable = {"latex"}
     },
     matchup = {enable = true},
-    indent = {enable = true, disable = {"dart"}},
+    indent = {enable = true, disable = {"dart", "ruby"}},
     autotag = {enable = true},
 })
 

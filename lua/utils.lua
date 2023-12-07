@@ -27,6 +27,7 @@ local commands = {
 	javascript = "node %s",
 	lua = "lua %s",
 	python = "python3 %s",
+    ruby = "ruby %s"
 }
 
 _G.compile_and_run = function()

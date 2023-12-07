@@ -218,11 +218,12 @@ map("n", "<leader>e", "<cmd>Lspsaga show_cursor_diagnostics<CR>")
 -- Flutter Developement
 local flutter_prefix = "<leader>F"
 nmap(flutter_prefix .. "a", "<cmd>FlutterRun<CR>")
-nmap(flutter_prefix .. "<leader>Fq", "<cmd>FlutterQuit<CR>")
-nmap(flutter_prefix .. "<leader>Fr", "<cmd>FlutterReload<CR>")
-nmap(flutter_prefix .. "<leader>FR", "<cmd>FlutterRestart<CR>")
-nmap(flutter_prefix .. "<leader>FD", "<cmd>FlutterVisualDebug<CR>")
-nmap(flutter_prefix .. "<leader>FF", "<cmd>FlutterCopyProfilerUrl<CR>")
+nmap(flutter_prefix .. "e", "<cmd>FlutterEmulators<CR>")
+nmap(flutter_prefix .. "q", "<cmd>FlutterQuit<CR>")
+nmap(flutter_prefix .. "r", "<cmd>FlutterReload<CR>")
+nmap(flutter_prefix .. "R", "<cmd>FlutterRestart<CR>")
+nmap(flutter_prefix .. "D", "<cmd>FlutterVisualDebug<CR>")
+nmap(flutter_prefix .. "F", "<cmd>FlutterCopyProfilerUrl<CR>")
 -- ToggleTerm
 map("n", "<C-t>", ":ToggleTerm dir=%:p:h<CR>")
 map("t", "<C-t>", ":ToggleTerm dir=%:p:h<CR>")
