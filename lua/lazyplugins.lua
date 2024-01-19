@@ -18,15 +18,15 @@ local plugins = {
     --     config = function() require("plugins/obsidian") end
     -- }, -- { "github/copilot.vim" },
     -- File explorer tree.
-    {
-        "nvim-neo-tree/neo-tree.nvim",
-        branch = "v3.x",
-        dependencies = {
-            "nvim-lua/plenary.nvim", "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-            "MunifTanjim/nui.nvim"
-        },
-        config = function() require("plugins/neo-tree") end
-    }, -- Window Picker
+    -- {
+    --     "nvim-neo-tree/neo-tree.nvim",
+    --     branch = "v3.x",
+    --     dependencies = {
+    --         "nvim-lua/plenary.nvim", "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+    --         "MunifTanjim/nui.nvim"
+    --     },
+    --     config = function() require("plugins/neo-tree") end
+    -- }, -- Window Picker
     {
         "s1n7ax/nvim-window-picker",
         -- tag = "v1.*",
@@ -265,4 +265,6 @@ local plugins = {
 local opts = {}
 
 require("lazy").setup(plugins, opts)
+--  TODO: This is the line we need to get plugin specs
+require("lazy").setup("pluginsNew")
 require("plugins.vimtex")
