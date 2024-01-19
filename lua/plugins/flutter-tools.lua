@@ -30,7 +30,7 @@ require("flutter-tools").setup({
 	closing_tags = {
 		highlight = "NonText", -- highlight for the closing tag
 		prefix = ">", -- character to use for close tag e.g. > Widget
-		enabled = true, -- set to false to disable
+		enabled = false, -- set to false to disable
 	},
 	dev_log = {
 		enabled = true,
@@ -38,7 +38,7 @@ require("flutter-tools").setup({
 	},
 	dev_tools = {
 		autostart = false, -- autostart devtools server if not detected
-		auto_open_browser = false, -- Automatically opens devtools in the browser
+		auto_open_browser = true, -- Automatically opens devtools in the browser
 	},
 	outline = {
 		open_cmd = "30vnew", -- command to use to open the outline buffer
@@ -54,7 +54,7 @@ require("flutter-tools").setup({
 		},
 		-- https://github.com/dart-lang/sdk/blob/master/pkg/analysis_server/tool/lsp_spec/README.md#client-workspace-configuration
 		settings = {
-			showTodos = true,
+			showTodos = false,
 			completeFunctionCalls = true,
 			analysisExcludedFolders = { "<path-to-flutter-sdk-packages>" },
 			renameFilesWithClasses = "prompt", -- "always"

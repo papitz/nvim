@@ -32,10 +32,10 @@ local plugins = {
         -- tag = "v1.*",
         config = function() require("window-picker").setup() end
     }, -- Bufferline.
-    {
-        "akinsho/nvim-bufferline.lua",
-        config = function() require("plugins/bufferline") end
-    }, -- {"WhoIsSethDaniel/lualine-lsp-progress.nvim"}, -- Statusline.
+    -- {
+    --     "akinsho/nvim-bufferline.lua",
+    --     config = function() require("plugins/bufferline") end
+    -- }, -- {"WhoIsSethDaniel/lualine-lsp-progress.nvim"}, -- Statusline.
     {
         "nvim-lualine/lualine.nvim",
         dependencies = {
@@ -62,7 +62,8 @@ local plugins = {
         "nvim-treesitter/nvim-treesitter",
         dependencies = {
             'JoosepAlviste/nvim-ts-context-commentstring',
-            "nvim-treesitter/nvim-treesitter-context"
+            -- Big slowdown
+            -- "nvim-treesitter/nvim-treesitter-context"
         },
         -- build = ":TSUpdate",
         config = function() require("plugins/treesitter") end
@@ -79,9 +80,11 @@ local plugins = {
         "glepnir/dashboard-nvim",
         config = function() require("plugins/dashboard") end
     }, -- Fuzzy finder and its requirments.
-    {"nvim-lua/plenary.nvim"}, {"nvim-telescope/telescope.nvim"},
-
-    -- LSP, LSPInstaller and snippets
+    {"nvim-lua/plenary.nvim"}, 
+    {
+        "nvim-telescope/telescope.nvim",
+        config = function() require("plugins/telescope") end
+    }, -- LSP, LSPInstaller and snippets
     {
         "williamboman/mason.nvim", "williamboman/mason-lspconfig.nvim",
         "neovim/nvim-lspconfig"
@@ -100,9 +103,11 @@ local plugins = {
             "hrsh7th/cmp-calc"
         },
         config = function() require("plugins/cmp") end
-    },
-    {"L3MON4D3/LuaSnip", config = function() require("plugins/snippets") end},
-    {"saadparwaiz1/cmp_luasnip"}, -- Vim Lua LSP
+    }, {
+        "L3MON4D3/LuaSnip",
+        version = "v2.*",
+        config = function() require("plugins/snippets") end
+    }, {"saadparwaiz1/cmp_luasnip"}, -- Vim Lua LSP
     {"folke/neodev.nvim"}, -- LSP signature.
     -- {
     --     "ray-x/lsp_signature.nvim",
@@ -200,7 +205,7 @@ local plugins = {
         ft = "markdown",
         build = "cd app && yarn install",
         config = function() require("plugins/mdpreview") end
-    }, {"ellisonleao/glow.nvim", config = true, cmd = "Glow"},
+    },
     -- auto generate doc strings
     {"kkoomen/vim-doge", build = function() vim.fn["doge#install"]() end},
 
@@ -216,13 +221,15 @@ local plugins = {
         config = function() require("plugins/flutter-tools") end
     }, -- jumping between files on a project basis
     {"cbochs/grapple.nvim", dependencies = {"nvim-lua/plenary.nvim"}},
-    {"lervag/vimtex", ft = "tex"}, {"barreiroleo/ltex-extra.nvim"}, {
+    {"lervag/vimtex", ft = "tex"}, {"barreiroleo/ltex-extra.nvim"},
+    {
         "folke/noice.nvim",
         event = "VeryLazy",
         opts = {},
         config = function() require("plugins/noice") end,
         dependencies = {"MunifTanjim/nui.nvim", "rcarriga/nvim-notify"}
-    }, {
+    },
+    {
         "folke/flash.nvim",
         event = "VeryLazy",
         opts = {},
