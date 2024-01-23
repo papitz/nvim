@@ -61,7 +61,7 @@ local plugins = {
     {
         "nvim-treesitter/nvim-treesitter",
         dependencies = {
-            'JoosepAlviste/nvim-ts-context-commentstring',
+            'JoosepAlviste/nvim-ts-context-commentstring'
             -- Big slowdown
             -- "nvim-treesitter/nvim-treesitter-context"
         },
@@ -80,8 +80,7 @@ local plugins = {
         "glepnir/dashboard-nvim",
         config = function() require("plugins/dashboard") end
     }, -- Fuzzy finder and its requirments.
-    {"nvim-lua/plenary.nvim"}, 
-    {
+    {"nvim-lua/plenary.nvim"}, {
         "nvim-telescope/telescope.nvim",
         config = function() require("plugins/telescope") end
     }, -- LSP, LSPInstaller and snippets
@@ -205,31 +204,27 @@ local plugins = {
         ft = "markdown",
         build = "cd app && yarn install",
         config = function() require("plugins/mdpreview") end
-    },
-    -- auto generate doc strings
+    }, -- auto generate doc strings
     {"kkoomen/vim-doge", build = function() vim.fn["doge#install"]() end},
 
     -- notifications
     {"rcarriga/nvim-notify", config = function() require("plugins/notify") end},
 
     -- flutter developement
-    {"reisub0/hot-reload.vim"},
-    {
+    {"reisub0/hot-reload.vim"}, {
         "akinsho/flutter-tools.nvim",
         dependencies = "nvim-lua/plenary.nvim",
         -- ft = "dart",
         config = function() require("plugins/flutter-tools") end
     }, -- jumping between files on a project basis
     {"cbochs/grapple.nvim", dependencies = {"nvim-lua/plenary.nvim"}},
-    {"lervag/vimtex", ft = "tex"}, {"barreiroleo/ltex-extra.nvim"},
-    {
+    {"lervag/vimtex", ft = "tex"}, {"barreiroleo/ltex-extra.nvim"}, {
         "folke/noice.nvim",
         event = "VeryLazy",
         opts = {},
         config = function() require("plugins/noice") end,
         dependencies = {"MunifTanjim/nui.nvim", "rcarriga/nvim-notify"}
-    },
-    {
+    }, {
         "folke/flash.nvim",
         event = "VeryLazy",
         opts = {},
@@ -246,6 +241,17 @@ local plugins = {
                 function() require("flash").treesitter() end,
                 desc = "Flash Treesitter"
             }
+        }
+    }, {
+        "HakonHarnes/img-clip.nvim",
+        event = "BufEnter",
+        opts = {
+            -- add options here
+            -- or leave it empty to use the default settings
+        },
+        keys = {
+            -- suggested keymap
+            {"<leader>ip", "<cmd>PasteImage<cr>", desc = "Paste clipboard image"}
         }
     }
     -- {"lewis6991/satellite.nvim"}
