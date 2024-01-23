@@ -1,98 +1,5 @@
 local plugins = {
-    -- quicker lua loading
-    {"lewis6991/impatient.nvim"}, -- color scheme
-    -- {"navarasu/onedark.nvim", lazy = false, priority = 1000},
-    -- {"folke/tokyonight.nvim", lazy = false, priority = 1000, opts = {}}, {
-    --     "epwalsh/obsidian.nvim",
-    --     lazy = true,
-    --     -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand':
-    --     event = {"BufReadPre " .. vim.fn.expand("~") .. "/notes/**.md"},
-    --     dependencies = {
-    --         -- Required.
-    --         "nvim-lua/plenary.nvim", -- Optional, for completion.
-    --         "hrsh7th/nvim-cmp",
-    --
-    --         -- Optional, for search and quick-switch functionality.
-    --         "nvim-telescope/telescope.nvim"
-    --     },
-    --     config = function() require("plugins/obsidian") end
-    -- }, -- { "github/copilot.vim" },
-    -- File explorer tree.
-    -- {
-    --     "nvim-neo-tree/neo-tree.nvim",
-    --     branch = "v3.x",
-    --     dependencies = {
-    --         "nvim-lua/plenary.nvim", "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-    --         "MunifTanjim/nui.nvim"
-    --     },
-    --     config = function() require("plugins/neo-tree") end
-    -- }, -- Window Picker
-    {
-        "s1n7ax/nvim-window-picker",
-        -- tag = "v1.*",
-        config = function() require("window-picker").setup() end
-    }, -- Bufferline.
-    -- {
-    --     "akinsho/nvim-bufferline.lua",
-    --     config = function() require("plugins/bufferline") end
-    -- }, -- {"WhoIsSethDaniel/lualine-lsp-progress.nvim"}, -- Statusline.
-    {
-        "nvim-lualine/lualine.nvim",
-        dependencies = {
-            'nvim-tree/nvim-web-devicons', 'linrongbin16/lsp-progress.nvim'
-        },
-        config = function() require("plugins/lualine") end
-    }, {
-        'linrongbin16/lsp-progress.nvim',
-        dependencies = {'nvim-tree/nvim-web-devicons'},
-        config = function() require('lsp-progress').setup() end
-    }, -- neorg
-    {
-        "nvim-neorg/neorg",
-        ft = "norg",
-        dependencies = "nvim-lua/plenary.nvim",
-        -- build = ":Neorg sync-parsers",
-        config = function() require("plugins/neorg") end
-    }, -- Drawing Venn Diagramms in Neorg
-    {"jbyuki/venn.nvim", ft = "norg"},
 
-    {"anuvyklack/hydra.nvim", config = function() require("plugins/hydra") end},
-
-    {
-        "nvim-treesitter/nvim-treesitter",
-        dependencies = {
-            'JoosepAlviste/nvim-ts-context-commentstring',
-            -- Big slowdown
-            -- "nvim-treesitter/nvim-treesitter-context"
-        },
-        -- build = ":TSUpdate",
-        config = function() require("plugins/treesitter") end
-    }, -- Colorizer (for highlighting color codes).
-    {
-        "norcalli/nvim-colorizer.lua",
-        event = "BufRead",
-        config = function()
-            require("plugins/colorize")
-            vim.cmd("ColorizerAttachToBuffer")
-        end
-    }, -- Startup screen.
-    {
-        "glepnir/dashboard-nvim",
-        config = function() require("plugins/dashboard") end
-    }, -- Fuzzy finder and its requirments.
-    {"nvim-lua/plenary.nvim"}, 
-    {
-        "nvim-telescope/telescope.nvim",
-        config = function() require("plugins/telescope") end
-    }, -- LSP, LSPInstaller and snippets
-    {
-        "williamboman/mason.nvim", "williamboman/mason-lspconfig.nvim",
-        "neovim/nvim-lspconfig"
-    }, {
-        "pmizio/typescript-tools.nvim",
-        dependencies = {"nvim-lua/plenary.nvim", "neovim/nvim-lspconfig"},
-        opts = {}
-    },
     {"glepnir/lspsaga.nvim", config = function() require("plugins/lspsaga") end},
     {"rafamadriz/friendly-snippets"}, {"Neevash/awesome-flutter-snippets"}, {
         "hrsh7th/nvim-cmp",
@@ -108,7 +15,7 @@ local plugins = {
         version = "v2.*",
         config = function() require("plugins/snippets") end
     }, {"saadparwaiz1/cmp_luasnip"}, -- Vim Lua LSP
-    {"folke/neodev.nvim"}, -- LSP signature.
+    {}, -- LSP signature.
     -- {
     --     "ray-x/lsp_signature.nvim",
     --     config = function() require("plugins/lsp_signature") end
@@ -200,12 +107,6 @@ local plugins = {
     --     config = function() require("leap").set_default_keymaps() end
     -- }, -- swap parameters around
     {"mizlan/iswap.nvim"}, -- markdown preview in browser
-    {
-        "iamcco/markdown-preview.nvim",
-        ft = "markdown",
-        build = "cd app && yarn install",
-        config = function() require("plugins/mdpreview") end
-    },
     -- auto generate doc strings
     {"kkoomen/vim-doge", build = function() vim.fn["doge#install"]() end},
 

@@ -28,10 +28,7 @@ return {
             dim_inactive = false, -- dims inactive windows
             lualine_bold = false -- When `true`, section headers in the lualine theme will be bold
 
-        },
-        config = function(_, opts)
-            require("tokyonight").setup(opts)
-        end
+        }
     }
     -- {
     --     "epwalsh/obsidian.nvim",

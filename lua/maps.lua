@@ -1,16 +1,8 @@
--- remap function
-local function map(mode, shortcut, command)
-    vim.keymap.set(mode, shortcut, command, {noremap = true, silent = true})
-end
-
--- function for normal mode
-local function nmap(shortcut, command) map("n", shortcut, command) end
-
--- function for insert mode
-local function imap(shortcut, command) map("i", shortcut, command) end
-
--- function for visual mode
-local function vmap(shortcut, command) map("v", shortcut, command) end
+local util = require("util")
+local map = util.map
+local imap = util.imap
+local vmap = util.vmap
+local nmap = util.nmap
 
 -- map leader to space
 vim.g.mapleader = " "
@@ -37,8 +29,8 @@ nmap("<leader>K", ":wincmd K<CR>")
 nmap("<leader>L", ":wincmd L<CR>")
 
 -- buffer switching
-nmap("gb", ":BufferLinePick<CR>")
-nmap("<leader>bx", ":BufferLinePickClose<CR>")
+-- nmap("gb", ":BufferLinePick<CR>")
+-- nmap("<leader>bx", ":BufferLinePickClose<CR>")
 
 -- Split resizing
 nmap("<C-Right>", "<C-w>>")
@@ -87,7 +79,8 @@ nmap("<leader><leader>q", ":copen<CR>")
 nmap("<leader><leader>l", ":.cc<CR>")
 
 -- Markdown Preview control
-nmap("<leader>m", ":MarkdownPreviewToggle<CR>")
+--  TODO: Move to plugin
+-- nmap("<leader>m", ":MarkdownPreviewToggle<CR>")
 
 -- map spelling
 nmap("<F8>", ":setlocal spell spelllang=de,en <return>")
@@ -100,55 +93,36 @@ imap("<C-l>", "<c-g>u<Esc>[s1z=`]a<c-g>u")
 nmap("<leader>g", ":LazyGit<CR>")
 
 -- swap parameters around
-nmap("<leader>sw", ":ISwap<CR>")
+-- TODO Move to plugin
+-- nmap("<leader>sw", ":ISwap<CR>")
 
 -- switch between the last two files with bs
 nmap("<BS>", "<C-^>")
 
 -- vimtex mappings
-nmap("<leader>tt", ":VimtexCompile<CR>")
-nmap("<leader>tv", ":VimtexView<CR>")
-nmap("<leader>tc", ":VimtexTocToggle<CR>")
-nmap("<leader>ts", ":VimtexStatus<CR>")
-nmap("<leader>te", ":VimtexErros<CR>") -- opens the quickfix window where the errors are hidden
+-- TODO Move to plugin
+-- nmap("<leader>tt", ":VimtexCompile<CR>")
+-- nmap("<leader>tv", ":VimtexView<CR>")
+-- nmap("<leader>tc", ":VimtexTocToggle<CR>")
+-- nmap("<leader>ts", ":VimtexStatus<CR>")
+-- nmap("<leader>te", ":VimtexErros<CR>") -- opens the quickfix window where the errors are hidden
 
 -- Telescope mappings
 -- Function to use live grep project wide
-local function project_live_grep()
-require('telescope.builtin').live_grep({
-    search_dirs = {require('util').findGitDirectory(vim.uv.cwd())}
-})
-end
-local telescope_prefix = "<leader>f"
-nmap(telescope_prefix .. "f", "<cmd>Telescope find_files<cr>")
-nmap(telescope_prefix .. "p", "<cmd>Telescope git_files<cr>")
--- Grep local to cwd
-nmap(telescope_prefix .. "i", "<cmd>Telescope live_grep<cr>")
--- Grep in project
-nmap(telescope_prefix .. "g", project_live_grep)
-nmap(telescope_prefix .. "b", "<cmd>Telescope buffers<cr>")
-nmap(telescope_prefix .. "h", "<cmd>Telescope search_history<cr>")
-nmap(telescope_prefix .. "c", "<cmd>Telescope command_history<cr>")
-nmap(telescope_prefix .. "q", "<cmd>Telescope quickfix<cr>")
-nmap(telescope_prefix .. "r", "<cmd>Telescope registers<cr>")
-nmap(telescope_prefix .. "s", "<cmd>Telescope spell_suggest<cr>")
-nmap(telescope_prefix .. "o", "<cmd>Telescope oldfiles<cr>")
-nmap(telescope_prefix .. "m", "<cmd>Telescope marks<cr>")
-nmap(telescope_prefix .. "k", "<cmd>Telescope keymaps<cr>")
-nmap(telescope_prefix .. "l", "<cmd>Telescope lsp_references <cr>")
+-- TODO Move to plugin
 
 -- Dashboard mappings
-nmap("<leader>fn", "<cmd>DashboardNewFile<cr>")
+-- nmap("<leader>fn", "<cmd>DashboardNewFile<cr>")
 
 -- Comment mappings
-nmap("<leader>c<leader>", ":CommentToggle<CR>")
-vmap("<leader>c<leader>", ":CommentToggle<CR>")
+-- nmap("<leader>c<leader>", ":CommentToggle<CR>")
+-- vmap("<leader>c<leader>", ":CommentToggle<CR>")
 
 -- NvimTree Toggle
 -- nmap("<C-b>", ":NvimTreeToggle<CR>")
-nmap("<C-b>", ":Neotree dir=./ toggle position=left <CR>")
-vim.cmd(
-    "autocmd! FileType dashboard nnoremap <buffer> <silent> <C-b> :Neotree dir=./ toggle position=float <CR>")
+-- nmap("<C-b>", ":Neotree dir=./ toggle position=left <CR>")
+-- vim.cmd(
+--     "autocmd! FileType dashboard nnoremap <buffer> <silent> <C-b> :Neotree dir=./ toggle position=float <CR>")
 
 -- LSP Mappings
 -- nmap("gd", ":lua vim.lsp.buf.definition()<CR>")
@@ -168,75 +142,76 @@ nmap("<leader>q", ":lua vim.lsp.diagnostic.set_loclist()<CR>")
 -- Lsp finder find the symbol definition implement reference
 -- when you use action in finder like open vsplit then you can
 -- use <C-t> to jump back
-nmap("gh", "<cmd>Lspsaga finder<CR>")
-
--- Code action
-nmap("<A-CR>", "<cmd>Lspsaga code_action<CR>")
-vmap("<A-CR>", "<cmd><C-U>Lspsaga range_code_action<CR>")
-
--- Rename
-nmap("<leader>rn", "<cmd>Lspsaga rename<CR>")
-
--- Definition preview
-nmap("gD", "<cmd>Lspsaga peek_definition<CR>")
-
--- Jump to definition
-nmap("gd", "<cmd>Lspsaga goto_definition<CR>")
-
--- Show line diagnostics
-nmap("<leader>cd", "<cmd>Lspsaga show_line_diagnostics<CR>")
-
--- Show cursor diagnostic
-nmap("Q", "<cmd>Lspsaga show_cursor_diagnostics<CR>")
-
--- Diagnsotic jump can use `<c-o>` to jump back
-nmap("]e", "<cmd>Lspsaga diagnostic_jump_next<CR>")
-nmap("[e", "<cmd>Lspsaga diagnostic_jump_prev<CR>")
+-- nmap("gh", "<cmd>Lspsaga finder<CR>")
+--
+-- -- Code action
+-- nmap("<A-CR>", "<cmd>Lspsaga code_action<CR>")
+-- vmap("<A-CR>", "<cmd><C-U>Lspsaga range_code_action<CR>")
+--
+-- -- Rename
+-- nmap("<leader>rn", "<cmd>Lspsaga rename<CR>")
+--
+-- -- Definition preview
+-- nmap("gD", "<cmd>Lspsaga peek_definition<CR>")
+--
+-- -- Jump to definition
+-- nmap("gd", "<cmd>Lspsaga goto_definition<CR>")
+--
+-- -- Show line diagnostics
+-- nmap("<leader>cd", "<cmd>Lspsaga show_line_diagnostics<CR>")
+--
+-- -- Show cursor diagnostic
+-- nmap("Q", "<cmd>Lspsaga show_cursor_diagnostics<CR>")
+--
+-- -- Diagnsotic jump can use `<c-o>` to jump back
+-- nmap("]e", "<cmd>Lspsaga diagnostic_jump_next<CR>")
+-- nmap("[e", "<cmd>Lspsaga diagnostic_jump_prev<CR>")
+-- Hover Doc
+-- map("n", "K", "<cmd>Lspsaga hover_doc<CR>")
+--
+-- -- Show diagnostics
+-- map("n", "<leader>e", "<cmd>Lspsaga show_cursor_diagnostics<CR>")
 
 -- Obsidian Mappings
-local obsidian_prefix = "<leader>o"
-nmap(obsidian_prefix .. "o", ":ObsidianOpen<CR>")
-nmap(obsidian_prefix .. "s", ":ObsidianSearch<CR>")
-nmap(obsidian_prefix .. "t", ":ObsidianTemplate<CR>")
-nmap(obsidian_prefix .. "b", ":ObsidianBacklinks<CR>")
-nmap(obsidian_prefix .. "n", ":ObsidianNew<CR>")
--- override the 'gf' keymap to utilize Obsidian's search functionality.
-vim.keymap.set("n", "gf", function()
-    if require("obsidian").util.cursor_on_markdown_link() then
-        return "<cmd>ObsidianFollowLink<CR>"
-    else
-        return "gf"
-    end
-end, {noremap = false, expr = true})
+-- local obsidian_prefix = "<leader>o"
+-- nmap(obsidian_prefix .. "o", ":ObsidianOpen<CR>")
+-- nmap(obsidian_prefix .. "s", ":ObsidianSearch<CR>")
+-- nmap(obsidian_prefix .. "t", ":ObsidianTemplate<CR>")
+-- nmap(obsidian_prefix .. "b", ":ObsidianBacklinks<CR>")
+-- nmap(obsidian_prefix .. "n", ":ObsidianNew<CR>")
+-- -- override the 'gf' keymap to utilize Obsidian's search functionality.
+-- vim.keymap.set("n", "gf", function()
+--     if require("obsidian").util.cursor_on_markdown_link() then
+--         return "<cmd>ObsidianFollowLink<CR>"
+--     else
+--         return "gf"
+--     end
+-- end, {noremap = false, expr = true})
 
--- Hover Doc
-map("n", "K", "<cmd>Lspsaga hover_doc<CR>")
-
--- Show diagnostics
-map("n", "<leader>e", "<cmd>Lspsaga show_cursor_diagnostics<CR>")
 
 -- Flutter Developement
-local flutter_prefix = "<leader>F"
-nmap(flutter_prefix .. "a", "<cmd>FlutterRun<CR>")
-nmap(flutter_prefix .. "e", "<cmd>FlutterEmulators<CR>")
-nmap(flutter_prefix .. "q", "<cmd>FlutterQuit<CR>")
-nmap(flutter_prefix .. "r", "<cmd>FlutterReload<CR>")
-nmap(flutter_prefix .. "R", "<cmd>FlutterRestart<CR>")
-nmap(flutter_prefix .. "D", "<cmd>FlutterVisualDebug<CR>")
-nmap(flutter_prefix .. "F", "<cmd>FlutterCopyProfilerUrl<CR>")
--- ToggleTerm
-map("n", "<C-t>", ":ToggleTerm dir=%:p:h<CR>")
-map("t", "<C-t>", ":ToggleTerm dir=%:p:h<CR>")
-map("n", "v:count1 <C-t>", ":v:count1" .. '"ToggleTerm"<CR>')
-map("v", "v:count1 <C-t>", ":v:count1" .. '"ToggleTerm"<CR>')
-function _G.set_terminal_keymaps()
-    map("t", "<leader><esc>", "<C-\\><C-n>")
-    map("t", "<C-t>", "<C-\\><C-n>:ToggleTerm dir=%:p:h<CR>")
-end
-vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
+-- local flutter_prefix = "<leader>F"
+-- nmap(flutter_prefix .. "a", "<cmd>FlutterRun<CR>")
+-- nmap(flutter_prefix .. "e", "<cmd>FlutterEmulators<CR>")
+-- nmap(flutter_prefix .. "q", "<cmd>FlutterQuit<CR>")
+-- nmap(flutter_prefix .. "r", "<cmd>FlutterReload<CR>")
+-- nmap(flutter_prefix .. "R", "<cmd>FlutterRestart<CR>")
+-- nmap(flutter_prefix .. "D", "<cmd>FlutterVisualDebug<CR>")
+-- nmap(flutter_prefix .. "F", "<cmd>FlutterCopyProfilerUrl<CR>")
+--
+-- -- ToggleTerm
+-- map("n", "<C-t>", ":ToggleTerm dir=%:p:h<CR>")
+-- map("t", "<C-t>", ":ToggleTerm dir=%:p:h<CR>")
+-- map("n", "v:count1 <C-t>", ":v:count1" .. '"ToggleTerm"<CR>')
+-- map("v", "v:count1 <C-t>", ":v:count1" .. '"ToggleTerm"<CR>')
+-- function _G.set_terminal_keymaps()
+--     map("t", "<leader><esc>", "<C-\\><C-n>")
+--     map("t", "<C-t>", "<C-\\><C-n>:ToggleTerm dir=%:p:h<CR>")
+-- end
+-- vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
 
 -- Code formatter.
-nmap("<leader>fr", ":Neoformat<CR>")
+-- nmap("<leader>fr", ":Neoformat<CR>")
 
 -- Dap debugger
 -- nmap("<leader>br", ":lua require('dap').toggle_breakpoint()<CR>")
@@ -258,14 +233,14 @@ nmap("<Leader>se", ":SnippetsEdit<CR>")
 nmap("ZA", ":wqa<CR>")
 
 -- searching with leap
-nmap("<Leader>a", "<Plug>(leap-forward)")
-nmap("<Leader>A", "<Plug>(leap-backward)")
+-- nmap("<Leader>a", "<Plug>(leap-forward)")
+-- nmap("<Leader>A", "<Plug>(leap-backward)")
 
 -- spell suggest
 -- nmap("\\s", "a<C-X><C-S>")
 
 -- clear all notifications
-nmap("<Leader><Leader>x", ":lua require('notify').dismiss()<cr>")
+-- nmap("<Leader><Leader>x", ":lua require('notify').dismiss()<cr>")
 
 -- toggle virtual text
 function Virtual_text_toggle()
@@ -283,16 +258,16 @@ map("n", "<F7>", ":CompileAndRun<CR>")
 map("i", "<F7>", "<ESC>:CompileAndRun<CR>")
 
 -- Neorg maps
-map("n", "<Leader>Ni", ":Neorg inject-metadata<CR>")
+-- map("n", "<Leader>Ni", ":Neorg inject-metadata<CR>")
 
 -- Doge
-nmap("<leader>d", ":DogeGenerate<CR>")
+-- nmap("<leader>d", ":DogeGenerate<CR>")
 -- grapple.nvim
-nmap("<leader>!", require("grapple").toggle)
-nmap("<leader><Tab>", require("grapple").cycle_forward)
-nmap("<leader><S-Tab>", require("grapple").cycle_forward)
-nmap("<leader>G", function() require("grapple").popup_tags() end)
+-- nmap("<leader>!", require("grapple").toggle)
+-- nmap("<leader><Tab>", require("grapple").cycle_forward)
+-- nmap("<leader><S-Tab>", require("grapple").cycle_forward)
+-- nmap("<leader>G", function() require("grapple").popup_tags() end)
 
-for i = 1, 9 do
-    nmap("<leader>" .. i, function() require("grapple").select({key = i}) end)
-end
+-- for i = 1, 9 do
+--     nmap("<leader>" .. i, function() require("grapple").select({key = i}) end)
+-- end
