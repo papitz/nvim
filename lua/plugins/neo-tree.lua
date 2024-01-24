@@ -1,4 +1,3 @@
-require('util').nmap("<C-b>", ":NvimTreeToggle<CR>")
 require('util').nmap("<C-b>", ":Neotree dir=./ toggle position=left <CR>")
 
 vim.cmd(
@@ -7,6 +6,7 @@ vim.cmd(
 return {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v3.x",
+    cmd = "Neotree",
     dependencies = {
         "nvim-lua/plenary.nvim", "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
         "MunifTanjim/nui.nvim"

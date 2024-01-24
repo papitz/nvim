@@ -39,6 +39,7 @@ map("n", "K", "<cmd>Lspsaga hover_doc<CR>")
 map("n", "<leader>e", "<cmd>Lspsaga show_cursor_diagnostics<CR>")
 return {
     "glepnir/lspsaga.nvim",
+    cmd = 'Lspsaga',
     opts = {
         code_action = {keys = {quit = "<ESC>", exec = "<CR>"}},
         lightbulb = {

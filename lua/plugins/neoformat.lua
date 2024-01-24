@@ -1,4 +1,6 @@
 --  FIX: Use a new formatter, this one does not get upgraded as much
+require("util").nmap("<leader>fr", ":Neoformat<CR>")
+
 return {
     "sbdchd/neoformat",
     cmd = "Neoformat",
@@ -18,7 +20,5 @@ return {
         vim.g.neoformat_enabled_cs = {"csharpier"}
         vim.g.neoformat_enabled_javascript = {"prettierd", "eslint_d"}
         vim.g.neoformat_enabled_typescript = {"prettierd", "eslint_d"}
-
-        require("util").nmap("<leader>fr", ":Neoformat<CR>")
     end
 }

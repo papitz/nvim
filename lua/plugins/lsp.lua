@@ -29,12 +29,11 @@ return {
                 }
             }
         }
-    }, {
+    }, {"pmizio/typescript-tools.nvim", ft = {'javascript', 'typescript'}}, {
         "williamboman/mason-lspconfig.nvim",
         dependencies = {
             "neovim/nvim-lspconfig", "folke/neodev.nvim",
-            "williamboman/mason.nvim", "hrsh7th/nvim-cmp",
-            "pmizio/typescript-tools.nvim"
+            "williamboman/mason.nvim", "hrsh7th/nvim-cmp"
         },
         opts = {ensure_installed = {"lua_ls"}},
         config = function()

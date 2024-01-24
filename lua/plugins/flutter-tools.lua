@@ -1,16 +1,18 @@
+local nmap = require('util').nmap
+local flutter_prefix = "<leader>F"
+nmap(flutter_prefix .. "a", "<cmd>FlutterRun<CR>")
+nmap(flutter_prefix .. "e", "<cmd>FlutterEmulators<CR>")
+nmap(flutter_prefix .. "q", "<cmd>FlutterQuit<CR>")
+nmap(flutter_prefix .. "r", "<cmd>FlutterReload<CR>")
+nmap(flutter_prefix .. "R", "<cmd>FlutterRestart<CR>")
+nmap(flutter_prefix .. "D", "<cmd>FlutterVisualDebug<CR>")
+nmap(flutter_prefix .. "F", "<cmd>FlutterCopyProfilerUrl<CR>")
+
 return {
     "akinsho/flutter-tools.nvim",
+    ft = "dart",
     dependencies = "nvim-lua/plenary.nvim",
     opts = function()
-        local nmap = require('util').nmap
-        local flutter_prefix = "<leader>F"
-        nmap(flutter_prefix .. "a", "<cmd>FlutterRun<CR>")
-        nmap(flutter_prefix .. "e", "<cmd>FlutterEmulators<CR>")
-        nmap(flutter_prefix .. "q", "<cmd>FlutterQuit<CR>")
-        nmap(flutter_prefix .. "r", "<cmd>FlutterReload<CR>")
-        nmap(flutter_prefix .. "R", "<cmd>FlutterRestart<CR>")
-        nmap(flutter_prefix .. "D", "<cmd>FlutterVisualDebug<CR>")
-        nmap(flutter_prefix .. "F", "<cmd>FlutterCopyProfilerUrl<CR>")
 
         return {
             ui = {

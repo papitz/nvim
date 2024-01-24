@@ -17,7 +17,7 @@ nmap(telescope_prefix .. "b", "<cmd>Telescope buffers<cr>")
 nmap(telescope_prefix .. "h", "<cmd>Telescope search_history<cr>")
 nmap(telescope_prefix .. "c", "<cmd>Telescope command_history<cr>")
 nmap(telescope_prefix .. "q", "<cmd>Telescope quickfix<cr>")
-nmap(telescope_prefix .. "r", "<cmd>Telescope registers<cr>")
+nmap(telescope_prefix .. "R", "<cmd>Telescope registers<cr>")
 nmap(telescope_prefix .. "s", "<cmd>Telescope spell_suggest<cr>")
 nmap(telescope_prefix .. "o", "<cmd>Telescope oldfiles<cr>")
 nmap(telescope_prefix .. "m", "<cmd>Telescope marks<cr>")
@@ -26,6 +26,7 @@ nmap(telescope_prefix .. "l", "<cmd>Telescope lsp_references <cr>")
 
 return {
     "nvim-telescope/telescope.nvim",
+    cmd = "Telescope",
     opts = {
         pickers = {
             buffers = {
