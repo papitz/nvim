@@ -28,9 +28,6 @@ nmap("<leader>J", ":wincmd J<CR>")
 nmap("<leader>K", ":wincmd K<CR>")
 nmap("<leader>L", ":wincmd L<CR>")
 
--- buffer switching
--- nmap("gb", ":BufferLinePick<CR>")
--- nmap("<leader>bx", ":BufferLinePickClose<CR>")
 
 -- Split resizing
 nmap("<C-Right>", "<C-w>>")
@@ -227,7 +224,6 @@ nmap("<Leader>ss", ":<C-u>SessionSave<CR>")
 nmap("<Leader>sl", ":<C-u>SessionLoad<CR>")
 
 -- Edit the snippet files
-nmap("<Leader>se", ":SnippetsEdit<CR>")
 
 -- shortcut to write and close all buffers
 nmap("ZA", ":wqa<CR>")

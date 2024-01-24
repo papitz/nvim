@@ -1,30 +1,5 @@
 local plugins = {
 
-    {"glepnir/lspsaga.nvim", config = function() require("plugins/lspsaga") end},
-    {"rafamadriz/friendly-snippets"}, {"Neevash/awesome-flutter-snippets"}, {
-        "hrsh7th/nvim-cmp",
-        dependencies = {
-            "hrsh7th/cmp-buffer", "hrsh7th/cmp-nvim-lsp",
-            "saadparwaiz1/cmp_luasnip", "rafamadriz/friendly-snippets",
-            "L3MON4D3/LuaSnip", "hrsh7th/cmp-nvim-lua", "hrsh7th/cmp-path",
-            "hrsh7th/cmp-calc"
-        },
-        config = function() require("plugins/cmp") end
-    }, {
-        "L3MON4D3/LuaSnip",
-        version = "v2.*",
-        config = function() require("plugins/snippets") end
-    }, {"saadparwaiz1/cmp_luasnip"}, -- Vim Lua LSP
-    {}, -- LSP signature.
-    -- {
-    --     "ray-x/lsp_signature.nvim",
-    --     config = function() require("plugins/lsp_signature") end
-    -- }, -- VsCode like pictograms for lsp.
-    {"onsails/lspkind-nvim"}, -- popup menu
-    {"RishabhRD/popfix"}, {
-        "hood/popui.nvim",
-        config = function() vim.ui.select = require("popui.ui-overrider") end
-    },
 
     -- Debugger -- TODO: take care of this when we need it for the first time
     -- { "mfussenegger/nvim-dap" },
@@ -42,21 +17,7 @@ local plugins = {
     -- },
 
     -- This plugin adds indentation guides to all lines (including empty lines).
-    {
-        "lukas-reineke/indent-blankline.nvim",
-        main = "ibl",
-        -- event = "BufRead",
-        config = function() require("plugins/indent-blankline") end
-    }, -- Code formatter.
-    {
-        "sbdchd/neoformat",
-        cmd = "Neoformat",
-        config = function() require("plugins/neoformat") end
-    }, {
-        "akinsho/nvim-toggleterm.lua",
-        cmd = "ToggleTerm",
-        config = function() require("plugins/toggleterm") end
-    }, -- Git support for nvim.
+    , -- Git support for nvim.
     {"tpope/vim-fugitive"}, -- Git signs.
     {
         "lewis6991/gitsigns.nvim",
@@ -114,23 +75,20 @@ local plugins = {
     {"rcarriga/nvim-notify", config = function() require("plugins/notify") end},
 
     -- flutter developement
-    {"reisub0/hot-reload.vim"},
-    {
+    {"reisub0/hot-reload.vim"}, {
         "akinsho/flutter-tools.nvim",
         dependencies = "nvim-lua/plenary.nvim",
         -- ft = "dart",
         config = function() require("plugins/flutter-tools") end
     }, -- jumping between files on a project basis
     {"cbochs/grapple.nvim", dependencies = {"nvim-lua/plenary.nvim"}},
-    {"lervag/vimtex", ft = "tex"}, {"barreiroleo/ltex-extra.nvim"},
-    {
+    {"lervag/vimtex", ft = "tex"}, {"barreiroleo/ltex-extra.nvim"}, {
         "folke/noice.nvim",
         event = "VeryLazy",
         opts = {},
         config = function() require("plugins/noice") end,
         dependencies = {"MunifTanjim/nui.nvim", "rcarriga/nvim-notify"}
-    },
-    {
+    }, {
         "folke/flash.nvim",
         event = "VeryLazy",
         opts = {},
