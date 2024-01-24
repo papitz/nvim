@@ -1,3 +1,42 @@
+local util = require("util")
+local map = util.map
+local vmap = util.vmap
+local nmap = util.nmap
+
+-- Lspsaga Mappings
+-- Lsp finder find the symbol definition implement reference
+-- when you use action in finder like open vsplit then you can
+-- use <C-t> to jump back
+nmap("gh", "<cmd>Lspsaga finder<CR>")
+
+-- Code action
+nmap("<A-CR>", "<cmd>Lspsaga code_action<CR>")
+vmap("<A-CR>", "<cmd><C-U>Lspsaga range_code_action<CR>")
+
+-- Rename
+nmap("<leader>rn", "<cmd>Lspsaga rename<CR>")
+
+-- Definition preview
+nmap("gD", "<cmd>Lspsaga peek_definition<CR>")
+
+-- Jump to definition
+nmap("gd", "<cmd>Lspsaga goto_definition<CR>")
+
+-- Show line diagnostics
+nmap("<leader>cd", "<cmd>Lspsaga show_line_diagnostics<CR>")
+
+-- Show cursor diagnostic
+nmap("Q", "<cmd>Lspsaga show_cursor_diagnostics<CR>")
+
+-- Diagnsotic jump can use `<c-o>` to jump back
+nmap("]e", "<cmd>Lspsaga diagnostic_jump_next<CR>")
+nmap("[e", "<cmd>Lspsaga diagnostic_jump_prev<CR>")
+
+-- Hover Doc
+map("n", "K", "<cmd>Lspsaga hover_doc<CR>")
+
+-- Show diagnostics
+map("n", "<leader>e", "<cmd>Lspsaga show_cursor_diagnostics<CR>")
 return {
     "glepnir/lspsaga.nvim",
     opts = {

@@ -18,5 +18,7 @@ return {
         vim.g.neoformat_enabled_cs = {"csharpier"}
         vim.g.neoformat_enabled_javascript = {"prettierd", "eslint_d"}
         vim.g.neoformat_enabled_typescript = {"prettierd", "eslint_d"}
+
+        require("util").nmap("<leader>fr", ":Neoformat<CR>")
     end
 }

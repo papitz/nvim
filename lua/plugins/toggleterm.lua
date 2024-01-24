@@ -1,3 +1,16 @@
+local map = require("util").map
+
+-- ToggleTerm
+map("n", "<C-t>", ":ToggleTerm dir=%:p:h<CR>")
+map("t", "<C-t>", ":ToggleTerm dir=%:p:h<CR>")
+map("n", "v:count1 <C-t>", ":v:count1" .. '"ToggleTerm"<CR>')
+map("v", "v:count1 <C-t>", ":v:count1" .. '"ToggleTerm"<CR>')
+function _G.set_terminal_keymaps()
+    map("t", "<leader><esc>", "<C-\\><C-n>")
+    map("t", "<C-t>", "<C-\\><C-n>:ToggleTerm dir=%:p:h<CR>")
+end
+vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
+
 return {
     "akinsho/nvim-toggleterm.lua",
     cmd = "ToggleTerm",

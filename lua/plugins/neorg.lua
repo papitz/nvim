@@ -1,3 +1,5 @@
+require('util').map("n", "<Leader>Ni", ":Neorg inject-metadata<CR>")
+
 return {
     {
         "nvim-neorg/neorg",

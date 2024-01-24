@@ -1,3 +1,9 @@
+require('util').nmap("<C-b>", ":NvimTreeToggle<CR>")
+require('util').nmap("<C-b>", ":Neotree dir=./ toggle position=left <CR>")
+
+vim.cmd(
+    "autocmd! FileType dashboard nnoremap <buffer> <silent> <C-b> :Neotree dir=./ toggle position=float <CR>")
+
 return {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v3.x",
