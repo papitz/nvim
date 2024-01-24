@@ -13,6 +13,7 @@ local lualine_styles = {
 return {
     {
         "nvim-lualine/lualine.nvim",
+        event = "VeryLazy",
         dependencies = {
             'nvim-tree/nvim-web-devicons', 'linrongbin16/lsp-progress.nvim',
             'cbochs/grapple.nvim'

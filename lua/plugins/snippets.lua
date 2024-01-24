@@ -1,16 +1,30 @@
 return {
     "L3MON4D3/LuaSnip",
     version = "v2.*",
+    event = "InsertEnter",
     dependencies = {
-        "Neevash/awesome-flutter-snippets", "rafamadriz/friendly-snippets",
-        "saadparwaiz1/cmp_luasnip"
+        "Neevash/awesome-flutter-snippets", {
+            "rafamadriz/friendly-snippets",
+            config = function()
+                require("luasnip.loaders.from_vscode").lazy_load()
+            end
+        }, {
+            "nvim-cmp",
+            dependencies = {"saadparwaiz1/cmp_luasnip"},
+            opts = function(_, opts)
+                opts.snippet = {
+                    expand = function(args)
+                        require("luasnip").lsp_expand(args.body)
+                    end
+                }
+                table.insert(opts.sources, {name = "luasnip"})
+            end
+        }
     },
     config = function()
         local nmap = require('util').nmap
 
         HOME = os.getenv("HOME")
-        require("luasnip/loaders/from_vscode").lazy_load()
-
         -- load snippets from the ~/.config/nvim/snippets/ directory for the corresponding language
         require("luasnip/loaders/from_snipmate").lazy_load({
             path = {HOME .. "/.config/nvim/snippets"}

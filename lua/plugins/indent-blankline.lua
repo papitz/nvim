@@ -1,7 +1,7 @@
 return {
     "lukas-reineke/indent-blankline.nvim",
     main = "ibl",
-    -- event = "BufRead",
+    event = "VeryLazy",
     opts = function()
         local indent_blankline_style = 1
         local indent_blankline_styles = {"│", "¦", "┆", "▏", "⎸", "|"}
