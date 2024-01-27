@@ -33,7 +33,9 @@ return {
         "williamboman/mason-lspconfig.nvim",
         dependencies = {
             "neovim/nvim-lspconfig", "folke/neodev.nvim",
-            "williamboman/mason.nvim", "hrsh7th/nvim-cmp"
+            "williamboman/mason.nvim"
+            -- TODO: Check if we might need this
+            --, "hrsh7th/nvim-cmp"
         },
         opts = {ensure_installed = {"lua_ls"}},
         config = function()

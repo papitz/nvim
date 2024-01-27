@@ -1,7 +1,10 @@
+local neo_tree_disable = false
+if neo_tree_disable then return {} end
+
 require('util').nmap("<C-b>", ":Neotree dir=./ toggle position=left <CR>")
 
-vim.cmd(
-    "autocmd! FileType dashboard nnoremap <buffer> <silent> <C-b> :Neotree dir=./ toggle position=float <CR>")
+-- vim.cmd(
+--     "autocmd! FileType dashboard nnoremap <buffer> <silent> <C-b> :Neotree dir=./ toggle position=float <CR>")
 
 return {
     "nvim-neo-tree/neo-tree.nvim",

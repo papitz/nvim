@@ -20,6 +20,9 @@ return {
                 buftypes = {
                     "help", "terminal", "dashboard", "packer", "mason",
                     "lspinfo", "norg"
+                },
+                filetypes = {
+                    "dashboard"
                 }
             }
         }
