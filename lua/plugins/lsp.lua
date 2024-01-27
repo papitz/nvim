@@ -4,16 +4,17 @@ vim.cmd(
 -- show the diagnostic description when the cursor is placed on the error
 -- vim.cmd([[autocmd CursorHold * lua vim.diagnostic.open_float(nil,{focusable=false,scope="cursor"})]])
 -- vim.cmd([[autocmd CursorHold * Lspsaga show_cursor_diagnostics]])
-local signs = {
-    Error = " ",
-    Warning = " ",
-    Hint = "󰌵 ",
-    Information = " "
-}
-for type, icon in pairs(signs) do
-    local hl = "LspDiagnosticsSign" .. type
-    vim.fn.sign_define(hl, {text = icon, texthl = hl, numhl = ""})
-end
+-- TODO: Check if this breaks
+-- local signs = {
+--     Error = " ",
+--     Warning = " ",
+--     Hint = "󰌵 ",
+--     Information = " "
+-- }
+-- for type, icon in pairs(signs) do
+--     local hl = "LspDiagnosticsSign" .. type
+--     vim.fn.sign_define(hl, {text = icon, texthl = hl, numhl = ""})
+-- end
 
 return {
     {
@@ -29,13 +30,18 @@ return {
                 }
             }
         }
-    }, {"pmizio/typescript-tools.nvim", ft = {'javascript', 'typescript'}}, {
+    }, {
+        "pmizio/typescript-tools.nvim",
+        ft = {'javascript', 'typescript'},
+        opts = {},
+        dependencies = {"nvim-lua/plenary.nvim", "neovim/nvim-lspconfig"}
+    }, {
         "williamboman/mason-lspconfig.nvim",
         dependencies = {
             "neovim/nvim-lspconfig", "folke/neodev.nvim",
             "williamboman/mason.nvim"
             -- TODO: Check if we might need this
-            --, "hrsh7th/nvim-cmp"
+            -- , "hrsh7th/nvim-cmp"
         },
         opts = {ensure_installed = {"lua_ls"}},
         config = function()
@@ -113,4 +119,3 @@ return {
         end
     }
 }
-
