@@ -2,7 +2,7 @@ local nmap = require("util").nmap
 
 local function project_live_grep()
 require('telescope.builtin').live_grep({
-    search_dirs = {require('util').findGitDirectory(vim.uv.cwd())}
+    search_dirs = {require('util').findGitDirectory(vim.loop.cwd())}
 })
 end
 
