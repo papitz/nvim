@@ -22,8 +22,5 @@ return {
         indent = {enable = true, disable = {"dart", "ruby"}},
         autotag = {enable = true}
     },
-    config = function (_, opts)
-        require("nvim-treesitter.configs").setup(opts)
-    end
-    
+    config = function(_, opts) require("nvim-treesitter.configs").setup(opts) end
 }

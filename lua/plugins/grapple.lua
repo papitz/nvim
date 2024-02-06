@@ -10,6 +10,6 @@ return {
         nmap("<leader>!", require("grapple").toggle)
         nmap("<leader><Tab>", require("grapple").cycle_forward)
         nmap("<leader><S-Tab>", require("grapple").cycle_forward)
-        nmap("<leader>G", function() require("grapple").popup_tags() end)
+        nmap("<leader>Gp", function() require("grapple").popup_tags() end)
     end
 }
