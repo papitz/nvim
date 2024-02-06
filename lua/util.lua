@@ -1,3 +1,4 @@
+--  TODO: Put this together with the other util file
 local M = {}
 function M.findGitDirectory(startingDirectory)
     local currentDirectory = startingDirectory
@@ -22,5 +23,18 @@ function M.findGitDirectory(startingDirectory)
 
     return startingDirectory -- Return startingDirectory if no .git directory is found
 end
+
+function M.map(mode, shortcut, command)
+    vim.keymap.set(mode, shortcut, command, {noremap = true, silent = true})
+end
+
+-- function for normal mode
+function M.nmap(shortcut, command) M.map("n", shortcut, command) end
+
+-- function for insert mode
+function M.imap(shortcut, command) M.map("i", shortcut, command) end
+
+-- function for visual mode
+function M.vmap(shortcut, command) M.map("v", shortcut, command) end
 
 return M
