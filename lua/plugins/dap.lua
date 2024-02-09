@@ -41,12 +41,41 @@ return {
             -- see mason-nvim-dap README for more information
             handlers = {
                 --
-                -- function(config)
-                --     -- all sources with no handler get passed here
-                --
-                --     -- Keep original functionality
-                --     require('mason-nvim-dap').default_setup(config)
-                -- end,
+                function(config)
+                    -- all sources with no handler get passed here
+                    -- Keep original functionality
+                    require('mason-nvim-dap').default_setup(config)
+                end,
+                dart = function(config)
+                    config.adapters = {
+                        type = "executable",
+                        -- As of this writing, this functionality is open for review in https://github.com/flutter/flutter/pull/91802
+                        command = "flutter",
+                        args = {"debug_adapter"}
+                    }
+                    config.configurations = {
+                        {
+                            type = 'dart',
+                            request = 'launch',
+                            name = 'Launch flutter',
+                            -- windows don't really have a standard install path
+                            -- best effort guess is the instructed install path from:
+                            -- https://docs.flutter.dev/get-started/install/windows
+                            dartSdkPath = '/opt/flutter' ..
+                                '/bin/cache/dart-sdk/',
+                            flutterSdkPath = '/opt/flutter',
+                            program = function()
+                                return
+                                    vim.lsp.buf.list_workspace_folders()[1] ..
+                                        '/lib/main.dart'
+                            end,
+                            cwd = function()
+                                return vim.lsp.buf.list_workspace_folders()[1]
+                            end
+                        }
+                    }
+                    require('mason-nvim-dap').default_setup(config)
+                end
                 -- python = function(config)
                 --     config.adapters = {
                 --         type = "executable",

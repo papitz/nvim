@@ -46,7 +46,10 @@ return {
         opts = {ensure_installed = {"lua_ls"}},
         config = function()
             -- Nvim specific stuff
-            require("neodev").setup({})
+            require("neodev").setup({
+                -- For testing library
+                library = {plugins = {"neotest"}, types = true}
+            })
 
             local deps_ok, lspconfig, util, cmp_lsp = pcall(function()
                 return require("lspconfig"), require("lspconfig.util"),
