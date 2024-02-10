@@ -46,12 +46,16 @@ return {
                     lualine_b = {"branch", "diff"},
                     lualine_c = {lsp_progress},
                     lualine_x = {
-                        "encoding", {"filetype", icon = {align = 'left'}}
+                        {
+                            require("noice").api.statusline.mode.get,
+                            cond = require("noice").api.statusline.mode.has,
+                            color = {fg = "#ff9e64"}
+                        }, "encoding", {"filetype", icon = {align = 'left'}}
                     },
                     lualine_y = {"progress", "location"},
                     lualine_z = {grapple, "filename"}
                 }
             }
         end
-    },
+    }
 }
