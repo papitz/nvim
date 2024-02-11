@@ -44,7 +44,7 @@ return {
                 sections = {
                     lualine_a = {"mode"},
                     lualine_b = {"branch", "diff"},
-                    lualine_c = {lsp_progress},
+                    lualine_c = {lsp_progress, 'copilot'},
                     lualine_x = {
                         {
                             require("noice").api.statusline.mode.get,
@@ -54,7 +54,16 @@ return {
                     },
                     lualine_y = {"progress", "location"},
                     lualine_z = {grapple, "filename"}
+                },
+                inactive_sections = {
+                    lualine_a = {},
+                    lualine_b = {},
+                    lualine_c = {},
+                    lualine_x = {grapple, "filename"},
+                    lualine_y = {},
+                    lualine_z = {}
                 }
+
             }
         end
     }
