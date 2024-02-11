@@ -32,7 +32,7 @@ return {
                     hgcommit = false,
                     svn = false,
                     cvs = false,
-                    ["."] = true
+                    ["."] = false
                 }
             })
         end
