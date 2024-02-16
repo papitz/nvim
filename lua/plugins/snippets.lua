@@ -63,7 +63,7 @@ return {
                     return vim.api.nvim_get_option_value("commentstring",
                                                          {scope = "local"}):match(
                                "^(.*)%%s")
-                end, {}), text("TODO: "),
+                end, {}), text(" TODO: "),
                 insert(0, "YOU REALLY NEED TO DO THIS"), func(function()
                     local _, rightComment =
                         vim.api.nvim_get_option_value("commentstring",
