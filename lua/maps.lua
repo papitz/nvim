@@ -79,7 +79,7 @@ nmap("<F8>", ":setlocal spell spelllang=de,en <return>")
 nmap("<F9>", ":set nospell <return>")
 
 -- ctrl l to correct the last spelling mistake
-imap("<C-l>", "<c-g>u<Esc>[s1z=`]a<c-g>u")
+-- imap("<C-l>", "<c-g>u<Esc>[s1z=`]a<c-g>u")
 
 -- open Lazygit window
 nmap("<leader>g", ":LazyGit<CR>")
