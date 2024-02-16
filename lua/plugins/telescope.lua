@@ -1,9 +1,9 @@
 local nmap = require("util").nmap
 
 local function project_live_grep()
-require('telescope.builtin').live_grep({
-    search_dirs = {require('util').findGitDirectory(vim.loop.cwd())}
-})
+    require('telescope.builtin').live_grep({
+        search_dirs = {require('util').findGitDirectory(vim.loop.cwd())}
+    })
 end
 
 local telescope_prefix = "<leader>f"
@@ -28,6 +28,7 @@ return {
     "nvim-telescope/telescope.nvim",
     cmd = "Telescope",
     opts = {
+        defaults = {path_display = {"truncate"}},
         pickers = {
             buffers = {
                 show_all_buffers = true,

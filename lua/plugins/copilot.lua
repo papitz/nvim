@@ -97,7 +97,7 @@ return {
             },
             {
                 "<leader>cc",
-                ":CopilotChat",
+                ":CopilotChat ",
                 desc = "CopilotChat - Open Chat window"
             }, {
                 "<leader>cv",
