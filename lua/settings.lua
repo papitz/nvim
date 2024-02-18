@@ -2,9 +2,9 @@
 local opt = vim.opt
 local ag = vim.api.nvim_create_augroup
 local au = vim.api.nvim_create_autocmd
-HOME = os.getenv("HOME")
+HOME = os.getenv('HOME')
 
-opt.undodir = HOME .. "/.config/nvim/undodir" -- set undotree file directory
+opt.undodir = HOME .. '/.config/nvim/undodir' -- set undotree file directory
 opt.undofile = true -- set undotree to save to file
 opt.number = true -- enable line numbers
 opt.numberwidth = 2 -- set the width of the numbers
@@ -16,7 +16,7 @@ opt.tabstop = 4
 opt.softtabstop = 4 -- set tab size
 opt.shiftwidth = 4 -- affect amount of indentation
 opt.expandtab = true -- set that tab will insert softabstop amount of space characters
-opt.mouse = "a" -- enable clicking with the mouse
+opt.mouse = 'a' -- enable clicking with the mouse
 opt.writebackup = false -- set to never save backup
 opt.swapfile = false -- set no swap file
 opt.backup = false -- set no backup file
@@ -28,9 +28,9 @@ opt.incsearch = true -- for smartcase
 opt.hidden = true -- so multiple buffers can be open
 opt.updatetime = 250 -- update faster for autocompletion
 opt.showmode = false -- set that vim mode is hidden, to incorporate for lightline plugin
-opt.signcolumn = "yes" -- set the line numbers on a even width
+opt.signcolumn = 'yes' -- set the line numbers on a even width
 opt.textwidth = 150 -- sets the number of characters in one line
-opt.virtualedit = "onemore" -- allow the cursor to move past the last char on the line
+opt.virtualedit = 'onemore' -- allow the cursor to move past the last char on the line
 
 -- splits open below an to the right
 opt.splitbelow = true
@@ -38,46 +38,44 @@ opt.splitright = true
 
 -- set foldmethod to treesitter
 
-opt.foldmethod = "expr"
+opt.foldmethod = 'expr'
 -- opt.foldexpr = "nvim_treesitter#foldexpr()"
 -- opt.foldtext =
 --     [[substitute(getline(v:foldstart),'\\t',repeat('\ ',&tabstop),'g').'...'.trim(getline(v:foldend)) . ' (' . (v:foldend - v:foldstart + 1) . ' lines)']]
 local function get_custom_foldtxt_suffix(foldstart)
-    local fold_suffix_str = string.format(" [%s lines] %s",
-                                          vim.v.foldend - foldstart + 1,
-                                          vim.trim(
-                                              vim.api
-                                                  .nvim_buf_get_lines(0, vim.v
-                                                                          .foldend -
-                                                                          1,
-                                                                      vim.v
-                                                                          .foldend,
-                                                                      false)[1]))
+  local fold_suffix_str = string.format(' [%s lines] %s',
+                                        vim.v.foldend - foldstart + 1, vim.trim(
+                                            vim.api
+                                                .nvim_buf_get_lines(0, vim.v
+                                                                        .foldend -
+                                                                        1,
+                                                                    vim.v
+                                                                        .foldend,
+                                                                    false)[1]))
 
-    return {fold_suffix_str, "Folded"}
+  return {fold_suffix_str, 'Folded'}
 end
 
 local function get_custom_foldtext(foldtxt_suffix, foldstart)
-    local line =
-        vim.api.nvim_buf_get_lines(0, foldstart - 1, foldstart, false)[1]
+  local line = vim.api.nvim_buf_get_lines(0, foldstart - 1, foldstart, false)[1]
 
-    return {{line, "Normal"}, foldtxt_suffix}
+  return {{line, 'Normal'}, foldtxt_suffix}
 end
 
 _G.get_foldtext = function()
-    local foldstart = vim.v.foldstart
-    local ts_foldtxt = vim.treesitter.foldtext()
-    local foldtxt_suffix = get_custom_foldtxt_suffix(foldstart)
+  local foldstart = vim.v.foldstart
+  local ts_foldtxt = vim.treesitter.foldtext()
+  local foldtxt_suffix = get_custom_foldtxt_suffix(foldstart)
 
-    if type(ts_foldtxt) == "string" then
-        return get_custom_foldtext(foldtxt_suffix, foldstart)
-    else
-        table.insert(ts_foldtxt, foldtxt_suffix)
-        return ts_foldtxt
-    end
+  if type(ts_foldtxt) == 'string' then
+    return get_custom_foldtext(foldtxt_suffix, foldstart)
+  else
+    table.insert(ts_foldtxt, foldtxt_suffix)
+    return ts_foldtxt
+  end
 end
-opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-opt.foldtext = "v:lua.get_foldtext()"
+opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+opt.foldtext = 'v:lua.get_foldtext()'
 
 opt.foldnestmax = 3
 opt.foldminlines = 1
@@ -85,7 +83,7 @@ opt.foldminlines = 1
 opt.foldenable = false
 
 -- set the german dictionary
-vim.cmd("set dictionary+=/usr/share/dict/german")
+vim.cmd('set dictionary+=/usr/share/dict/german')
 
 -- true color support
 opt.termguicolors = true
@@ -95,7 +93,7 @@ opt.termguicolors = true
 opt.timeoutlen = 500
 
 -- Setting up autocomplete menu.
-opt.completeopt = "menuone,noselect"
+opt.completeopt = 'menuone,noselect'
 
 -- -- Auto open nvim-tree when writing (nvim .) in command line
 -- -- and auto open Dashboard when nothing given as argument.
@@ -109,16 +107,16 @@ opt.completeopt = "menuone,noselect"
 -- ]])
 
 -- open vim on cwd of file
-vim.cmd("autocmd BufEnter * silent! lcd %:p:h")
+vim.cmd('autocmd BufEnter * silent! lcd %:p:h')
 
 ---Highlight yanked text
 
-au("TextYankPost", {
-    group = ag("yank_highlight", {}),
-    pattern = "*",
-    callback = function()
-        vim.highlight.on_yank({higroup = "IncSearch", timeout = 300})
-    end
+au('TextYankPost', {
+  group = ag('yank_highlight', {}),
+  pattern = '*',
+  callback = function()
+    vim.highlight.on_yank({higroup = 'IncSearch', timeout = 300})
+  end
 })
 
 vim.cmd([[

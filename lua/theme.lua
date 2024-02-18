@@ -1,11 +1,11 @@
 -- hide lines at the end of the buffer
-vim.opt.fillchars = {eob = " "}
+vim.opt.fillchars = {eob = ' '}
 
 -- require("onedark").setup({ -- styles: dark, darker, cool, deep, warm and warmer.
 --     style = "darker"
 -- })
 -- require("onedark").load()
-vim.cmd[[colorscheme tokyonight-night]]
+vim.cmd [[colorscheme tokyonight-night]]
 -- require("tokyonight").setup({
 --   -- your configuration comes here
 --   -- or leave it empty to use the default settings
@@ -33,15 +33,10 @@ vim.cmd[[colorscheme tokyonight-night]]
 
 -- Add icons for lsp diagnostics sings
 
-local signs = {
-    Error = " ",
-    Warn = " ",
-    Hint = "󰌵 ",
-    Info = " "
-}
+local signs = {Error = ' ', Warn = ' ', Hint = '󰌵 ', Info = ' '}
 for type, icon in pairs(signs) do
-    local hl = "DiagnosticSign" .. type
-    vim.fn.sign_define(hl, {text = icon, texthl = hl, numhl = hl})
+  local hl = 'DiagnosticSign' .. type
+  vim.fn.sign_define(hl, {text = icon, texthl = hl, numhl = hl})
 end
 
 vim.opt.fillchars:append('fold: ')
