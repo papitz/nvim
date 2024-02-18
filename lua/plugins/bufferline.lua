@@ -11,7 +11,6 @@ if bufferline_enabled then
     version = '*',
     dependencies = 'nvim-tree/nvim-web-devicons',
     opts = {
-
       options = {
         numbers = function(opts) return string.format('%s', opts.id) end,
         diagnostics = 'nvim_lsp',
