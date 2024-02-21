@@ -8,7 +8,7 @@ local nmap = util.nmap
 vim.g.mapleader = ' '
 
 -- map esc in normal mode to write and delete highlighting
-nmap('<esc>', ':w<CR>:noh<CR>')
+nmap('<esc>', '<esc>:w<CR>:noh<CR>')
 
 -- map semicolon to colon because we are lazy
 vim.api.nvim_set_keymap('n', ';', ':', {noremap = true})
@@ -34,7 +34,7 @@ nmap('<C-Left>', '<C-w><')
 nmap('<C-Up>', '<C-w>+')
 nmap('<C-Down>', '<C-w>-')
 
--- remove seach highlighting
+-- remove search highlighting
 nmap('<leader>n', ':noh<CR>')
 
 -- Split panel
@@ -65,8 +65,8 @@ vmap('<leader>p', '"+p')
 -- paste with correct indent
 nmap('p', ']p')
 
--- fix indentaion
-nmap('<leader>i', 'gg=G<C-o>')
+-- fix indentation
+nmap('<leader>ii', 'gg=G<C-o>')
 
 -- navigate quickfix
 nmap('<leader><leader>j', ':cn<CR>')
