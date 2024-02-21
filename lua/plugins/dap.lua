@@ -2,6 +2,7 @@ return {
   {
     'rcarriga/nvim-dap-ui',
     -- stylua: ignore
+    event = 'VeryLazy',
     keys = {
       {
         '<leader>du',
@@ -32,6 +33,7 @@ return {
   }, {
     'jay-babu/mason-nvim-dap.nvim',
     dependencies = 'mason.nvim',
+    event = 'VeryLazy',
     opts = {
       -- Makes a best effort to setup the various debuggers with
       -- reasonable debug configurations
@@ -86,10 +88,11 @@ return {
 
       ensure_installed = {}
     }
-  }, {'theHamsta/nvim-dap-virtual-text', opts = {}}, {
+  }, {'theHamsta/nvim-dap-virtual-text', opts = {}, event = 'VeryLazy'}, {
     'mfussenegger/nvim-dap',
     -- dependencies = "rcarriga/nvim-dap-ui",
     opts = {},
+    event = 'VeryLazy',
     keys = {
       {
         '<leader>dB',
