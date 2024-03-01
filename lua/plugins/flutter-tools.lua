@@ -7,6 +7,7 @@ nmap(flutter_prefix .. 'r', '<cmd>FlutterReload<CR>')
 nmap(flutter_prefix .. 'R', '<cmd>FlutterRestart<CR>')
 nmap(flutter_prefix .. 'D', '<cmd>FlutterVisualDebug<CR>')
 nmap(flutter_prefix .. 'F', '<cmd>FlutterCopyProfilerUrl<CR>')
+nmap(flutter_prefix .. 'c', '<cmd>FlutterLogClear<CR>')
 
 return {
   'akinsho/flutter-tools.nvim',
