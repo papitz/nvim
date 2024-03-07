@@ -104,6 +104,7 @@ if exists("g:neovide")
     let g:neovide_input_use_logo = v:true
     let g:neovide_cursor_trail_size = 0.1
     let g:neovide_input_macos_alt_is_meta=v:false
+    let g:python3_host_prog = '/Users/paul.hoeppner/.local/bin/python3'
 endif
 ]])
 
