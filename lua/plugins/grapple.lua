@@ -5,11 +5,23 @@ end
 return {
   'cbochs/grapple.nvim',
   dependencies = {'nvim-lua/plenary.nvim'},
-  config = function()
-    local nmap = require('util').nmap
-    nmap('<leader>!', require('grapple').toggle)
-    nmap('<leader><Tab>', require('grapple').cycle_forward)
-    nmap('<leader><S-Tab>', require('grapple').cycle_forward)
-    nmap('<leader>Gp', require('grapple').toggle_tags)
-  end
+  keys = {
+    {
+      '<leader>!',
+      function() require('grapple').toggle() end,
+      desc = 'Toggle Grapple'
+    }, {
+      '<leader><Tab>',
+      function() require('grapple').cycle_forward() end,
+      desc = 'Cycle Forward to next Grapple'
+    }, {
+      '<leader><S-Tab>',
+      function() require('grapple').cycle_backward() end,
+      desc = 'Cycle Forward to next Grapple'
+    }, {
+      '<leader>f<Tab>',
+      function() require('grapple').toggle_tags() end,
+      desc = 'Toggle Grapple Tags View'
+    }
+  }
 }

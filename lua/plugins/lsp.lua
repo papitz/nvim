@@ -91,26 +91,26 @@ return {
             settings = {Lua = {diagnostics = {globals = {'P'}}}}
           })
         end,
-        -- ["ltex"] = function()
-        --     lspconfig.ltex.setup({
-        --         on_attach = function(client, bufnr)
-        --             require("ltex_extra").setup({
-        --                 load_langs = {"de-DE", "en-US"}, -- table <string> : languages for which dictionaries will be loaded
-        --                 init_check = true, -- boolean : whether to load dictionaries on startup
-        --                 path = nil, -- string : path to store dictionaries. Relative path uses current working directory
-        --                 log_level = "none" -- string : "none", "trace", "debug", "info", "warn", "error", "fatal"
-        --             })
-        --         end,
-        --         -- Disable for markdown for now 15.11.23
-        --         -- filetype = { "bib", "gitcommit", "markdown", "org", "plaintex", "rst", "rnoweb", "tex", "pandoc", "quarto", "rmd" },
-        --         filetype = { "bib", "gitcommit", "org", "plaintex", "rst", "rnoweb", "tex", "pandoc", "quarto", "rmd" },
-        --         -- settings = {ltex = {language = "de-DE"}}
-        --         settings = {ltex = {language = "en-US"}}
-        --     })
-        -- end,
+        ["ltex"] = function()
+            lspconfig.ltex.setup({
+                on_attach = function(client, bufnr)
+                    require("ltex_extra").setup({
+                        load_langs = {"de-DE", "en-US"}, -- table <string> : languages for which dictionaries will be loaded
+                        init_check = true, -- boolean : whether to load dictionaries on startup
+                        path = nil, -- string : path to store dictionaries. Relative path uses current working directory
+                        log_level = "none" -- string : "none", "trace", "debug", "info", "warn", "error", "fatal"
+                    })
+                end,
+                -- Disable for markdown for now 15.11.23
+                -- filetype = { "bib", "gitcommit", "markdown", "org", "plaintex", "rst", "rnoweb", "tex", "pandoc", "quarto", "rmd" },
+                filetype = {"tex"},
+                settings = {ltex = {language = "de-DE"}}
+                -- settings = {ltex = {language = "en-US"}}
+            })
+        end,
         ['eslint'] = function()
           lspconfig.eslint.setup({settings = {format = true}})
-        end
+        end,
       })
     end
   }

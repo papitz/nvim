@@ -30,6 +30,7 @@ return {
           hgcommit = false,
           svn = false,
           cvs = false,
+          tex = false,
           ['.'] = false
         }
       })

@@ -15,8 +15,8 @@ return {
           'let g:vimtex_toc_config = {\'layer_status\': {\'label\':0, \'include\':0}, \'show_help\':0}')
       vim.g.tex_flavor = 'latex'
       vim.g.vimtex_quickfix_enabled = 1
-      vim.g.vimtex_quickfix_mode = 2
-      vim.g.vimtex_quickfix_open_on_waning = 0
+      vim.g.vimtex_quickfix_mode = 0
+      vim.g.vimtex_quickfix_open_on_warning = 0
       vim.g.vimtex_compiler_silent = 0
       vim.opt.conceallevel = 1
       vim.g.vimtex_complete_enabled = 0
@@ -25,11 +25,14 @@ return {
                 autocmd Filetype tex setl updatetime=250]])
 
       local nmap = require('util').nmap
-      nmap('<leader>tt', ':VimtexCompile<CR>')
+      -- Currently outouts finished compilation every two seconds. 14.03.2024
+      -- nmap('<leader>tt', ':VimtexCompile<CR>')
+      -- Temporary fix. Only compiles once
+      nmap('<leader>tt', ':VimtexCompileSS<CR>')
       nmap('<leader>tv', ':VimtexView<CR>')
       nmap('<leader>tc', ':VimtexTocToggle<CR>')
       nmap('<leader>ts', ':VimtexStatus<CR>')
-      nmap('<leader>te', ':VimtexErros<CR>') -- opens the quickfix window where the errors are hidden
+      nmap('<leader>te', ':VimtexErrors<CR>') -- opens the quickfix window where the errors are hidden
     end
   }, {'barreiroleo/ltex-extra.nvim', ft = 'tex'}
 }
