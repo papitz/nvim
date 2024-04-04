@@ -53,7 +53,7 @@ vim.opt.foldtext=[[luaeval('HighlightedFoldtext')()]]
 -- opt.foldtext = ''
 
 opt.foldnestmax = 3
-opt.foldminlines = 1
+opt.foldminlines = 2
 -- disable folding until the first fold command is used
 opt.foldenable = false
 
