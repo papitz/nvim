@@ -39,7 +39,7 @@ nmap('<leader>n', ':noh<CR>')
 
 -- Split panel
 nmap('<leader>v', '<C-w>v')
-nmap('<leader>ws', '<C-w>s')
+nmap('<leader>V', '<C-w>s')
 
 -- close panels
 nmap('<leader>x', '<C-w>c')
