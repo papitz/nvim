@@ -19,7 +19,7 @@ return {
       disable = {'latex'}
     },
     matchup = {enable = true},
-    indent = {enable = true, disable = {'dart', 'ruby'}},
+    indent = {enable = true, disable = {'dart', 'ruby', 'json'}},
     autotag = {enable = true},
     incremental_selection = {
       enable = true,
