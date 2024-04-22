@@ -63,41 +63,50 @@ return {
       {
         '<leader>ce',
         '<cmd>CopilotChatExplain<cr>',
-        desc = 'CopilotChat - Explain code'
+        desc = 'CopilotChat - Explain code',
+        mode = 'x'
+
       }, {
         '<leader>ct',
-        '<cmd>CopilotChatTests<cr>',
+        -- '<cmd>CopilotChatTests<cr>',
+        'ggVG:CopilotChatVisual Generate Tests for this code. Try to test every part of the code.<CR>',
         desc = 'CopilotChat - Generate tests'
       }, {
         '<leader>cr',
         '<cmd>CopilotChatReview<cr>',
-        desc = 'CopilotChat - Review code'
+        desc = 'CopilotChat - Review code',
+        mode = 'x'
       }, {
         '<leader>cR',
         '<cmd>CopilotChatRefactor<cr>',
-        desc = 'CopilotChat - Refactor code'
-      },
-      {
+        desc = 'CopilotChat - Refactor code',
+        mode = 'x'
+      }, {
         '<leader>cf',
         '<cmd>CopilotChatFixCode<cr>',
-        desc = 'CopilotChat - Fix code'
+        desc = 'CopilotChat - Fix code',
+        mode = 'x'
       }, {
         '<leader>cdd',
         '<cmd>CopilotChatDocumentation<cr>',
-        desc = 'CopilotChat - Write documentation'
+        desc = 'CopilotChat - Write documentation',
+        mode = 'x'
       }, {
         '<leader>cds',
         '<cmd>CopilotChatSwaggerApiDocs<cr>',
-        desc = 'CopilotChat - Write swagger api documentation'
+        desc = 'CopilotChat - Write swagger api documentation',
+        mode = 'x'
+
       }, {
         '<leader>cdj',
         '<cmd>CopilotChatSwaggerJsDocs<cr>',
-        desc = 'CopilotChat - Write swagger js documentation'
+        desc = 'CopilotChat - Write swagger js documentation',
+        mode = 'x'
       },
       {'<leader>cc', ':CopilotChat ', desc = 'CopilotChat - Open Chat window'},
       {
         '<leader>cv',
-        ':CopilotChatVisual',
+        ':CopilotChatVisual ',
         mode = 'x',
         desc = 'CopilotChat - Open in vertical split'
       }, {

@@ -38,8 +38,8 @@ return {
         sections = {
           lualine_a = {'mode'},
           lualine_b = {'branch', 'diff'},
-          lualine_c = {lsp_progress},
-          -- lualine_c = {lsp_progress, 'copilot'},
+          -- lualine_c = {lsp_progress},
+          lualine_c = {lsp_progress, 'copilot'},
           lualine_x = {
             {
               require('noice').api.statusline.mode.get,

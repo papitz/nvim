@@ -71,8 +71,8 @@ return {
         settings = {
           showTodos = false,
           completeFunctionCalls = true,
-          analysisExcludedFolders = {'<path-to-flutter-sdk-packages>'},
-          renameFilesWithClasses = 'prompt', -- "always"
+          analysisExcludedFolders = {'/usr/lib/flutter/packages/'},
+          renameFilesWithClasses = 'always', -- "always"
           enableSnippets = true
         }
       }
