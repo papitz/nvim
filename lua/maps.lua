@@ -81,9 +81,6 @@ nmap('<F9>', ':set nospell <return>')
 -- ctrl l to correct the last spelling mistake
 -- imap("<C-l>", "<c-g>u<Esc>[s1z=`]a<c-g>u")
 
--- open Lazygit window
-nmap('<leader>g', ':LazyGit<CR>')
-
 -- switch between the last two files with bs
 nmap('<BS>', '<C-^>')
 
