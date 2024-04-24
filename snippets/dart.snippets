@@ -3,3 +3,28 @@ snippet ifm if mounted
 
 snippet provof Provider.of<Type>(context, listen: false)
 	Provider.of<${1:Type}>(context, listen: false)$0
+
+snippet stconsW Create a StatefulConsumerWidget
+	class ${1:name} extends ConsumerStatefulWidget {
+	  const ${1:name}({super.key});
+
+	  @override
+	  ConsumerState<${1:index}> createState() => _${1:WidgetName}State();
+	}
+
+	class _${1:index}State extends ConsumerState<${1:index}> {
+	  @override
+	  Widget build(BuildContext context, WidgetRef ref) {
+		return Container();
+	  }
+	}
+
+snippet consW Create a ConsumerWidget
+	class ${1:name} extends ConsumerWidget {
+	  const ${1:name}({super.key});
+
+	  @override
+	  Widget build(BuildContext context, WidgetRef ref) {
+	    return Container();
+	  }
+	}
