@@ -78,6 +78,7 @@ nmap('<leader><leader>l', ':.cc<CR>')
 nmap('<F8>', ':setlocal spell spelllang=de,en <return>')
 nmap('<F9>', ':set nospell <return>')
 
+
 -- ctrl l to correct the last spelling mistake
 -- imap("<C-l>", "<c-g>u<Esc>[s1z=`]a<c-g>u")
 
@@ -99,6 +100,10 @@ nmap('<Leader>sl', ':<C-u>SessionLoad<CR>')
 
 -- shortcut to write and close all buffers
 nmap('ZA', ':wqa<CR>')
+
+-- commenting
+vim.keymap.set('n', '<leader>c<leader>', 'gcc', {remap = true, silent = true, desc = 'Comment line'})
+vim.keymap.set('v', '<leader>c<leader>', 'gc', {remap = true, silent = true, desc = 'Comment selection'})
 
 -- toggle virtual text
 function Virtual_text_toggle()

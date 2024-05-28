@@ -5,26 +5,48 @@ snippet provof Provider.of<Type>(context, listen: false)
 	Provider.of<${1:Type}>(context, listen: false)$0
 
 snippet stconsW Create a StatefulConsumerWidget
-	class ${1:name} extends ConsumerStatefulWidget {
-	  const ${1:name}({super.key});
-
-	  @override
-	  ConsumerState<${1:index}> createState() => _${1:WidgetName}State();
-	}
-
-	class _${1:index}State extends ConsumerState<${1:index}> {
-	  @override
-	  Widget build(BuildContext context, WidgetRef ref) {
-		return Container();
-	  }
-	}
+    class ${1:name} extends ConsumerStatefulWidget {
+      const ${1:name}({super.key});
+    
+      @override
+      ConsumerState<${1:index}> createState() => _${1:WidgetName}State();
+    }
+    
+    class _${1:index}State extends ConsumerState<${1:index}> {
+      @override
+      Widget build(BuildContext context) {
+    	return Container();
+      }
+    }
 
 snippet consW Create a ConsumerWidget
-	class ${1:name} extends ConsumerWidget {
-	  const ${1:name}({super.key});
+    class ${1:name} extends ConsumerWidget {
+      const ${1:name}({super.key});
+    
+      @override
+      Widget build(BuildContext context, WidgetRef ref) {
+        return Container();
+      }
+    }
 
-	  @override
-	  Widget build(BuildContext context, WidgetRef ref) {
-	    return Container();
-	  }
-	}
+snippet mappCl Create a mappable class
+    import 'package:dart_mappable/dart_mappable.dart';
+
+    part '$0.mapper.dart';
+
+    @MappableClass()
+    class ${1:className} with ${1:className}Mappable {
+      ${1:className}();
+    }
+
+snippet troute Typed route for go router
+    @TypedGoRoute<${1:name}Route>(path: '${2:path}')
+    class ${1:name}Route extends GoRouteData {
+      const ${1:name}Route();
+    
+      @override
+      Widget build(BuildContext context, GoRouterState state) {
+        return ${0:Container}();
+      }
+    }
+    

@@ -6,10 +6,10 @@ return {
 		dependencies = { 'tpope/vim-fugitive' },
 		keys = {
 			{ '<leader>gg', '<cmd>LazyGit<CR>' },
-			{ '<leader>gh', ':diffget //2<CR>' },
-			{ '<leader>gl', ':diffget //3<CR>' },
-			{ '<leader>gb', ':Gitsigns toggle_current_line_blame<CR>' },
-			{ '<leader>gr', ':Gitsigns reset_hunk<CR>' },
+			{ '<leader>gh', '<cmd>diffget //2<CR>' },
+			{ '<leader>gl', '<cmd>diffget //3<CR>' },
+			{ '<leader>gb', '<cmd>Gitsigns toggle_current_line_blame<CR>' },
+			{ '<leader>gr', '<cmd>Gitsigns reset_hunk<CR>' },
 		},
 		opts = {
 			signs = {

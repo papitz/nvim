@@ -9,7 +9,10 @@ return {
 			-- Use a sub-list to run only the first available formatter
 			javascript = { { 'prettierd', 'prettier' }, 'eslint_d' },
 			typescript = { { 'prettierd', 'prettier' }, 'eslint_d' },
+      markdown = { 'prettierd' },
+      json = { 'prettierd' },
 			bash = { 'shfmt' },
+      sh = { 'shfmt' },
 		},
 	},
 	keys = {
@@ -17,7 +20,7 @@ return {
 		{
 			'<leader>fr',
 			function()
-				require('conform').format()
+				require('conform').format({async = true, timeout = 500})
 			end,
 			desc = 'Format the current buffer',
 		},

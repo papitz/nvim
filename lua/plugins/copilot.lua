@@ -69,7 +69,7 @@ return {
       }, {
         '<leader>ct',
         -- '<cmd>CopilotChatTests<cr>',
-        'ggVG:CopilotChatVisual Generate Tests for this code. Try to test every part of the code.<CR>',
+        'ggVG:CopilotChatVisual Generate Tests for this code. Try to test every part of the code. Make a complete test suite and not a simplified version of it.<CR>',
         desc = 'CopilotChat - Generate tests'
       }, {
         '<leader>cr',
