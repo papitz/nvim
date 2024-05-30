@@ -31,6 +31,7 @@ opt.showmode = false -- set that vim mode is hidden, to incorporate for lightlin
 opt.signcolumn = 'yes' -- set the line numbers on a even width
 opt.textwidth = 150 -- sets the number of characters in one line
 opt.virtualedit = 'onemore' -- allow the cursor to move past the last char on the line
+opt.cursorline = true
 
 -- splits open below an to the right
 opt.splitbelow = true
