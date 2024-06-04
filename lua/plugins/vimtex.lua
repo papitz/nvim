@@ -28,11 +28,11 @@ return {
       -- Currently outouts finished compilation every two seconds. 14.03.2024
       -- nmap('<leader>tt', ':VimtexCompile<CR>')
       -- Temporary fix. Only compiles once
-      nmap('<leader>tt', ':VimtexCompileSS<CR>')
-      nmap('<leader>tv', ':VimtexView<CR>')
-      nmap('<leader>tc', ':VimtexTocToggle<CR>')
-      nmap('<leader>ts', ':VimtexStatus<CR>')
-      nmap('<leader>te', ':VimtexErrors<CR>') -- opens the quickfix window where the errors are hidden
+      nmap('<leader>Tt', ':VimtexCompileSS<CR>')
+      nmap('<leader>Tv', ':VimtexView<CR>')
+      nmap('<leader>Tc', ':VimtexTocToggle<CR>')
+      nmap('<leader>Ts', ':VimtexStatus<CR>')
+      nmap('<leader>Te', ':VimtexErrors<CR>') -- opens the quickfix window where the errors are hidden
     end
   }, {'barreiroleo/ltex-extra.nvim', ft = 'tex'}
 }

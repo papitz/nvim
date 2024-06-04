@@ -5,12 +5,13 @@ return {
 			name = 'mypreset',
 			init = function()
 				vim.opt.cursorline = true
+				vim.opt.termguicolors = true
 			end,
 			static = {
 				winhl = {
 					inactive = {
-						CursorLine = { bg = '#202020' },
-						CursorLineNr = { fg = '#b0b0b0', bg = '#202020' },
+						CursorLine = { bg = '#21202e' },
+						CursorLineNr = { fg = '#b0b0b0', bg = '#21202e' },
 					},
 				},
 			},
@@ -59,8 +60,8 @@ return {
 				},
 				n = {
 					winhl = {
-						CursorLine = { bg = '#21202e' },
-						CursorLineNr = { fg = '#ffffff', bg = '#21202e' },
+            CursorLine = { bg = '#24283b' },
+            CursorLineNr = { fg = '#ffffff', bg = '#24283b' },
 					},
 				},
 				[{ 'v', 'V', '\x16' }] = {

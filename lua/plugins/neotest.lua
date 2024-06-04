@@ -62,7 +62,7 @@ return {
 	event = 'VeryLazy',
 	keys = {
 		{
-			'<leader>Tt',
+			'<leader>tt',
 			function()
 				require('neotest').run.run()
 			end,
@@ -75,58 +75,58 @@ return {
 			end,
 			desc = 'Run current file',
 		},
-		{ '<leader>Tm', makeTestFile, desc = 'Create Test file' },
+		{ '<leader>tm', makeTestFile, desc = 'Create Test file' },
 		{
-			'<leader>Td',
+			'<leader>td',
 			function()
 				require('neotest').run.run({ strategy = 'dap' })
 			end,
 			desc = 'Run tests with dap strategy',
 		},
 		{
-			'<leader>Ts',
+			'<leader>ts',
 			function()
 				require('neotest').run.stop()
 			end,
 			desc = 'Stop nearest test',
 		},
 		{
-			'<leader>Ta',
+			'<leader>ta',
 			function()
 				require('neotest').run.attach()
 			end,
 			desc = 'Attach to nearest test',
 		},
 		{
-			'<leader>Tu',
+			'<leader>tu',
 			function()
 				require('neotest').summary.toggle()
 			end,
 			desc = 'Open Test summary',
 		},
 		{
-			'<leader>Tw',
+			'<leader>tw',
 			function()
 				require('neotest').watch.toggle(vim.fn.expand('%'))
 			end,
 			desc = 'Toggle watching current file',
 		},
 		{
-			'<leader>To',
+			'<leader>to',
 			function()
 				require('neotest').output.open()
 			end,
 			desc = 'Open output window for nearest test',
 		},
 		{
-			'<leader>TO',
+			'<leader>tO',
 			function()
 				require('neotest').output_panel.toggle()
 			end,
 			desc = 'Toggle output panel',
 		},
 		{
-			'<leader>Tc',
+			'<leader>tc',
 			function()
 				require('neotest').output_panel.clear()
 			end,

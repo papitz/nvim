@@ -49,4 +49,16 @@ snippet troute Typed route for go router
         return ${0:Container}();
       }
     }
+
+snippet provCl Create a provider notifier class
+    import 'package:riverpod_annotation/riverpod_annotation.dart';
     
+    part '$0.g.dart';
+    
+    @riverpod
+    class ${1:className} extends _$${1:className} {
+      @override
+      build() {
+        return ${2:null};
+      }
+    }
