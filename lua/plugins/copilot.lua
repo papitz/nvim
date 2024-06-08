@@ -41,6 +41,11 @@ return {
 	},
 	{
 		'CopilotC-Nvim/CopilotChat.nvim',
+    branch = 'canary',
+    dependencies = {
+      { "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
+      { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
+    },
 		opts = {
 			show_help = 'yes', -- Show help text for CopilotChatInPlace, default: yes
 			debug = false, -- Enable or disable debug mode, the log file will be in ~/.local/state/nvim/CopilotChat.nvim.log
