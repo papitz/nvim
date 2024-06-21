@@ -63,9 +63,6 @@ return {
 				SwaggerJsDocs = 'Please write JSDoc for the following API using Swagger.',
 			},
 		},
-		build = function()
-			vim.notify("Please update the remote plugins by running ':UpdateRemotePlugins', then restart Neovim.")
-		end,
 		event = 'VeryLazy',
 		keys = {
 			{
@@ -133,18 +130,7 @@ return {
 				mode = 'x',
 			},
 			{ '<leader>cc', ':CopilotChat ', desc = 'CopilotChat - Open Chat window' },
-			{
-				'<leader>cv',
-				':CopilotChatVisual ',
-				mode = 'x',
-				desc = 'CopilotChat - Open in vertical split',
-			},
-			{
-				'<leader>cx',
-				':CopilotChatInPlace<cr>',
-				mode = 'x',
-				desc = 'CopilotChat - Run in-place code',
-			},
+      { '<leader>cc', ':CopilotChat ', mode = 'x', desc = 'CopilotChat - Open Chat window' },
 		},
 	},
 }
