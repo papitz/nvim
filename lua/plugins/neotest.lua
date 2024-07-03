@@ -5,7 +5,7 @@ local function countSlashes(str)
 end
 
 local dartTestPath = function(path)
-	local testPath = string.gsub(path, 'lib/', 'test/')
+	local testPath = string.gsub(path, '/lib/', '/test/')
 	testPath = string.gsub(testPath, '.dart', '_test.dart')
 	local libSubPath = path:match('(lib/.+/[^/]+)')
 	local depth = countSlashes(libSubPath)

@@ -1,6 +1,7 @@
 local nmap = require('util').nmap
 local flutter_prefix = '<leader>F'
 nmap(flutter_prefix .. 'a', '<cmd>FlutterRun<CR>')
+nmap(flutter_prefix .. 'A', '<cmd>FlutterRun --dart-define-from-file=.env.json<CR>')
 nmap(flutter_prefix .. 'e', '<cmd>FlutterEmulators<CR>')
 nmap(flutter_prefix .. 'q', '<cmd>FlutterQuit<CR>')
 nmap(flutter_prefix .. 'r', '<cmd>FlutterReload<CR>')

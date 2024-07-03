@@ -62,3 +62,14 @@ snippet provCl Create a provider notifier class
         return ${2:null};
       }
     }
+
+snippet tcl try catch with logger
+    try {
+      $8
+    } catch (error, stackTrace) {
+      logger.e(
+         '',
+         error: error,
+         stackTrace: stackTrace,
+	  );
+    }
