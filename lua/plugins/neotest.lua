@@ -13,8 +13,42 @@ local dartTestPath = function(path)
 	return testPath, relativeOriginPath
 end
 
+local function writeToTestFile(finalTestPath, relativeOriginPath, content)
+  content = content or ('void main() {\n\n}')
+  local dirPath = string.match(finalTestPath, '(.*/)')
+  print(dirPath)
+  os.execute('mkdir -p ' .. dirPath)
+  local file = io.open(finalTestPath, 'w')
+  if file then
+    file:write('// Test for ' .. relativeOriginPath .. '\n' .. content)
+    file:close()
+    vim.api.nvim_command('edit ' .. finalTestPath)
+  else
+    print('Failed to create test file: ' .. finalTestPath)
+  end
+end
+
+local generateTestWithcopilot = function(filePath, relativeOriginPath)
+	local copilot = require('CopilotChat')
+	local select = require('CopilotChat.select')
+  local delim = "```"
+  local start_delim = delim .. ".-\n"
+  local pattern = start_delim .. "(.-)" .. delim
+	copilot.config.callback = function(response)
+    local code_in_response = string.match(response, pattern)
+    writeToTestFile(filePath, relativeOriginPath, code_in_response)
+    copilot.config.callback = nil
+	end
+	copilot.ask(
+		'Generate tests for this code. Try to test every part of the code. Make a complete test suite and not a simplified version of it.',
+		{ selection = select.buffer }
+	)
+end
+
+
 -- Create test file and open as new buffer
-local function makeTestFile()
+local function makeTestFile(useCopilot)
+	useCopilot = useCopilot or false
 	local filetype = vim.bo.filetype
 	local filePath = vim.fn.expand('%:p')
 	local fileTypeHandlers = {
@@ -32,22 +66,22 @@ local function makeTestFile()
 			vim.api.nvim_command('edit ' .. finalTestPath)
 			return
 		else
-			local dirPath = string.match(finalTestPath, '(.*/)')
-			print(dirPath)
-			os.execute('mkdir -p ' .. dirPath)
-			file = io.open(finalTestPath, 'w')
-			if file then
-				file:write('// Test for ' .. relativeOriginPath .. '\nvoid main() {\n\n}')
-				file:close()
-				vim.api.nvim_command('edit ' .. finalTestPath)
-			else
-				print('Failed to create test file: ' .. finalTestPath)
+			if useCopilot then
+				generateTestWithcopilot(finalTestPath, relativeOriginPath)
+				return
+      else
+        writeToTestFile(finalTestPath, relativeOriginPath)
 			end
 		end
 	else
 		print('No handler for filetype: ' .. filetype)
 	end
 end
+
+local function makeTestFileWithCopilot()
+	makeTestFile(true)
+end
+
 
 return {
 	'nvim-neotest/neotest',
@@ -69,13 +103,14 @@ return {
 			desc = 'Run nearest test',
 		},
 		{
-			'<leader>Tf',
+			'<leader>tf',
 			function()
 				require('neotest').run.run(vim.fn.expand('%'))
 			end,
 			desc = 'Run current file',
 		},
 		{ '<leader>tm', makeTestFile, desc = 'Create Test file' },
+    { '<leader>tM', makeTestFileWithCopilot, desc = 'Create Test file and Test with CopilotChat' },
 		{
 			'<leader>td',
 			function()
