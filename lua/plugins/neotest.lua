@@ -40,7 +40,7 @@ local generateTestWithcopilot = function(filePath, relativeOriginPath)
     copilot.config.callback = nil
 	end
 	copilot.ask(
-		'Generate tests for this code. Try to test every part of the code. Make a complete test suite and not a simplified version of it.',
+		'Generate tests for this code. Try to test every part of the code. Make a complete test suite and not a simplified version of it. Fill out every test you write rather than just giving me templates I have to fill out. If possible do the tests without Mockito. If it is needed, explicetly write the code to Mock the classes as well.',
 		{ selection = select.buffer }
 	)
 end
