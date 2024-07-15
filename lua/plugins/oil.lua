@@ -5,5 +5,5 @@ return {
   keys = {
     { '-', '<cmd>Oil<CR>', desc = 'Open oil' },
   },
-  dependencies = { "nvim-tree/nvim-web-devicons" },
+  dependencies = { "echasnovski/mini.icons" },
 }
