@@ -1,4 +1,4 @@
-require('util').nmap('<leader>b', '<Plug>RestNvim')
+require('util').nmap('<leader>b', ':Rest run<CR>')
 return {
   'rest-nvim/rest.nvim',
   dependencies = {{'nvim-lua/plenary.nvim'}},

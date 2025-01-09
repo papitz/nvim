@@ -11,7 +11,7 @@ nmap('gh', '<cmd>Lspsaga finder<CR>')
 
 -- Code action
 nmap('<A-CR>', '<cmd>Lspsaga code_action<CR>')
-vmap('<A-CR>', '<cmd><C-U>Lspsaga range_code_action<CR>')
+vmap('<A-CR>', '<cmd>Lspsaga code_action<CR>')
 
 -- Rename
 nmap('<leader>rn', '<cmd>Lspsaga rename<CR>')

@@ -1,9 +1,63 @@
+-- return {
+-- 	'garymjr/nvim-snippets',
+-- 	dependencies = {
+-- 		'rafamadriz/friendly-snippets',
+-- 	},
+-- 	opts = {
+-- 		friendly_snippets = true,
+-- 	},
+-- 	keys = {
+-- 		{
+-- 			'<C-j>',
+-- 			function()
+-- 				if vim.snippet.active({ direction = 1 }) then
+-- 					vim.schedule(function()
+-- 						vim.snippet.jump(1)
+-- 					end)
+-- 					return
+-- 				end
+-- 				return '<Tab>'
+-- 			end,
+-- 			expr = true,
+-- 			silent = true,
+-- 			mode = 'i',
+-- 		},
+-- 		{
+-- 			'<C-j>',
+-- 			function()
+-- 				vim.schedule(function()
+-- 					vim.snippet.jump(1)
+-- 				end)
+-- 			end,
+-- 			expr = true,
+-- 			silent = true,
+-- 			mode = 's',
+-- 		},
+-- 		{
+-- 			'<C-k>',
+-- 			function()
+-- 				if vim.snippet.active({ direction = -1 }) then
+-- 					vim.schedule(function()
+-- 						vim.snippet.jump(-1)
+-- 					end)
+-- 					return
+-- 				end
+-- 				return '<S-Tab>'
+-- 			end,
+-- 			expr = true,
+-- 			silent = true,
+-- 			mode = { 'i', 's' },
+-- 		},
+-- 	},
+-- }
+-- FIXME: Latex bricks for some reason with snippets
 return {
   'L3MON4D3/LuaSnip',
   version = 'v2.*',
   event = 'InsertEnter',
   dependencies = {
-    'Neevash/awesome-flutter-snippets', {
+    'Neevash/awesome-flutter-snippets',
+    {
       'rafamadriz/friendly-snippets',
       config = function()
         require('luasnip.loaders.from_vscode').lazy_load()

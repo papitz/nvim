@@ -8,11 +8,12 @@ local nmap = util.nmap
 vim.g.mapleader = ' '
 
 -- map esc in normal mode to write and delete highlighting
-nmap('<esc>', '<esc>:w<CR>:noh<CR>')
+-- nmap('<esc>', '<esc>:w<CR>:noh<CR>')
+nmap('<esc>', '<esc>:w<CR>')
 
 -- map semicolon to colon because we are lazy
-vim.api.nvim_set_keymap('n', ';', ':', {noremap = true})
-vim.api.nvim_set_keymap('v', ';', ':', {noremap = true})
+vim.api.nvim_set_keymap('n', ';', ':', { noremap = true })
+vim.api.nvim_set_keymap('v', ';', ':', { noremap = true })
 
 -- Better horizontal navigations
 nmap('H', '^')
@@ -52,8 +53,8 @@ nmap('<C-k>', ':m .-2<CR>==')
 imap('<C-j>', '<ESC>:m .+1<CR>==gi')
 imap('<C-k>', '<ESC>:m .-2<CR>==gi')
 ---- Visual mode
-vmap('<C-j>', ':m \'>+1<CR>gv=gv')
-vmap('<C-k>', ':m \'<-2<CR>gv=gv')
+vmap('<C-j>', ":m '>+1<CR>gv=gv")
+vmap('<C-k>', ":m '<-2<CR>gv=gv")
 
 -- Remap for yanking into clipboard
 nmap('<leader>y', '"+y')
@@ -78,7 +79,6 @@ nmap('<leader><leader>l', ':.cc<CR>')
 nmap('<F8>', ':setlocal spell spelllang=de,en <return>')
 nmap('<F9>', ':set nospell <return>')
 
-
 -- ctrl l to correct the last spelling mistake
 -- imap("<C-l>", "<c-g>u<Esc>[s1z=`]a<c-g>u")
 
@@ -101,17 +101,22 @@ nmap('<Leader>sl', ':<C-u>SessionLoad<CR>')
 -- shortcut to write and close all buffers
 nmap('ZA', ':wqa<CR>')
 
+-- tab navigation
+nmap('[t', ':tabprevious<CR>')
+nmap(']t', ':tabnext<CR>')
+nmap('<leader>tn', ':tabnew<CR>')
+nmap('<leader>tx', ':tabclose<CR>')
+
 -- commenting
-vim.keymap.set('n', '<leader>c<leader>', 'gcc', {remap = true, silent = true, desc = 'Comment line'})
-vim.keymap.set('v', '<leader>c<leader>', 'gc', {remap = true, silent = true, desc = 'Comment selection'})
+vim.keymap.set('n', '<leader>c<leader>', 'gcc', { remap = true, silent = true, desc = 'Comment line' })
+vim.keymap.set('v', '<leader>c<leader>', 'gc', { remap = true, silent = true, desc = 'Comment selection' })
 
 -- toggle virtual text
 function Virtual_text_toggle()
-  vim.diagnostic.config({
-    virtual_text = not vim.diagnostic.config().virtual_text
-  })
-  print('Virtual Text ' ..
-            (vim.diagnostic.config().virtual_text and 'enabled' or 'disabled'))
+	vim.diagnostic.config({
+		virtual_text = not vim.diagnostic.config().virtual_text,
+	})
+	print('Virtual Text ' .. (vim.diagnostic.config().virtual_text and 'enabled' or 'disabled'))
 end
 vim.cmd([[ command! VirtualTextToggle lua Virtual_text_toggle()]])
 nmap('<Leader>u', ':VirtualTextToggle<CR>')
@@ -119,3 +124,6 @@ nmap('<Leader>u', ':VirtualTextToggle<CR>')
 -- Compile and run code
 map('n', '<F7>', ':CompileAndRun<CR>')
 map('i', '<F7>', '<ESC>:CompileAndRun<CR>')
+
+-- Map the function to <leader>r in visual mode
+vim.keymap.set('v', '<leader>s', 'y:%s/<C-r>"//g<Left><Left>', { noremap = true, desc = 'Open replace' })

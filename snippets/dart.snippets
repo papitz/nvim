@@ -73,3 +73,34 @@ snippet tcl try catch with logger
          stackTrace: stackTrace,
 	  );
     }
+
+# Testing snippets
+snippet gennicemock GenerateNiceMocks annotation
+    @GenerateNiceMocks([
+      MockSpec<$0>(),
+    ])
+
+snippet provScope Widget Scope for proivders
+    ProviderScope(
+      overrides: [
+        $1
+      ],
+      child: MaterialApp(
+        home: ${0:Container()}
+        ),
+      ),
+    ),
+
+snippet provCon Provider Container init
+    container = createProviderContainer(overrides: [
+      $0
+    ]);
+
+snippet provConSetup Setup with provider container
+    late ProviderContainer container;
+
+    setUp(() {
+      container = createProviderContainer(overrides: [
+        $0
+      ]);
+    });

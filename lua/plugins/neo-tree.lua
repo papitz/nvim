@@ -1,4 +1,4 @@
-local neo_tree_disable = false
+local neo_tree_disable = true
 if neo_tree_disable then return {} end
 
 require('util').nmap('<C-b>', ':Neotree dir=./ toggle position=left <CR>')

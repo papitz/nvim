@@ -83,7 +83,7 @@ opt.completeopt = 'menuone,noselect'
 -- ]])
 
 -- open vim on cwd of file
-vim.cmd('autocmd BufEnter * silent! lcd %:p:h')
+-- vim.cmd('autocmd BufEnter * silent! lcd %:p:h')
 
 ---Highlight yanked text
 

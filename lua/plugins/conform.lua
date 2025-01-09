@@ -1,6 +1,13 @@
 return {
 	'stevearc/conform.nvim',
 	opts = {
+		formatters = {
+			kulala = {
+				command = 'kulala-fmt',
+				args = { '$FILENAME', '--in-request-vars', '--separate-logical-blocks' },
+				stdin = false,
+			},
+		},
 		formatters_by_ft = {
 			lua = { 'stylua' },
 			-- Conform will run multiple formatters sequentially
@@ -9,10 +16,17 @@ return {
 			-- Use a sub-list to run only the first available formatter
 			javascript = { { 'prettierd', 'prettier' }, 'eslint_d' },
 			typescript = { { 'prettierd', 'prettier' }, 'eslint_d' },
-      markdown = { 'prettierd' },
-      json = { 'prettierd' },
+			markdown = { 'prettierd' },
+			json = { 'prettierd' },
 			bash = { 'shfmt' },
-      sh = { 'shfmt' },
+			sh = { 'shfmt' },
+			tex = { 'latexindent' },
+			go = { 'gofumpt', 'goimports' },
+			ruby = { 'rufo', 'rubocop' },
+			rust = { 'rustfmt' },
+			php = { 'php_cs_fixer' },
+			http = { 'kulala' },
+      yaml = { 'prettierd' },
 		},
 	},
 	keys = {
@@ -20,7 +34,7 @@ return {
 		{
 			'<leader>fr',
 			function()
-				require('conform').format({async = true, timeout = 500})
+				require('conform').format({ async = true, timeout = 500 })
 			end,
 			desc = 'Format the current buffer',
 		},

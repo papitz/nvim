@@ -15,8 +15,8 @@ return {
     ignore_install = {},
     highlight = {
       enable = true,
-      additional_vim_regex_highlighting = {'markdown'},
-      disable = {'latex'}
+      additional_vim_regex_highlighting = {'markdown', 'eruby.yaml'},
+      disable = {'latex', 'eruby.yaml'}
     },
     matchup = {enable = true},
     indent = {enable = true, disable = {'dart', 'ruby', 'json'}},
