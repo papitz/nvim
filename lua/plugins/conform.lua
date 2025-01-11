@@ -27,6 +27,7 @@ return {
 			php = { 'php_cs_fixer' },
 			http = { 'kulala' },
       yaml = { 'prettierd' },
+      eruby = { 'erb_format' },
 		},
 	},
 	keys = {

@@ -72,6 +72,7 @@ return {
 		},
 		opts = { ensure_installed = { 'lua_ls' } },
 		config = function()
+			vim.diagnostic.config({ virtual_text = false })
 			local deps_ok, lspconfig, util, cmp_lsp = pcall(function()
 				return require('lspconfig'), require('lspconfig.util'), require('cmp_nvim_lsp')
 			end)

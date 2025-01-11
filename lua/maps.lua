@@ -92,7 +92,7 @@ nmap('<leader>D', ':lua vim.lsp.buf.type_definition()<CR>')
 nmap('gr', ':lua vim.lsp.buf.references()<CR>')
 nmap('gE', ':lua vim.diagnostic.goto_prev()<CR>')
 nmap('ge', ':lua vim.diagnostic.goto_next()<CR>')
-nmap('<leader>q', ':lua vim.lsp.diagnostic.set_loclist()<CR>')
+-- nmap('<leader>q', ':lua vim.lsp.diagnostic.set_loclist()<CR>')
 
 -- Session saving and loading
 nmap('<Leader>ss', ':<C-u>SessionSave<CR>')
@@ -112,14 +112,14 @@ vim.keymap.set('n', '<leader>c<leader>', 'gcc', { remap = true, silent = true, d
 vim.keymap.set('v', '<leader>c<leader>', 'gc', { remap = true, silent = true, desc = 'Comment selection' })
 
 -- toggle virtual text
-function Virtual_text_toggle()
-	vim.diagnostic.config({
-		virtual_text = not vim.diagnostic.config().virtual_text,
-	})
-	print('Virtual Text ' .. (vim.diagnostic.config().virtual_text and 'enabled' or 'disabled'))
-end
-vim.cmd([[ command! VirtualTextToggle lua Virtual_text_toggle()]])
-nmap('<Leader>u', ':VirtualTextToggle<CR>')
+-- function Virtual_text_toggle()
+-- 	vim.diagnostic.config({
+-- 		virtual_text = not vim.diagnostic.config().virtual_text,
+-- 	})
+-- 	print('Virtual Text ' .. (vim.diagnostic.config().virtual_text and 'enabled' or 'disabled'))
+-- end
+-- vim.cmd([[ command! VirtualTextToggle lua Virtual_text_toggle()]])
+-- nmap('<Leader>u', ':VirtualTextToggle<CR>')
 
 -- Compile and run code
 map('n', '<F7>', ':CompileAndRun<CR>')
