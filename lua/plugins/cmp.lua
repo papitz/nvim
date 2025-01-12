@@ -1,6 +1,10 @@
+local enabled = false
+if enabled == false then
+  return {}
+end
 return {
 	'hrsh7th/nvim-cmp',
-  enabled = true,
+  enabled = false,
 	event = 'InsertEnter',
 	dependencies = {
 		'hrsh7th/cmp-buffer',
