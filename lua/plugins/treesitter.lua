@@ -20,7 +20,6 @@ return {
     },
     matchup = {enable = true},
     indent = {enable = true, disable = {'dart', 'ruby', 'json'}},
-    autotag = {enable = true},
     incremental_selection = {
       enable = true,
       keymaps = {
