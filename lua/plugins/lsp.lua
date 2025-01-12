@@ -45,16 +45,16 @@ return {
 			},
 		},
 		{ 'Bilal2453/luvit-meta', lazy = true }, -- optional `vim.uv` typings
-		{ -- optional completion source for require statements and module annotations
-			'hrsh7th/nvim-cmp',
-			opts = function(_, opts)
-				opts.sources = opts.sources or {}
-				table.insert(opts.sources, {
-					name = 'lazydev',
-					group_index = 0, -- set group index to 0 to skip loading LuaLS completions
-				})
-			end,
-		},
+		-- { -- optional completion source for require statements and module annotations
+		-- 	'hrsh7th/nvim-cmp',
+		-- 	opts = function(_, opts)
+		-- 		opts.sources = opts.sources or {}
+		-- 		table.insert(opts.sources, {
+		-- 			name = 'lazydev',
+		-- 			group_index = 0, -- set group index to 0 to skip loading LuaLS completions
+		-- 		})
+		-- 	end,
+		-- },
 	},
 	{
 		'pmizio/typescript-tools.nvim',
@@ -67,14 +67,21 @@ return {
 		dependencies = {
 			'neovim/nvim-lspconfig',
 			'williamboman/mason.nvim',
+			'saghen/blink.cmp',
 			-- TODO: Check if we might need this
 			-- , "hrsh7th/nvim-cmp"
 		},
 		opts = { ensure_installed = { 'lua_ls' } },
 		config = function()
 			vim.diagnostic.config({ virtual_text = false })
-			local deps_ok, lspconfig, util, cmp_lsp = pcall(function()
-				return require('lspconfig'), require('lspconfig.util'), require('cmp_nvim_lsp')
+			-- local deps_ok, lspconfig, util, cmp_lsp = pcall(function()
+			-- 	return require('lspconfig'), require('lspconfig.util'), require('cmp_nvim_lsp')
+			-- end)
+			-- if not deps_ok then
+			-- 	return
+			-- end
+			local deps_ok, lspconfig, util, blink = pcall(function()
+				return require('lspconfig'), require('lspconfig.util'), require('blink.cmp')
 			end)
 			if not deps_ok then
 				return
@@ -102,7 +109,9 @@ return {
 				capabilities = vim.tbl_deep_extend(
 					'force',
 					vim.lsp.protocol.make_client_capabilities(),
-					cmp_lsp.default_capabilities(capabilities)
+					-- capabilities
+					require('blink.cmp').get_lsp_capabilities(capabilities)
+					-- cmp_lsp.default_capabilities(capabilities)
 				),
 			})
 

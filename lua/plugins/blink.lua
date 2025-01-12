@@ -1,277 +1,87 @@
 return {
 	'saghen/blink.cmp',
-  enabled = false,
-	lazy = false, -- lazy loading handled internally
+	enabled = true,
 	-- optional: provides snippets for the snippet source
-	dependencies = 'rafamadriz/friendly-snippets',
+	-- dependencies = { 'rafamadriz/friendly-snippets', { 'L3MON4D3/LuaSnip', version = 'v2.*' } },
+	dependencies = { 'rafamadriz/friendly-snippets' },
 
 	-- use a release tag to download pre-built binaries
-	version = 'v0.*',
-	-- OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
+	version = '*',
+	-- AND/OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
 	-- build = 'cargo build --release',
+	-- If you use nix, you can build from source using latest nightly rust with:
+	-- build = 'nix run .#build-plugin',
+
+	---@module 'blink.cmp'
+	---@type blink.cmp.Config
 	opts = {
-		highlight = {
-			-- sets the fallback highlight groups to nvim-cmp's highlight groups
-			-- useful for when your theme doesn't support blink.cmp
-			-- will be removed in a future release, assuming themes add support
+		-- 'default' for mappings similar to built-in completion
+		-- 'super-tab' for mappings similar to vscode (tab to accept, arrow keys to navigate)
+		-- 'enter' for mappings similar to 'super-tab' but with 'enter' to accept
+		-- See the full "keymap" documentation for information on defining your own keymap.
+		-- keymap = { preset = 'default' },
+
+		appearance = {
+			-- Sets the fallback highlight groups to nvim-cmp's highlight groups
+			-- Useful for when your theme doesn't support blink.cmp
+			-- Will be removed in a future release
 			use_nvim_cmp_as_default = true,
+			-- Set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
+			-- Adjusts spacing to ensure icons are aligned
+			nerd_font_variant = 'mono',
+		},
+		completion = {
+			-- menu = { border = 'single' },
+			-- menu = {
+			-- 	draw = {
+			-- 		components = {
+			-- 			kind_icon = {
+			-- 				ellipsis = false,
+			-- 				text = function(ctx)
+			-- 					local kind_icon, _, _ = require('mini.icons').get('lsp', ctx.kind)
+			-- 					return kind_icon
+			-- 				end,
+			-- 				-- Optionally, you may also use the highlights from mini.icons
+			-- 				highlight = function(ctx)
+			-- 					local _, hl, _ = require('mini.icons').get('lsp', ctx.kind)
+			-- 					return hl
+			-- 				end,
+			-- 			},
+			-- 		},
+			-- 	},
+			-- },
+			documentation = { window = { border = 'single' } },
+		},
+		--  TODO: Lets see how this goes
+		signature = { enabled = true, window = { border = 'single' } },
+
+		--  TODO: Does not work yet :(
+		snippets = { preset = 'luasnip' },
+		-- Default list of enabled providers defined so that you can extend it
+		-- elsewhere in your config, without redefining it, due to `opts_extend`
+		sources = {
+			default = { 'lsp', 'path', 'buffer', 'snippets' },
+			cmdline = {},
 		},
 		keymap = {
-			show = '<C-space>',
-			hide = '<C-e>',
-			accept = '<CR>',
-			select_prev = { '<Up>', '<Tab>' },
-			select_next = { '<Down>', '<S-Tab>' },
+			-- set to 'none' to disable the 'default' preset
+			preset = 'none',
 
-			show_documentation = {},
-			hide_documentation = {},
-			scroll_documentation_up = '<C-b>',
-			scroll_documentation_down = '<C-f>',
+			['<S-Tab>'] = { 'select_prev', 'fallback' },
+			['<Tab>'] = { 'select_next', 'fallback' },
+			['<C-space>'] = { 'show', 'show_documentation', 'hide_documentation' },
+			['<C-e>'] = { 'hide' },
+			['<CR>'] = { 'select_and_accept' },
 
-			snippet_forward = '<C-j>',
-			snippet_backward = '<C-k>',
+			['<C-p>'] = { 'select_prev', 'fallback' },
+			['<C-n>'] = { 'select_next', 'fallback' },
+
+			['<C-b>'] = { 'scroll_documentation_up', 'fallback' },
+			['<C-f>'] = { 'scroll_documentation_down', 'fallback' },
+
+			['<C-j>'] = { 'snippet_forward', 'fallback' },
+			['<C-k>'] = { 'snippet_backward', 'fallback' },
 		},
-		-- set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
-		-- adjusts spacing to ensure icons are aligned
-		nerd_font_variant = 'mono',
-		sources = {
-			-- similar to nvim-cmp's sources, but we point directly to the source's lua module
-			-- multiple groups can be provided, where it'll fallback to the next group if the previous
-			-- returns no completion items
-			-- WARN: This API will have breaking changes during the beta
-			providers = {
-				{
-					{ 'blink.cmp.sources.lsp' },
-					-- { 'blink.cmp.sources.path' },
-					-- { 'blink.cmp.sources.snippets', score_offset = -3 },
-				},
-				-- { { 'blink.cmp.sources.buffer' } },
-			},
-		},
-
-		-- experimental auto-brackets support
-		-- accept = { auto_brackets = { enabled = true } }
-
-		-- experimental signature help support
-		-- trigger = { signature_help = { enabled = true } }
 	},
-
-	-- opt = {
-	-- 	{
-	-- 		-- for keymap, all values may be string | string[]
-	-- 		-- use an empty table to disable a keymap
-	-- 		keymap = {
-	-- 			show = '<C-space>',
-	-- 			hide = '<C-e>',
-	-- 			accept = '<CR>',
-	-- 			select_prev = { '<Up>', '<Tab>' },
-	-- 			select_next = { '<Down>', '<S-Tab>' },
-	--
-	-- 			show_documentation = {},
-	-- 			hide_documentation = {},
-	-- 			scroll_documentation_up = '<C-b>',
-	-- 			scroll_documentation_down = '<C-f>',
-	--
-	-- 			snippet_forward = '<C-j>',
-	-- 			snippet_backward = '<C-k>',
-	-- 		},
-	--
-	-- 		-- accept = {
-	-- 		-- 	create_undo_point = true,
-	-- 		-- 	auto_brackets = {
-	-- 		-- 		enabled = false,
-	-- 		-- 		default_brackets = { '(', ')' },
-	-- 		-- 		override_brackets_for_filetypes = {},
-	-- 		-- 		-- Overrides the default blocked filetypes
-	-- 		-- 		force_allow_filetypes = {},
-	-- 		-- 		blocked_filetypes = {},
-	-- 		-- 		-- Synchronously use the kind of the item to determine if brackets should be added
-	-- 		-- 		kind_resolution = {
-	-- 		-- 			enabled = true,
-	-- 		-- 			blocked_filetypes = { 'typescript', 'typescriptreact', 'javascript', 'javascriptreact', 'vue' },
-	-- 		-- 		},
-	-- 		-- 		-- Asynchronously use semantic token to determine if brackets should be added
-	-- 		-- 		semantic_token_resolution = {
-	-- 		-- 			enabled = true,
-	-- 		-- 			blocked_filetypes = {},
-	-- 		-- 		},
-	-- 		-- 	},
-	-- 		-- },
-	-- 		--
-	-- 		-- trigger = {
-	-- 		-- 	completion = {
-	-- 		-- 		-- regex used to get the text when fuzzy matching
-	-- 		-- 		-- changing this may break some sources, so please report if you run into issues
-	-- 		-- 		-- todo: shouldnt this also affect the accept command? should this also be per language?
-	-- 		-- 		keyword_regex = '[%w_\\-]',
-	-- 		-- 		-- LSPs can indicate when to show the completion window via trigger characters
-	-- 		-- 		-- however, some LSPs (*cough* tsserver *cough*) return characters that would essentially
-	-- 		-- 		-- always show the window. We block these by default
-	-- 		-- 		blocked_trigger_characters = { ' ', '\n', '\t' },
-	-- 		-- 		-- when true, will show the completion window when the cursor comes after a trigger character when entering insert mode
-	-- 		-- 		show_on_insert_on_trigger_character = true,
-	-- 		-- 	},
-	-- 		--
-	-- 		-- 	signature_help = {
-	-- 		-- 		enabled = true,
-	-- 		-- 		blocked_trigger_characters = {},
-	-- 		-- 		blocked_retrigger_characters = {},
-	-- 		-- 		-- when true, will show the signature help window when the cursor comes after a trigger character when entering insert mode
-	-- 		-- 		show_on_insert_on_trigger_character = true,
-	-- 		-- 	},
-	-- 		-- },
-	-- 		--
-	-- 		-- fuzzy = {
-	-- 		-- 	-- frencency tracks the most recently/frequently used items and boosts the score of the item
-	-- 		-- 	use_frecency = true,
-	-- 		-- 	-- proximity bonus boosts the score of items with a value in the buffer
-	-- 		-- 	use_proximity = true,
-	-- 		-- 	max_items = 200,
-	-- 		-- 	-- controls which sorts to use and in which order, these three are currently the only allowed options
-	-- 		-- 	sorts = { 'label', 'kind', 'score' },
-	-- 		-- },
-	-- 		--
-	-- 		-- sources = {
-	-- 		-- 	-- similar to nvim-cmp's sources, but we point directly to the source's lua module
-	-- 		-- 	-- multiple groups can be provided, where it'll fallback to the next group if the previous
-	-- 		-- 	-- returns no completion items
-	-- 		-- 	-- WARN: This API will have breaking changes during the beta
-	-- 		-- 	providers = {
-	-- 		-- 		{
-	-- 		-- 			{ 'blink.cmp.sources.lsp' },
-	-- 		-- 			{ 'blink.cmp.sources.path' },
-	-- 		-- 			{ 'blink.cmp.sources.snippets', score_offset = -3 },
-	-- 		-- 		},
-	-- 		-- 		{ { 'blink.cmp.sources.buffer' } },
-	-- 		-- 	},
-	-- 		-- 	-- FOR REF: full example
-	-- 		-- 	-- providers = {
-	-- 		-- 	-- 	{
-	-- 		-- 	-- 		-- all of these properties work on every source
-	-- 		-- 	-- 		{
-	-- 		-- 	-- 			'blink.cmp.sources.lsp',
-	-- 		-- 	-- 			keyword_length = 0,
-	-- 		-- 	-- 			score_offset = 0,
-	-- 		-- 	-- 			trigger_characters = { 'f', 'o', 'o' },
-	-- 		-- 	-- 			opts = {},
-	-- 		-- 	-- 		},
-	-- 		-- 	-- 		-- the follow two sources have additional options
-	-- 		-- 	-- 		{
-	-- 		-- 	-- 			'blink.cmp.sources.path',
-	-- 		-- 	-- 			opts = {
-	-- 		-- 	-- 				trailing_slash = false,
-	-- 		-- 	-- 				label_trailing_slash = true,
-	-- 		-- 	-- 				get_cwd = function(context)
-	-- 		-- 	-- 					return vim.fn.expand(('#%d:p:h'):format(context.bufnr))
-	-- 		-- 	-- 				end,
-	-- 		-- 	-- 				show_hidden_files_by_default = true,
-	-- 		-- 	-- 			},
-	-- 		-- 	-- 		},
-	-- 		-- 	-- 		{
-	-- 		-- 	-- 			'blink.cmp.sources.snippets',
-	-- 		-- 	-- 			score_offset = -3,
-	-- 		-- 	-- 			-- similar to https://github.com/garymjr/nvim-snippets
-	-- 		-- 	-- 			opts = {
-	-- 		-- 	-- 				friendly_snippets = true,
-	-- 		-- 	-- 				search_paths = { vim.fn.stdpath('config') .. '/snippets' },
-	-- 		-- 	-- 				global_snippets = { 'all' },
-	-- 		-- 	-- 				extended_filetypes = {},
-	-- 		-- 	-- 				ignored_filetypes = {},
-	-- 		-- 	-- 			},
-	-- 		-- 	-- 		},
-	-- 		-- 	-- 	},
-	-- 		-- 	-- 	{ { 'blink.cmp.sources.buffer' } },
-	-- 		-- 	-- },
-	-- 		-- },
-	-- 		--
-	-- 		-- -- windows = {
-	-- 		-- -- 	autocomplete = {
-	-- 		-- -- 		min_width = 30,
-	-- 		-- -- 		max_width = 60,
-	-- 		-- -- 		max_height = 10,
-	-- 		-- -- 		border = 'none',
-	-- 		-- -- 		winhighlight = 'Normal:BlinkCmpMenu,FloatBorder:BlinkCmpMenuBorder,CursorLine:BlinkCmpMenuSelection,Search:None',
-	-- 		-- -- 		-- keep the cursor X lines away from the top/bottom of the window
-	-- 		-- -- 		scrolloff = 2,
-	-- 		-- -- 		-- which directions to show the window,
-	-- 		-- -- 		-- falling back to the next direction when there's not enough space
-	-- 		-- -- 		direction_priority = { 's', 'n' },
-	-- 		-- -- 		-- Controls how the completion items are rendered on the popup window
-	-- 		-- -- 		-- 'simple' will render the item's kind icon the left alongside the label
-	-- 		-- -- 		-- 'reversed' will render the label on the left and the kind icon + name on the right
-	-- 		-- -- 		-- 'function(blink.cmp.CompletionRenderContext): blink.cmp.Component[]' for custom rendering
-	-- 		-- -- 		draw = 'simple',
-	-- 		-- -- 	},
-	-- 		-- -- 	documentation = {
-	-- 		-- -- 		min_width = 10,
-	-- 		-- -- 		max_width = 60,
-	-- 		-- -- 		max_height = 20,
-	-- 		-- -- 		border = 'padded',
-	-- 		-- -- 		winhighlight = 'Normal:BlinkCmpDoc,FloatBorder:BlinkCmpDocBorder,CursorLine:BlinkCmpDocCursorLine,Search:None',
-	-- 		-- -- 		-- which directions to show the documentation window,
-	-- 		-- -- 		-- for each of the possible autocomplete window directions,
-	-- 		-- -- 		-- falling back to the next direction when there's not enough space
-	-- 		-- -- 		direction_priority = {
-	-- 		-- -- 			autocomplete_north = { 'e', 'w', 'n', 's' },
-	-- 		-- -- 			autocomplete_south = { 'e', 'w', 's', 'n' },
-	-- 		-- -- 		},
-	-- 		-- -- 		auto_show = true,
-	-- 		-- -- 		auto_show_delay_ms = 500,
-	-- 		-- -- 		update_delay_ms = 100,
-	-- 		-- -- 	},
-	-- 		-- -- 	signature_help = {
-	-- 		-- -- 		min_width = 1,
-	-- 		-- -- 		max_width = 100,
-	-- 		-- -- 		max_height = 10,
-	-- 		-- -- 		border = 'padded',
-	-- 		-- -- 		winhighlight = 'Normal:BlinkCmpSignatureHelp,FloatBorder:BlinkCmpSignatureHelpBorder',
-	-- 		-- -- 	},
-	-- 		-- -- },
-	--
-	-- 		-- highlight = {
-	-- 		-- 	-- ns = vim.api.nvim_create_namespace('blink_cmp'),
-	-- 		-- 	-- sets the fallback highlight groups to nvim-cmp's highlight groups
-	-- 		-- 	-- useful for when your theme doesn't support blink.cmp
-	-- 		-- 	-- will be removed in a future release, assuming themes add support
-	-- 		-- 	use_nvim_cmp_as_default = false,
-	-- 		-- },
-	-- 		--
-	-- 		-- -- set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
-	-- 		-- -- adjusts spacing to ensure icons are aligned
-	-- 		-- nerd_font_variant = 'mono',
-	-- 		--
-	-- 		-- kind_icons = {
-	-- 		-- 	Text = '󰉿',
-	-- 		-- 	Method = '󰊕',
-	-- 		-- 	Function = '󰊕',
-	-- 		-- 	Constructor = '󰒓',
-	-- 		--
-	-- 		-- 	Field = '󰜢',
-	-- 		-- 	Variable = '󰆦',
-	-- 		-- 	Property = '󰖷',
-	-- 		--
-	-- 		-- 	Class = '󱡠',
-	-- 		-- 	Interface = '󱡠',
-	-- 		-- 	Struct = '󱡠',
-	-- 		-- 	Module = '󰅩',
-	-- 		--
-	-- 		-- 	Unit = '󰪚',
-	-- 		-- 	Value = '󰦨',
-	-- 		-- 	Enum = '󰦨',
-	-- 		-- 	EnumMember = '󰦨',
-	-- 		--
-	-- 		-- 	Keyword = '󰻾',
-	-- 		-- 	Constant = '󰏿',
-	-- 		--
-	-- 		-- 	Snippet = '󱄽 :)',
-	-- 		-- 	Color = '󰏘',
-	-- 		-- 	File = '󰈔',
-	-- 		-- 	Reference = '󰬲',
-	-- 		-- 	Folder = '󰉋',
-	-- 		-- 	Event = '󱐋',
-	-- 		-- 	Operator = '󰪚',
-	-- 		-- 	TypeParameter = '󰬛',
-	-- 		-- },
-	-- 	},
-	-- },
+	opts_extend = { 'sources.default' },
 }
