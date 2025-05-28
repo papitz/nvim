@@ -24,6 +24,13 @@ return {
 						dismiss = '<C-]>',
 					},
 				},
+				should_attach = function(_, bufname)
+					if string.match(bufname, 'env') then
+						return false
+					end
+
+					return true
+				end,
 				filetypes = {
 					yaml = true,
 					markdown = false,
@@ -41,10 +48,10 @@ return {
 	},
 	{
 		'CopilotC-Nvim/CopilotChat.nvim',
-    dependencies = {
-      { "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
-      { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
-    },
+		dependencies = {
+			{ 'zbirenbaum/copilot.lua' }, -- or github/copilot.vim
+			{ 'nvim-lua/plenary.nvim' }, -- for curl, log wrapper
+		},
 		opts = {
 			show_help = 'yes', -- Show help text for CopilotChatInPlace, default: yes
 			debug = false, -- Enable or disable debug mode, the log file will be in ~/.local/state/nvim/CopilotChat.nvim.log
@@ -84,14 +91,14 @@ return {
 				desc = 'CopilotChat - Toggle chat window',
 				mode = 'n',
 			},
-      {
-        '<leader>cr',
-        function()
-          require('CopilotChat').reset()
-        end,
-        desc = 'CopilotChat - Reset chat window',
-        mode = 'n',
-      },
+			{
+				'<leader>cr',
+				function()
+					require('CopilotChat').reset()
+				end,
+				desc = 'CopilotChat - Reset chat window',
+				mode = 'n',
+			},
 			{
 				'<leader>cr',
 				'<cmd>CopilotChatReview<cr>',
@@ -129,7 +136,7 @@ return {
 				mode = 'x',
 			},
 			{ '<leader>cc', ':CopilotChat ', desc = 'CopilotChat - Open Chat window' },
-      { '<leader>cc', ':CopilotChat ', mode = 'x', desc = 'CopilotChat - Open Chat window' },
+			{ '<leader>cc', ':CopilotChat ', mode = 'x', desc = 'CopilotChat - Open Chat window' },
 		},
 	},
 }

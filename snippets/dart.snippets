@@ -39,6 +39,14 @@ snippet mappCl Create a mappable class
       ${1:className}();
     }
 
+snippet mappEn Create a mappable enum
+    import 'package:dart_mappable/dart_mappable.dart';
+
+    @MappableEnum()
+    enum ${1:className} {
+      ${0},
+    }
+
 snippet troute Typed route for go router
     @TypedGoRoute<${1:name}Route>(path: '${2:path}')
     class ${1:name}Route extends GoRouteData {
