@@ -29,7 +29,7 @@ opt.hidden = true -- so multiple buffers can be open
 opt.updatetime = 250 -- update faster for autocompletion
 opt.showmode = false -- set that vim mode is hidden, to incorporate for lightline plugin
 opt.signcolumn = 'yes' -- set the line numbers on a even width
-opt.textwidth = 150 -- sets the number of characters in one line
+-- opt.textwidth = 150 -- sets the number of characters in one line
 opt.virtualedit = 'onemore' -- allow the cursor to move past the last char on the line
 opt.cursorline = true
 
@@ -108,6 +108,17 @@ if exists("g:neovide")
     let g:python3_host_prog = '/Users/paul.hoeppner/.local/bin/python3'
 endif
 ]])
+
+vim.diagnostic.config({
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = ' ',
+      [vim.diagnostic.severity.WARN] = ' ',
+      [vim.diagnostic.severity.INFO] = ' ',
+      [vim.diagnostic.severity.HINT] = '󰌵 '
+    }
+  }
+})
 
 -- Run Neoformat on save
 -- vim.cmd([[

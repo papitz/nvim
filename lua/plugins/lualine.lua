@@ -28,17 +28,17 @@ return {
 			return {
 				options = {
 					theme = 'auto',
-          globalstatus = true,
+					globalstatus = false,
 					disabled_filetypes = {
-            -- Not needed when using globalstatus
-						-- 'toggleterm',
-						-- 'NvimTree',
-						-- 'neo-tree',
-						-- 'dapui_scopes',
-						-- 'dapui_breakpoints',
-						-- 'dapui_stacks',
-						-- 'dapui_watches',
-						-- 'dap-repl',
+						-- Not needed when using globalstatus
+						'toggleterm',
+						'NvimTree',
+						'neo-tree',
+						'dapui_scopes',
+						'dapui_breakpoints',
+						'dapui_stacks',
+						'dapui_watches',
+						'dap-repl',
 					},
 					section_separators = lualine_styles[lualine_style][1],
 					component_separators = lualine_styles[lualine_style][2],
@@ -48,7 +48,27 @@ return {
 					lualine_a = { 'mode' },
 					lualine_b = { 'branch', 'diff' },
 					-- lualine_c = {lsp_progress},
-					lualine_c = { lsp_progress, 'copilot' },
+					lualine_c = {
+						lsp_progress,
+						'copilot',
+						{
+							function()
+								local bufnr = vim.api.nvim_get_current_buf()
+								local filetype = vim.bo[bufnr].filetype
+
+								if filetype == 'oil' then
+									local dir = require('oil').get_current_dir(bufnr)
+									if dir then
+										return vim.fn.fnamemodify(dir, ':~')
+									else
+										return vim.api.nvim_buf_get_name(0)
+									end
+								else
+									return ''
+								end
+							end,
+						},
+					},
 					lualine_x = {
 						{
 							function()
@@ -59,40 +79,42 @@ return {
 							end,
 							color = { fg = '#ff9e64' },
 						},
-						'encoding',
-						{ 'filetype', icon = { align = 'left' } },
+						-- 'encoding',
+						-- { 'filetype', icon = { align = 'left' } },
+						-- 'progress',
 					},
-					lualine_y = { 'progress', 'location' },
+					-- lualine_y = { 'progress', 'location' },
+					lualine_y = { 'location' },
 					lualine_z = { { require('grapple').statusline, cond = require('grapple').exists }, 'filename' },
 					-- lualine_z = {'filename'}
 				},
 				inactive_sections = {
-					-- lualine_a = {},
-					-- lualine_b = {},
-					-- lualine_c = {},
-					-- lualine_x = { { require('grapple').statusline, cond = require('grapple').exists }, 'filename' },
-					-- lualine_y = {},
-					-- lualine_z = {},
-          lualine_a = { 'mode' },
-          lualine_b = { 'branch', 'diff' },
-          -- lualine_c = {lsp_progress},
-          lualine_c = { lsp_progress, 'copilot' },
-          lualine_x = {
-            {
-              function()
-                return require('noice').api.status.mode.get()
-              end,
-              cond = function()
-                return package.loaded['noice'] and require('noice').api.status.mode.has()
-              end,
-              color = { fg = '#ff9e64' },
-            },
-            'encoding',
-            { 'filetype', icon = { align = 'left' } },
-          },
-          lualine_y = { 'progress', 'location' },
-          lualine_z = { { require('grapple').statusline, cond = require('grapple').exists }, 'filename' },
-          -- lualine_z = {'filename'}
+					lualine_a = {},
+					lualine_b = {},
+					lualine_c = {},
+					lualine_x = { { require('grapple').statusline, cond = require('grapple').exists }, 'filename' },
+					lualine_y = {},
+					lualine_z = {},
+					-- lualine_a = { 'mode' },
+					-- lualine_b = { 'branch', 'diff' },
+					-- -- lualine_c = {lsp_progress},
+					-- lualine_c = { lsp_progress, 'copilot' },
+					-- lualine_x = {
+					-- 	{
+					-- 		function()
+					-- 			return require('noice').api.status.mode.get()
+					-- 		end,
+					-- 		cond = function()
+					-- 			return package.loaded['noice'] and require('noice').api.status.mode.has()
+					-- 		end,
+					-- 		color = { fg = '#ff9e64' },
+					-- 	},
+					-- 	'encoding',
+					-- 	{ 'filetype', icon = { align = 'left' } },
+					-- },
+					-- lualine_y = { 'progress', 'location' },
+					-- lualine_z = { { require('grapple').statusline, cond = require('grapple').exists }, 'filename' },
+					-- -- lualine_z = {'filename'}
 				},
 			}
 		end,

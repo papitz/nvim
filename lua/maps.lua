@@ -106,6 +106,9 @@ nmap('[t', ':tabprevious<CR>')
 nmap(']t', ':tabnext<CR>')
 nmap('<leader>tn', ':tabnew<CR>')
 nmap('<leader>tx', ':tabclose<CR>')
+for i = 1, 9 do
+  nmap('<leader>' .. i,  i .. 'gt')
+end
 
 -- commenting
 vim.keymap.set('n', '<leader>c<leader>', 'gcc', { remap = true, silent = true, desc = 'Comment line' })

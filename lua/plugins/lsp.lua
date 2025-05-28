@@ -73,7 +73,7 @@ return {
 		},
 		opts = { ensure_installed = { 'lua_ls' } },
 		config = function()
-			vim.diagnostic.config({ virtual_text = false })
+			vim.diagnostic.config({ virtual_text = false, severity_sort = true })
 			-- local deps_ok, lspconfig, util, cmp_lsp = pcall(function()
 			-- 	return require('lspconfig'), require('lspconfig.util'), require('cmp_nvim_lsp')
 			-- end)
@@ -115,39 +115,40 @@ return {
 				),
 			})
 
-			require('mason-lspconfig').setup({ ensure_installed = { 'lua_ls' } })
+			require('mason-lspconfig').setup({ ensure_installed = { 'lua_ls' }, automatic_enable = true })
 			-- require("mason-lspconfig").setup()
 
-			require('mason-lspconfig').setup_handlers({
-				function(server_name)
-					lspconfig[server_name].setup({})
-				end,
-				['lua_ls'] = function()
-					lspconfig.lua_ls.setup({
-						settings = { Lua = { diagnostics = { globals = { 'P' } } } },
-					})
-				end,
-				['ltex'] = function()
-					lspconfig.ltex.setup({
-						on_attach = function(client, bufnr)
-							-- require("ltex_extra").setup({
-							--     load_langs = {"de-DE", "en-US"}, -- table <string> : languages for which dictionaries will be loaded
-							--     init_check = true, -- boolean : whether to load dictionaries on startup
-							--     path = nil, -- string : path to store dictionaries. Relative path uses current working directory
-							--     log_level = "none" -- string : "none", "trace", "debug", "info", "warn", "error", "fatal"
-							-- })
-						end,
-						-- Disable for markdown for now 15.11.23
-						-- filetype = { "bib", "gitcommit", "markdown", "org", "plaintex", "rst", "rnoweb", "tex", "pandoc", "quarto", "rmd" },
-						filetypes = { 'tex' },
-						settings = { ltex = { language = 'de-DE' } },
-						-- settings = {ltex = {language = "en-US"}}
-					})
-				end,
-				['eslint'] = function()
-					lspconfig.eslint.setup({ settings = { format = true } })
-				end,
-			})
+      -- Not needed anymore
+		-- 	require('mason-lspconfig').setup_handlers({
+		-- 		function(server_name)
+		-- 			lspconfig[server_name].setup({})
+		-- 		end,
+		-- 		['lua_ls'] = function()
+		-- 			lspconfig.lua_ls.setup({
+		-- 				settings = { Lua = { diagnostics = { globals = { 'P' } } } },
+		-- 			})
+		-- 		end,
+		-- 		['ltex'] = function()
+		-- 			lspconfig.ltex.setup({
+		-- 				on_attach = function(client, bufnr)
+		-- 					-- require("ltex_extra").setup({
+		-- 					--     load_langs = {"de-DE", "en-US"}, -- table <string> : languages for which dictionaries will be loaded
+		-- 					--     init_check = true, -- boolean : whether to load dictionaries on startup
+		-- 					--     path = nil, -- string : path to store dictionaries. Relative path uses current working directory
+		-- 					--     log_level = "none" -- string : "none", "trace", "debug", "info", "warn", "error", "fatal"
+		-- 					-- })
+		-- 				end,
+		-- 				-- Disable for markdown for now 15.11.23
+		-- 				-- filetype = { "bib", "gitcommit", "markdown", "org", "plaintex", "rst", "rnoweb", "tex", "pandoc", "quarto", "rmd" },
+		-- 				filetypes = { 'tex' },
+		-- 				settings = { ltex = { language = 'de-DE' } },
+		-- 				-- settings = {ltex = {language = "en-US"}}
+		-- 			})
+		-- 		end,
+		-- 		['eslint'] = function()
+		-- 			lspconfig.eslint.setup({ settings = { format = true } })
+		-- 		end,
+		-- 	})
 		end,
 	},
 }

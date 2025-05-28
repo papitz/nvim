@@ -61,18 +61,17 @@ return {
 		--  TODO: Lets see how this goes
 		signature = { enabled = true, window = { border = 'single' } },
 
-		--  TODO: Does not work yet :(
 		snippets = { preset = 'luasnip' },
 		-- Default list of enabled providers defined so that you can extend it
 		-- elsewhere in your config, without redefining it, due to `opts_extend`
+    -- cmdline = { sources = {}},
 		sources = {
 			default = { 'lsp', 'path', 'snippets', 'buffer', 'emoji' },
-			cmdline = {},
 			providers = {
-        lsp = { score_offset = 30 },
-        path = { score_offset = 20 },
-        snippets = { score_offset = 15 },
-				buffer = { score_offset = -10 },
+        lsp = { score_offset = 9 },
+        path = { score_offset = 0 },
+        snippets = { score_offset = 10 },
+				buffer = { score_offset = 0 },
 				emoji = {
 					module = 'blink-emoji',
 					name = 'Emoji',

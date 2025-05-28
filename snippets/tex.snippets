@@ -12,6 +12,8 @@ snippet per insert Percentage
 	\,\%
 snippet ac \ac{} for acronyms
 	\ac{$0}
+snippet acro acronym definition
+	\acro{$1}[$2]{$0}
 snippet glq Anführungszeichen unten einfach
 	\glq{}
 snippet glqq Anführungszeichen unten doppelt
@@ -40,13 +42,17 @@ snippet rar rightarrow
 	\$\rightarrow$
 snippet lsi inline listing
 	\lstinline{$1}$0
+snippet ssub* subsection that does not appear in toc
+	\subsection*{$1}
+	\label{sub:$2}
+	$0
 snippet ssub* subsubsection that does not appear in toc
 	\subsubsection*{$1}
-	\label{ssub:$1}
+	\label{ssub:$2}
 	$0
 snippet ssub subsubsection
 	\subsubsection{$1}
-	\label{ssub:$1}
+	\label{ssub:$2}
 	$0
 # \begin{}...\end{}
 snippet begin
@@ -146,6 +152,11 @@ snippet sub
 	\subsection{${1:subsection name}}
 	\label{sub:${2}}
 	${3}
+
+snippet sub*
+	\subsection*{${1:subsection name}}
+	\label{sub:${2}}
+	${3}
 # Sub Sub Section
 snippet subs
 	\subsubsection{${1:subsubsection name}}
@@ -211,3 +222,5 @@ snippet ldot
 	\left. 
 snippet rdot
 	\right.
+snippet abbr Abbildung~\ref{fig:}
+	Abbildung~\ref{fig:$1}$0

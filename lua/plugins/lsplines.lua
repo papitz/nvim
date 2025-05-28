@@ -11,7 +11,7 @@ return {
 		{
 			'<leader>q',
 			function()
-        vim.diagnostic.config({ virtual_lines = { only_current_line = true } })
+				vim.diagnostic.config({ virtual_lines = { only_current_line = true } })
 			end,
 			desc = 'Show LSP line for current line',
 		},

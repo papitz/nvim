@@ -2,8 +2,9 @@ return {
 	{
 		'lervag/vimtex',
 		ft = 'tex',
+    enabled = true,
 		keys = {
-			{ '<leader>tt', ':VimtexCompile<CR>', ft = 'tex', { noremap = true, silent = true } },
+			{ '<leader>tt', ':VimtexCompileSS<CR>', ft = 'tex', { noremap = true, silent = true } },
 			{ '<leader>tv', ':VimtexView<CR>', ft = 'tex', { noremap = true, silent = true } },
 			{ '<leader>tc', ':VimtexTocToggle<CR>', ft = 'tex', { noremap = true, silent = true } },
 			{ '<leader>ts', ':VimtexStatus<CR>', ft = 'tex', { noremap = true, silent = true } },
@@ -19,7 +20,6 @@ return {
 				vim.g.vimtex_view_method = 'zathura'
 			end
 			vim.g.vimtex_view_general_viewer = 'zathura'
-			vim.cmd("let g:vimtex_toc_config = {'layer_status': {'label':0, 'include':0}, 'show_help':0}")
 			vim.g.tex_flavor = 'latex'
 			vim.g.vimtex_quickfix_enabled = 1
 			vim.g.vimtex_quickfix_mode = 0

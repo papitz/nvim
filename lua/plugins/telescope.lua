@@ -27,7 +27,9 @@ nmap(telescope_prefix .. 'l', '<cmd>Telescope lsp_references <cr>')
 return {
 	'nvim-telescope/telescope.nvim',
 	cmd = 'Telescope',
-	dependencies = { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+	dependencies = {
+		{ 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+	},
 	config = function(opts)
 		opts = {
 			defaults = { path_display = { 'truncate' } },
