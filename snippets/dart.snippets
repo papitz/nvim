@@ -42,6 +42,8 @@ snippet mappCl Create a mappable class
 snippet mappEn Create a mappable enum
     import 'package:dart_mappable/dart_mappable.dart';
 
+    part '$2.mapper.dart';
+
     @MappableEnum()
     enum ${1:className} {
       ${0},

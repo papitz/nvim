@@ -7,6 +7,10 @@ return {
         args = { '$FILENAME', '--in-request-vars', '--separate-logical-blocks' },
         stdin = false,
       },
+      xmlformatter = {
+        command = 'xmlformat',
+        args = { '--indent', '4', '--disable-inlineformatting', '-' },
+      },
     },
     formatters_by_ft = {
       lua = { 'stylua' },
@@ -28,6 +32,7 @@ return {
       http = { 'kulala' },
       yaml = { 'prettierd' },
       eruby = { 'erb_format' },
+      xml = { 'xmlformatter' },
     },
   },
   keys = {
@@ -35,7 +40,7 @@ return {
     {
       '<leader>fr',
       function()
-        require('conform').format({ async = true, timeout = 500, })
+        require('conform').format({ async = true, timeout = 500, lsp_format = "prefer" })
       end,
       desc = 'Format the current buffer',
     },
