@@ -16,19 +16,19 @@ return {
     highlight = {
       enable = true,
       additional_vim_regex_highlighting = {'markdown', 'eruby.yaml'},
-      disable = {'latex', 'eruby.yaml'}
+      disable = {'latex', 'eruby.yaml', 'csv'}
     },
     matchup = {enable = true},
     indent = {enable = true, disable = {'dart', 'ruby', 'json'}},
-    incremental_selection = {
-      enable = true,
-      keymaps = {
-        init_selection = '<CR>',
-        scope_incremental = '<CR>',
-        node_incremental = '<TAB>',
-        node_decremental = '<S-TAB>'
-      }
-    }
+    -- incremental_selection = {
+    --   enable = true,
+    --   keymaps = {
+    --     init_selection = '<CR>',
+    --     scope_incremental = '<CR>',
+    --     node_incremental = '<TAB>',
+    --     node_decremental = '<S-TAB>'
+    --   }
+    -- }
   },
   config = function(_, opts) require('nvim-treesitter.configs').setup(opts) end
 }

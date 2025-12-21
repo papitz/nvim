@@ -42,6 +42,16 @@ return {
 					},
 					section_separators = lualine_styles[lualine_style][1],
 					component_separators = lualine_styles[lualine_style][2],
+					always_show_tabline = false,
+				},
+				tabline = {
+					lualine_a = { {'tabs', mode = 2, max_length = vim.o.columns} },
+					lualine_b = {},
+					lualine_c = {},
+					lualine_x = {},
+					lualine_y = {},
+					-- lualine_z = { { 'tabs', mode = 2, path = 1 } },
+          lualine_z = {},
 				},
 				extensions = { 'fugitive' },
 				sections = {

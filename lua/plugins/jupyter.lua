@@ -171,7 +171,7 @@ return {
 			{
 				'<leader>re',
 				':noautocmd MoltenEnterOutput<CR>',
-				desc = 'Restart Molten Kernel',
+				desc = 'Enter into output',
         silent = true,
 			},
 			{

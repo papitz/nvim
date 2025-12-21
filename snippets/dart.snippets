@@ -2,12 +2,12 @@ snippet ifm if mounted
 	if (!mounted) return;
 
 snippet ifcm if mounted
-    if (!contex.mounted) return;
+    if (!context.mounted) return;
 
 snippet provof Provider.of<Type>(context, listen: false)
 	Provider.of<${1:Type}>(context, listen: false)$0
 
-snippet stconsW Create a StatefulConsumerWidget
+snippet consStW Create a StatefulConsumerWidget
     class ${1:name} extends ConsumerStatefulWidget {
       const ${1:name}({super.key});
     
@@ -53,9 +53,9 @@ snippet mappEn Create a mappable enum
     }
 
 snippet troute Typed route for go router
-    @TypedGoRoute<${1:name}Route>(path: '${2:path}')
-    class ${1:name}Route extends GoRouteData {
-      const ${1:name}Route();
+    @TypedGoRoute<${1:name}RouteData>(path: '${2:path}')
+    class ${1:name}RouteData extends GoRouteData with $${1:name}RouteData {
+      const ${1:name}RouteData();
     
       @override
       Widget build(BuildContext context, GoRouterState state) {
@@ -117,3 +117,24 @@ snippet provConSetup Setup with provider container
         $0
       ]);
     });
+
+snippet wbpf WidgetsBinding Post Frame Callback
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      $0
+    });
+
+snippet smsb ScaffoldMessenger Snack Bar
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text('$0'),
+      ),
+    );
+
+snippet npmpr Navigator.push MaterialPageRoute
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) =>
+            $0,
+      ),
+    );

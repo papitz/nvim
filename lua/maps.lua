@@ -66,8 +66,8 @@ vmap('<leader>p', '"+p')
 -- paste with correct indent
 nmap('p', ']p')
 
--- fix indentation
-nmap('<leader>ii', 'gg=G<C-o>')
+-- -- fix indentation
+-- nmap('<leader>ii', 'gg=G<C-o>')
 
 -- navigate quickfix
 nmap('<leader><leader>j', ':cn<CR>')
@@ -92,6 +92,9 @@ nmap('<leader>D', ':lua vim.lsp.buf.type_definition()<CR>')
 nmap('gr', ':lua vim.lsp.buf.references()<CR>')
 nmap('gE', ':lua vim.diagnostic.goto_prev()<CR>')
 nmap('ge', ':lua vim.diagnostic.goto_next()<CR>')
+nmap('<leader>i', function()
+	vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+end)
 -- nmap('<leader>q', ':lua vim.lsp.diagnostic.set_loclist()<CR>')
 
 -- Session saving and loading
@@ -107,7 +110,7 @@ nmap(']t', ':tabnext<CR>')
 nmap('<leader>tn', ':tabnew<CR>')
 nmap('<leader>tx', ':tabclose<CR>')
 for i = 1, 9 do
-  nmap('<leader>' .. i,  i .. 'gt')
+	nmap('<leader>' .. i, i .. 'gt')
 end
 
 -- commenting

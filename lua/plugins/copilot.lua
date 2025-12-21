@@ -7,7 +7,7 @@ return {
 	{
 		'zbirenbaum/copilot.lua',
 		cmd = 'Copilot',
-		event = 'InsertEnter',
+		-- event = 'InsertEnter',
 		config = function()
 			require('copilot').setup({
 				suggestion = {
@@ -24,27 +24,58 @@ return {
 						dismiss = '<C-]>',
 					},
 				},
-				should_attach = function(_, bufname)
-					if string.match(bufname, 'env') then
+				should_attach = function(_, _)
+          if string.match(vim.fs.basename(vim.api.nvim_buf_get_name(0)), '^%.env.*') then
 						return false
 					end
 
 					return true
 				end,
 				filetypes = {
+          -- Whitelist all types that you want to have copilot attach to
 					yaml = true,
-					markdown = false,
-					help = false,
-					gitcommit = false,
-					gitrebase = false,
-					hgcommit = false,
-					svn = false,
-					cvs = false,
-					tex = false,
-					['.'] = false,
+          python = true,
+          lua = true,
+          dart = true,
+          ruby = true,
+          html = true,
+          css = true,
+          bash = true,
+          sh = true,
+          http = true,
+					-- markdown = false,
+					-- help = false,
+					-- gitcommit = false,
+					-- gitrebase = false,
+					-- hgcommit = false,
+					-- svn = false,
+					-- cvs = false,
+					-- tex = false,
+					--      xml = false,
+					['*'] = false,
 				},
 			})
 		end,
+		keys = {
+			{
+				'<leader>ce',
+				desc = 'Enable Copilot',
+				'<cmd>Copilot enable<cr>',
+				silent = true,
+			},
+			{
+				'<leader>cd',
+				desc = 'Disable Copilot',
+				'<cmd>Copilot disable<cr>',
+				silent = true,
+			},
+      {
+        '<leader>cs',
+        desc = 'Copilot Status',
+        '<cmd>Copilot status<cr>',
+        silent = true,
+      },
+		},
 	},
 	{
 		'CopilotC-Nvim/CopilotChat.nvim',
@@ -69,7 +100,8 @@ return {
 				SwaggerJsDocs = 'Please write JSDoc for the following API using Swagger.',
 			},
 		},
-		event = 'VeryLazy',
+    cmd = 'CopilotChat',
+		-- event = 'VeryLazy',
 		keys = {
 			{
 				'<leader>ce',
