@@ -25,29 +25,29 @@ return {
 		{
 			'<leader>tA',
 			function()
-        if vim.filetype() ~= "dart" then
-          vim.notify('For now just flutter is supported')
-          return
-        end
+				if vim.filetype == 'dart' then
+					local Job = require('plenary.job')
+					local flutter_project_root = require('util').findGitDirectory(vim.loop.cwd())
+					vim.fn.chdir(flutter_project_root)
+					vim.notify('Running all tests with coverage')
 
-				local Job = require('plenary.job')
-				local flutter_project_root = require('util').findGitDirectory(vim.loop.cwd())
-				vim.fn.chdir(flutter_project_root)
-				vim.notify('Running all tests with coverage')
-
-        --  TODO: Just works for flutter
-				Job:new({
-					command = 'flutter',
-					args = { 'test', '--coverage', '--concurrency=4' },
-					cwd = flutter_project_root,
-					on_exit = function(j, return_val)
-						if return_val == 0 then
-							vim.notify('All tests passed')
-						else
-							vim.notify('Some tests failed')
-						end
-					end,
-				}):start()
+					--  TODO: Just works for flutter
+					Job:new({
+						command = 'flutter',
+						args = { 'test', '--coverage', '--concurrency=4' },
+						cwd = flutter_project_root,
+						on_exit = function(j, return_val)
+							if return_val == 0 then
+								vim.notify('All tests passed')
+							else
+								vim.notify('Some tests failed')
+							end
+						end,
+					}):start()
+				else
+					vim.notify('For now just flutter is supported')
+					return
+				end
 			end,
 			desc = 'Run all tests with coverage',
 		},
@@ -72,7 +72,11 @@ return {
 			desc = 'Run all tests',
 		},
 		{ '<leader>tm', require('utils.test').makeTestFile, desc = 'Create Test file' },
-		{ '<leader>tM', require('utils.test').makeTestFileWithCopilot, desc = 'Create Test file and Test with CopilotChat' },
+		{
+			'<leader>tM',
+			require('utils.test').makeTestFileWithCopilot,
+			desc = 'Create Test file and Test with CopilotChat',
+		},
 		{
 			'<leader>tM',
 			require('utils.test').generateTestsForSelection,

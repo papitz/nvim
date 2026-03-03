@@ -45,13 +45,13 @@ return {
 					always_show_tabline = false,
 				},
 				tabline = {
-					lualine_a = { {'tabs', mode = 2, max_length = vim.o.columns} },
+					lualine_a = { { 'tabs', mode = 2, max_length = vim.o.columns } },
 					lualine_b = {},
 					lualine_c = {},
 					lualine_x = {},
 					lualine_y = {},
 					-- lualine_z = { { 'tabs', mode = 2, path = 1 } },
-          lualine_z = {},
+					lualine_z = {},
 				},
 				extensions = { 'fugitive' },
 				sections = {

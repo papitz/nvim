@@ -1,16 +1,22 @@
 return {
-	'kdheepak/lazygit.nvim',
+	-- 'kdheepak/lazygit.nvim',
 	{
 		'lewis6991/gitsigns.nvim',
 		event = 'BufRead',
 		dependencies = { 'tpope/vim-fugitive' },
 		keys = {
-			{ '<leader>gg', '<cmd>LazyGit<CR>' },
+			{
+				'<leader>gg',
+				function()
+					require('snacks').lazygit.open()
+				end,
+			},
 			{ '<leader>gh', '<cmd>diffget //2<CR>' },
 			{ '<leader>gl', '<cmd>diffget //3<CR>' },
 			{ '<leader>gb', '<cmd>Gitsigns toggle_current_line_blame<CR>' },
-      { '<leader>gw', '<cmd>Gitsigns blame_line<CR>' },
+			{ '<leader>gw', '<cmd>Gitsigns blame_line<CR>' },
 			{ '<leader>gr', '<cmd>Gitsigns reset_hunk<CR>' },
+			{ '<leader>gs', '<cmd>Gitsigns stage_hunk<CR>' },
 		},
 		opts = {
 			signs = {
