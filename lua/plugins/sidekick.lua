@@ -1,14 +1,19 @@
+local disable = false
+if disable then
+	return {}
+end
 return {
 	'folke/sidekick.nvim',
 	opts = {
 		nes = { enabled = false },
 		-- add any options here
-		-- cli = {
-		--   mux = {
-		--     backend = "zellij",
-		--     enabled = true,
-		--   },
-		-- },
+		cli = {
+			win = {
+				split = {
+					width = 0.3,
+				},
+			},
+		},
 	},
 	keys = {
 		{
@@ -91,13 +96,19 @@ return {
 			mode = { 'n', 'x' },
 			desc = 'Sidekick Select Prompt',
 		},
-		-- Example of a keybinding to open Claude directly
 		{
 			'<leader>ag',
 			function()
 				require('sidekick.cli').toggle({ name = 'gemini', focus = true })
 			end,
 			desc = 'Sidekick Toggle Gemini',
+		},
+		{
+			'<leader>ac',
+			function()
+				require('sidekick.cli').toggle({ name = 'claude', focus = true })
+			end,
+			desc = 'Sidekick Toggle Claude',
 		},
 	},
 }

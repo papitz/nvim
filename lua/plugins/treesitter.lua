@@ -1,5 +1,6 @@
 return {
   'nvim-treesitter/nvim-treesitter',
+  branch = 'main',
   dependencies = {
     -- Get the commentstring based on ts context
     'JoosepAlviste/nvim-ts-context-commentstring'
@@ -30,5 +31,5 @@ return {
     --   }
     -- }
   },
-  config = function(_, opts) require('nvim-treesitter.configs').setup(opts) end
+  -- config = function(_, opts) require('nvim-treesitter.configs').setup(opts) end
 }

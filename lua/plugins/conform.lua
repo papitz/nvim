@@ -23,6 +23,7 @@ return {
 			json = { 'prettierd' },
 			bash = { 'shfmt' },
 			sh = { 'shfmt' },
+      sql = { 'sqlfmt' },
 			tex = { 'latexindent' },
 			go = { 'gofumpt', 'goimports' },
 			ruby = { 'rufo', 'rubocop' },
