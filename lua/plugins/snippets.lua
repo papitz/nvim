@@ -67,10 +67,16 @@ return {
 		local nmap = require('util').nmap
 
 		HOME = os.getenv('HOME')
+    local snipmate_loader = require('luasnip/loaders/from_snipmate')
 		-- load snippets from the ~/.config/nvim/snippets/ directory for the corresponding language
-		require('luasnip/loaders/from_snipmate').lazy_load({
+		snipmate_loader.lazy_load({
 			path = { HOME .. '/.config/nvim/snippets' },
 		})
+    -- load the tryton snippets
+    local tryton_snippets = vim.fn.expand(HOME .. '/quatro/tryton-documentation/snippets')
+    if vim.fn.isdirectory(tryton_snippets) == 1 then
+      snipmate_loader.lazy_load({ paths = { tryton_snippets } })
+    end
 
 		-- command to open the snippet file that belongs to the language you are editing
 		vim.cmd([[

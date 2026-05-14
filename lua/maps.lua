@@ -92,9 +92,9 @@ nmap('<leader>D', ':lua vim.lsp.buf.type_definition()<CR>')
 nmap('gr', ':lua vim.lsp.buf.references()<CR>')
 nmap('gE', ':lua vim.diagnostic.goto_prev()<CR>')
 nmap('ge', ':lua vim.diagnostic.goto_next()<CR>')
-nmap('<leader>i', function()
+vim.keymap.set('n', '<leader>i', function()
 	vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
-end)
+end, { desc = 'Toggle inlay hints' })
 -- nmap('<leader>q', ':lua vim.lsp.diagnostic.set_loclist()<CR>')
 
 -- Session saving and loading

@@ -44,6 +44,7 @@ return {
           sh = true,
           http = true,
           rust = true,
+          xml = true,
 					-- markdown = false,
 					-- help = false,
 					-- gitcommit = false,

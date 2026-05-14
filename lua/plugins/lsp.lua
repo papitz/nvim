@@ -198,6 +198,40 @@ return {
 				},
 			})
 
+			local docs_path = os.getenv('TRYTON_DOCS_PATH') or ''
+			vim.lsp.config('lemminx', {
+				settings = {
+					xml = {
+						fileAssociations = {
+							{
+								pattern = '**/view/*_form.xml',
+								systemId = docs_path .. '/schemas/tryton-view.xsd',
+							},
+							{
+								pattern = '**/view/*_list.xml',
+								systemId = docs_path .. '/schemas/tryton-view.xsd',
+							},
+							{
+								pattern = '**/view/*_graph.xml',
+								systemId = docs_path .. '/schemas/tryton-graph.xsd',
+							},
+							{
+								pattern = '**/view/*_board.xml',
+								systemId = docs_path .. '/schemas/tryton-board.xsd',
+							},
+							{
+								pattern = '**/view/*_calendar.xml',
+								systemId = docs_path .. '/schemas/tryton-calendar.xsd',
+							},
+							{
+								pattern = '**/modules/**/*.xml',
+								systemId = docs_path .. '/schemas/tryton-data.xsd',
+							},
+						},
+					},
+				},
+			})
+
 			require('mason-lspconfig').setup({ ensure_installed = { 'lua_ls' }, automatic_enable = true })
 		end,
 	},

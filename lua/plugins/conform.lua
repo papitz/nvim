@@ -9,7 +9,7 @@ return {
 			},
 			xmlformatter = {
 				command = 'xmlformat',
-				args = { '--indent', '4', '--disable-inlineformatting', '-' },
+				args = { '--indent', '4', '--disable-inlineformatting', '--selfclose', '--preserve-attributes', '-'  },
 			},
 		},
 		formatters_by_ft = {
@@ -23,7 +23,7 @@ return {
 			json = { 'prettierd' },
 			bash = { 'shfmt' },
 			sh = { 'shfmt' },
-      sql = { 'sqlfmt' },
+			sql = { 'sqlfmt' },
 			tex = { 'latexindent' },
 			go = { 'gofumpt', 'goimports' },
 			ruby = { 'rufo', 'rubocop' },
@@ -33,6 +33,7 @@ return {
 			yaml = { 'prettierd' },
 			eruby = { 'erb_format' },
 			xml = { 'xmlformatter' },
+			toml = { 'tombi' },
 		},
 	},
 	keys = {
